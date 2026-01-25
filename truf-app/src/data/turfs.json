@@ -1,0 +1,3402 @@
+[
+  {
+    "id": "turf_1",
+    "turfName": "Pro Stadium Mylapore",
+    "city": "Chennai",
+    "area": "Mylapore",
+    "pricePerHour": 2316,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_1.jpg"
+  },
+  {
+    "id": "turf_2",
+    "turfName": "Pro Stadium Bodakdev",
+    "city": "Ahmedabad",
+    "area": "Bodakdev",
+    "pricePerHour": 1619,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_2.jpg"
+  },
+  {
+    "id": "turf_3",
+    "turfName": "Elite Field Satellite",
+    "city": "Ahmedabad",
+    "area": "Satellite",
+    "pricePerHour": 1826,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_3.jpg"
+  },
+  {
+    "id": "turf_4",
+    "turfName": "Victory Club Madhapur",
+    "city": "Hyderabad",
+    "area": "Madhapur",
+    "pricePerHour": 2393,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_4.jpg"
+  },
+  {
+    "id": "turf_5",
+    "turfName": "Royal Zone Koramangala",
+    "city": "Bangalore",
+    "area": "Koramangala",
+    "pricePerHour": 2148,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.7,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_5.jpg"
+  },
+  {
+    "id": "turf_6",
+    "turfName": "Star Complex Hazratganj",
+    "city": "Lucknow",
+    "area": "Hazratganj",
+    "pricePerHour": 2293,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_6.jpg"
+  },
+  {
+    "id": "turf_7",
+    "turfName": "Active Arena Secunderabad",
+    "city": "Hyderabad",
+    "area": "Secunderabad",
+    "pricePerHour": 823,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_7.jpg"
+  },
+  {
+    "id": "turf_8",
+    "turfName": "Active Complex Hazratganj",
+    "city": "Lucknow",
+    "area": "Hazratganj",
+    "pricePerHour": 2325,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_8.jpg"
+  },
+  {
+    "id": "turf_9",
+    "turfName": "Champion Club Prahlad Nagar",
+    "city": "Ahmedabad",
+    "area": "Prahlad Nagar",
+    "pricePerHour": 1031,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_9.jpg"
+  },
+  {
+    "id": "turf_10",
+    "turfName": "Active Turf New Town",
+    "city": "Kolkata",
+    "area": "New Town",
+    "pricePerHour": 2027,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_10.jpg"
+  },
+  {
+    "id": "turf_11",
+    "turfName": "Champion Park Marathahalli",
+    "city": "Bangalore",
+    "area": "Marathahalli",
+    "pricePerHour": 1953,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_11.jpg"
+  },
+  {
+    "id": "turf_12",
+    "turfName": "Ace Field Jayanagar",
+    "city": "Bangalore",
+    "area": "Jayanagar",
+    "pricePerHour": 2061,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.3,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_12.jpg"
+  },
+  {
+    "id": "turf_13",
+    "turfName": "Sporty Turf Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 2434,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_13.jpg"
+  },
+  {
+    "id": "turf_14",
+    "turfName": "Sporty Park New Town",
+    "city": "Kolkata",
+    "area": "New Town",
+    "pricePerHour": 1428,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_14.jpg"
+  },
+  {
+    "id": "turf_15",
+    "turfName": "Dynamic Field Prahlad Nagar",
+    "city": "Ahmedabad",
+    "area": "Prahlad Nagar",
+    "pricePerHour": 962,
+    "availableTimeSlots": [
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_15.jpg"
+  },
+  {
+    "id": "turf_16",
+    "turfName": "Green Stadium Rohini",
+    "city": "Delhi",
+    "area": "Rohini",
+    "pricePerHour": 1522,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_16.jpg"
+  },
+  {
+    "id": "turf_17",
+    "turfName": "Dynamic Complex Aliganj",
+    "city": "Lucknow",
+    "area": "Aliganj",
+    "pricePerHour": 1466,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_17.jpg"
+  },
+  {
+    "id": "turf_18",
+    "turfName": "Green Zone Karol Bagh",
+    "city": "Delhi",
+    "area": "Karol Bagh",
+    "pricePerHour": 1419,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_18.jpg"
+  },
+  {
+    "id": "turf_19",
+    "turfName": "Mega Stadium Banjara Hills",
+    "city": "Hyderabad",
+    "area": "Banjara Hills",
+    "pricePerHour": 1701,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00"
+    ],
+    "rating": 3.7,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_19.jpg"
+  },
+  {
+    "id": "turf_20",
+    "turfName": "Champion Ground Baner",
+    "city": "Pune",
+    "area": "Baner",
+    "pricePerHour": 1496,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_20.jpg"
+  },
+  {
+    "id": "turf_21",
+    "turfName": "Active Club Mansarovar",
+    "city": "Jaipur",
+    "area": "Mansarovar",
+    "pricePerHour": 891,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_21.jpg"
+  },
+  {
+    "id": "turf_22",
+    "turfName": "Star Stadium HSR Layout",
+    "city": "Bangalore",
+    "area": "HSR Layout",
+    "pricePerHour": 2310,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_22.jpg"
+  },
+  {
+    "id": "turf_23",
+    "turfName": "Active Complex Karol Bagh",
+    "city": "Delhi",
+    "area": "Karol Bagh",
+    "pricePerHour": 1488,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_23.jpg"
+  },
+  {
+    "id": "turf_24",
+    "turfName": "Green Ground Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 1085,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_24.jpg"
+  },
+  {
+    "id": "turf_25",
+    "turfName": "Elite Park HSR Layout",
+    "city": "Bangalore",
+    "area": "HSR Layout",
+    "pricePerHour": 2200,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_25.jpg"
+  },
+  {
+    "id": "turf_26",
+    "turfName": "Super Ground Whitefield",
+    "city": "Bangalore",
+    "area": "Whitefield",
+    "pricePerHour": 1900,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_26.jpg"
+  },
+  {
+    "id": "turf_27",
+    "turfName": "Mega Field Vastrapur",
+    "city": "Ahmedabad",
+    "area": "Vastrapur",
+    "pricePerHour": 888,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.9,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_27.jpg"
+  },
+  {
+    "id": "turf_28",
+    "turfName": "Pro Park Raja Park",
+    "city": "Jaipur",
+    "area": "Raja Park",
+    "pricePerHour": 1475,
+    "availableTimeSlots": [
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_28.jpg"
+  },
+  {
+    "id": "turf_29",
+    "turfName": "Grand Complex Rohini",
+    "city": "Delhi",
+    "area": "Rohini",
+    "pricePerHour": 1419,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_29.jpg"
+  },
+  {
+    "id": "turf_30",
+    "turfName": "Power Arena Connaught Place",
+    "city": "Delhi",
+    "area": "Connaught Place",
+    "pricePerHour": 1753,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_30.jpg"
+  },
+  {
+    "id": "turf_31",
+    "turfName": "Prime Field Bodakdev",
+    "city": "Ahmedabad",
+    "area": "Bodakdev",
+    "pricePerHour": 886,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.9,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_31.jpg"
+  },
+  {
+    "id": "turf_32",
+    "turfName": "Star Stadium Salt Lake",
+    "city": "Kolkata",
+    "area": "Salt Lake",
+    "pricePerHour": 1503,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_32.jpg"
+  },
+  {
+    "id": "turf_33",
+    "turfName": "Green Field Vastrapur",
+    "city": "Ahmedabad",
+    "area": "Vastrapur",
+    "pricePerHour": 854,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.2,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_33.jpg"
+  },
+  {
+    "id": "turf_34",
+    "turfName": "Green Club Whitefield",
+    "city": "Bangalore",
+    "area": "Whitefield",
+    "pricePerHour": 1466,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 3.2,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_34.jpg"
+  },
+  {
+    "id": "turf_35",
+    "turfName": "Star Stadium Jankipuram",
+    "city": "Lucknow",
+    "area": "Jankipuram",
+    "pricePerHour": 1282,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_35.jpg"
+  },
+  {
+    "id": "turf_36",
+    "turfName": "Elite Turf Raja Park",
+    "city": "Jaipur",
+    "area": "Raja Park",
+    "pricePerHour": 931,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_36.jpg"
+  },
+  {
+    "id": "turf_37",
+    "turfName": "Urban Park Viman Nagar",
+    "city": "Pune",
+    "area": "Viman Nagar",
+    "pricePerHour": 2254,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 3.2,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_37.jpg"
+  },
+  {
+    "id": "turf_38",
+    "turfName": "Dynamic Arena Dwarka",
+    "city": "Delhi",
+    "area": "Dwarka",
+    "pricePerHour": 2139,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_38.jpg"
+  },
+  {
+    "id": "turf_39",
+    "turfName": "Active Stadium Gomti Nagar",
+    "city": "Lucknow",
+    "area": "Gomti Nagar",
+    "pricePerHour": 2082,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.2,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_39.jpg"
+  },
+  {
+    "id": "turf_40",
+    "turfName": "Power Park Indiranagar",
+    "city": "Bangalore",
+    "area": "Indiranagar",
+    "pricePerHour": 1926,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_40.jpg"
+  },
+  {
+    "id": "turf_41",
+    "turfName": "Victory Park Marathahalli",
+    "city": "Bangalore",
+    "area": "Marathahalli",
+    "pricePerHour": 1799,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_41.jpg"
+  },
+  {
+    "id": "turf_42",
+    "turfName": "Victory Field Gachibowli",
+    "city": "Hyderabad",
+    "area": "Gachibowli",
+    "pricePerHour": 2188,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_42.jpg"
+  },
+  {
+    "id": "turf_43",
+    "turfName": "Green Arena HSR Layout",
+    "city": "Bangalore",
+    "area": "HSR Layout",
+    "pricePerHour": 1057,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.3,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_43.jpg"
+  },
+  {
+    "id": "turf_44",
+    "turfName": "Ultimate Ground Dadar",
+    "city": "Mumbai",
+    "area": "Dadar",
+    "pricePerHour": 1746,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_44.jpg"
+  },
+  {
+    "id": "turf_45",
+    "turfName": "Dynamic Zone Borivali",
+    "city": "Mumbai",
+    "area": "Borivali",
+    "pricePerHour": 1749,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00"
+    ],
+    "rating": 4.4,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_45.jpg"
+  },
+  {
+    "id": "turf_46",
+    "turfName": "Mega Arena Jayanagar",
+    "city": "Bangalore",
+    "area": "Jayanagar",
+    "pricePerHour": 1981,
+    "availableTimeSlots": [
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.9,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_46.jpg"
+  },
+  {
+    "id": "turf_47",
+    "turfName": "Mega Hub Indiranagar",
+    "city": "Bangalore",
+    "area": "Indiranagar",
+    "pricePerHour": 1459,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_47.jpg"
+  },
+  {
+    "id": "turf_48",
+    "turfName": "Super Turf Aliganj",
+    "city": "Lucknow",
+    "area": "Aliganj",
+    "pricePerHour": 1345,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_48.jpg"
+  },
+  {
+    "id": "turf_49",
+    "turfName": "Pro Arena Mansarovar",
+    "city": "Jaipur",
+    "area": "Mansarovar",
+    "pricePerHour": 1056,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_49.jpg"
+  },
+  {
+    "id": "turf_50",
+    "turfName": "Pro Complex Alipore",
+    "city": "Kolkata",
+    "area": "Alipore",
+    "pricePerHour": 1851,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_50.jpg"
+  },
+  {
+    "id": "turf_51",
+    "turfName": "Grand Stadium Gachibowli",
+    "city": "Hyderabad",
+    "area": "Gachibowli",
+    "pricePerHour": 1955,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_51.jpg"
+  },
+  {
+    "id": "turf_52",
+    "turfName": "Grand Zone Vaishali Nagar",
+    "city": "Jaipur",
+    "area": "Vaishali Nagar",
+    "pricePerHour": 2412,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.9,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_52.jpg"
+  },
+  {
+    "id": "turf_53",
+    "turfName": "Nexus Hub Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 1527,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_53.jpg"
+  },
+  {
+    "id": "turf_54",
+    "turfName": "Nexus Stadium Jubilee Hills",
+    "city": "Hyderabad",
+    "area": "Jubilee Hills",
+    "pricePerHour": 1928,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 5,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_54.jpg"
+  },
+  {
+    "id": "turf_55",
+    "turfName": "Active Hub New Town",
+    "city": "Kolkata",
+    "area": "New Town",
+    "pricePerHour": 1289,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.9,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_55.jpg"
+  },
+  {
+    "id": "turf_56",
+    "turfName": "Super Zone Powai",
+    "city": "Mumbai",
+    "area": "Powai",
+    "pricePerHour": 2434,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_56.jpg"
+  },
+  {
+    "id": "turf_57",
+    "turfName": "Ultimate Field Madhapur",
+    "city": "Hyderabad",
+    "area": "Madhapur",
+    "pricePerHour": 1633,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.9,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_57.jpg"
+  },
+  {
+    "id": "turf_58",
+    "turfName": "Mega Arena Bodakdev",
+    "city": "Ahmedabad",
+    "area": "Bodakdev",
+    "pricePerHour": 1953,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_58.jpg"
+  },
+  {
+    "id": "turf_59",
+    "turfName": "Ultimate Field Anna Nagar",
+    "city": "Chennai",
+    "area": "Anna Nagar",
+    "pricePerHour": 1996,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00"
+    ],
+    "rating": 4.2,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_59.jpg"
+  },
+  {
+    "id": "turf_60",
+    "turfName": "Ace Stadium Koregaon Park",
+    "city": "Pune",
+    "area": "Koregaon Park",
+    "pricePerHour": 1431,
+    "availableTimeSlots": [
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_60.jpg"
+  },
+  {
+    "id": "turf_61",
+    "turfName": "Prime Park Saket",
+    "city": "Delhi",
+    "area": "Saket",
+    "pricePerHour": 2366,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_61.jpg"
+  },
+  {
+    "id": "turf_62",
+    "turfName": "Royal Field Marathahalli",
+    "city": "Bangalore",
+    "area": "Marathahalli",
+    "pricePerHour": 1619,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_62.jpg"
+  },
+  {
+    "id": "turf_63",
+    "turfName": "Victory Hub Hazratganj",
+    "city": "Lucknow",
+    "area": "Hazratganj",
+    "pricePerHour": 2295,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 5,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_63.jpg"
+  },
+  {
+    "id": "turf_64",
+    "turfName": "Pro Hub Karol Bagh",
+    "city": "Delhi",
+    "area": "Karol Bagh",
+    "pricePerHour": 860,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_64.jpg"
+  },
+  {
+    "id": "turf_65",
+    "turfName": "Sporty Complex Hazratganj",
+    "city": "Lucknow",
+    "area": "Hazratganj",
+    "pricePerHour": 2220,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_65.jpg"
+  },
+  {
+    "id": "turf_66",
+    "turfName": "Victory Club Borivali",
+    "city": "Mumbai",
+    "area": "Borivali",
+    "pricePerHour": 2209,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.3,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_66.jpg"
+  },
+  {
+    "id": "turf_67",
+    "turfName": "Swift Club Koregaon Park",
+    "city": "Pune",
+    "area": "Koregaon Park",
+    "pricePerHour": 2206,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_67.jpg"
+  },
+  {
+    "id": "turf_68",
+    "turfName": "Champion Turf Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 987,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_68.jpg"
+  },
+  {
+    "id": "turf_69",
+    "turfName": "Mega Arena Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 1209,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_69.jpg"
+  },
+  {
+    "id": "turf_70",
+    "turfName": "Mega Zone Secunderabad",
+    "city": "Hyderabad",
+    "area": "Secunderabad",
+    "pricePerHour": 967,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_70.jpg"
+  },
+  {
+    "id": "turf_71",
+    "turfName": "Elite Hub Kukatpally",
+    "city": "Hyderabad",
+    "area": "Kukatpally",
+    "pricePerHour": 1493,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_71.jpg"
+  },
+  {
+    "id": "turf_72",
+    "turfName": "Green Arena Aliganj",
+    "city": "Lucknow",
+    "area": "Aliganj",
+    "pricePerHour": 1153,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_72.jpg"
+  },
+  {
+    "id": "turf_73",
+    "turfName": "Royal Turf Gariahat",
+    "city": "Kolkata",
+    "area": "Gariahat",
+    "pricePerHour": 1403,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_73.jpg"
+  },
+  {
+    "id": "turf_74",
+    "turfName": "Champion Complex Baner",
+    "city": "Pune",
+    "area": "Baner",
+    "pricePerHour": 1179,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.9,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_74.jpg"
+  },
+  {
+    "id": "turf_75",
+    "turfName": "Victory Field Salt Lake",
+    "city": "Kolkata",
+    "area": "Salt Lake",
+    "pricePerHour": 2217,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_75.jpg"
+  },
+  {
+    "id": "turf_76",
+    "turfName": "Active Arena Marathahalli",
+    "city": "Bangalore",
+    "area": "Marathahalli",
+    "pricePerHour": 1220,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_76.jpg"
+  },
+  {
+    "id": "turf_77",
+    "turfName": "Green Zone Whitefield",
+    "city": "Bangalore",
+    "area": "Whitefield",
+    "pricePerHour": 1124,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_77.jpg"
+  },
+  {
+    "id": "turf_78",
+    "turfName": "Elite Turf Whitefield",
+    "city": "Bangalore",
+    "area": "Whitefield",
+    "pricePerHour": 1492,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_78.jpg"
+  },
+  {
+    "id": "turf_79",
+    "turfName": "Active Hub Hazratganj",
+    "city": "Lucknow",
+    "area": "Hazratganj",
+    "pricePerHour": 1315,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_79.jpg"
+  },
+  {
+    "id": "turf_80",
+    "turfName": "Swift Field Vastrapur",
+    "city": "Ahmedabad",
+    "area": "Vastrapur",
+    "pricePerHour": 2312,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.9,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_80.jpg"
+  },
+  {
+    "id": "turf_81",
+    "turfName": "Victory Zone Marathahalli",
+    "city": "Bangalore",
+    "area": "Marathahalli",
+    "pricePerHour": 1065,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.7,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_81.jpg"
+  },
+  {
+    "id": "turf_82",
+    "turfName": "Ace Park Bandra",
+    "city": "Mumbai",
+    "area": "Bandra",
+    "pricePerHour": 1469,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_82.jpg"
+  },
+  {
+    "id": "turf_83",
+    "turfName": "Pro Field Gariahat",
+    "city": "Kolkata",
+    "area": "Gariahat",
+    "pricePerHour": 2366,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_83.jpg"
+  },
+  {
+    "id": "turf_84",
+    "turfName": "Champion Club Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 1982,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_84.jpg"
+  },
+  {
+    "id": "turf_85",
+    "turfName": "Swift Zone Park Street",
+    "city": "Kolkata",
+    "area": "Park Street",
+    "pricePerHour": 1416,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.3,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_85.jpg"
+  },
+  {
+    "id": "turf_86",
+    "turfName": "Sporty Stadium New Town",
+    "city": "Kolkata",
+    "area": "New Town",
+    "pricePerHour": 1604,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_86.jpg"
+  },
+  {
+    "id": "turf_87",
+    "turfName": "Star Club Jubilee Hills",
+    "city": "Hyderabad",
+    "area": "Jubilee Hills",
+    "pricePerHour": 1560,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.3,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_87.jpg"
+  },
+  {
+    "id": "turf_88",
+    "turfName": "Dynamic Club Salt Lake",
+    "city": "Kolkata",
+    "area": "Salt Lake",
+    "pricePerHour": 873,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_88.jpg"
+  },
+  {
+    "id": "turf_89",
+    "turfName": "Prime Club Koregaon Park",
+    "city": "Pune",
+    "area": "Koregaon Park",
+    "pricePerHour": 1747,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_89.jpg"
+  },
+  {
+    "id": "turf_90",
+    "turfName": "Super Club Vastrapur",
+    "city": "Ahmedabad",
+    "area": "Vastrapur",
+    "pricePerHour": 2375,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_90.jpg"
+  },
+  {
+    "id": "turf_91",
+    "turfName": "Active Park Adyar",
+    "city": "Chennai",
+    "area": "Adyar",
+    "pricePerHour": 2000,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.2,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_91.jpg"
+  },
+  {
+    "id": "turf_92",
+    "turfName": "Sporty Arena Koramangala",
+    "city": "Bangalore",
+    "area": "Koramangala",
+    "pricePerHour": 2092,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.9,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_92.jpg"
+  },
+  {
+    "id": "turf_93",
+    "turfName": "Super Stadium Hadapsar",
+    "city": "Pune",
+    "area": "Hadapsar",
+    "pricePerHour": 2095,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_93.jpg"
+  },
+  {
+    "id": "turf_94",
+    "turfName": "Elite Turf Park Street",
+    "city": "Kolkata",
+    "area": "Park Street",
+    "pricePerHour": 1504,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_94.jpg"
+  },
+  {
+    "id": "turf_95",
+    "turfName": "Elite Stadium New Town",
+    "city": "Kolkata",
+    "area": "New Town",
+    "pricePerHour": 1628,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.9,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_95.jpg"
+  },
+  {
+    "id": "turf_96",
+    "turfName": "Ace Arena Gariahat",
+    "city": "Kolkata",
+    "area": "Gariahat",
+    "pricePerHour": 1086,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_96.jpg"
+  },
+  {
+    "id": "turf_97",
+    "turfName": "Pro Stadium Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 2171,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_97.jpg"
+  },
+  {
+    "id": "turf_98",
+    "turfName": "Urban Zone Whitefield",
+    "city": "Bangalore",
+    "area": "Whitefield",
+    "pricePerHour": 2454,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_98.jpg"
+  },
+  {
+    "id": "turf_99",
+    "turfName": "Pro Hub Jankipuram",
+    "city": "Lucknow",
+    "area": "Jankipuram",
+    "pricePerHour": 2164,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.2,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_99.jpg"
+  },
+  {
+    "id": "turf_100",
+    "turfName": "Star Arena Indira Nagar",
+    "city": "Lucknow",
+    "area": "Indira Nagar",
+    "pricePerHour": 1339,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.3,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_100.jpg"
+  },
+  {
+    "id": "turf_101",
+    "turfName": "Elite Ground Juhu",
+    "city": "Mumbai",
+    "area": "Juhu",
+    "pricePerHour": 1730,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.9,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_101.jpg"
+  },
+  {
+    "id": "turf_102",
+    "turfName": "Super Stadium Park Street",
+    "city": "Kolkata",
+    "area": "Park Street",
+    "pricePerHour": 1916,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_102.jpg"
+  },
+  {
+    "id": "turf_103",
+    "turfName": "Victory Hub Vaishali Nagar",
+    "city": "Jaipur",
+    "area": "Vaishali Nagar",
+    "pricePerHour": 2149,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_103.jpg"
+  },
+  {
+    "id": "turf_104",
+    "turfName": "Grand Park Jayanagar",
+    "city": "Bangalore",
+    "area": "Jayanagar",
+    "pricePerHour": 1975,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_104.jpg"
+  },
+  {
+    "id": "turf_105",
+    "turfName": "Swift Complex Anna Nagar",
+    "city": "Chennai",
+    "area": "Anna Nagar",
+    "pricePerHour": 1910,
+    "availableTimeSlots": [
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_105.jpg"
+  },
+  {
+    "id": "turf_106",
+    "turfName": "Power Field Juhu",
+    "city": "Mumbai",
+    "area": "Juhu",
+    "pricePerHour": 1060,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.4,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_106.jpg"
+  },
+  {
+    "id": "turf_107",
+    "turfName": "Sporty Arena Powai",
+    "city": "Mumbai",
+    "area": "Powai",
+    "pricePerHour": 1934,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 4.3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_107.jpg"
+  },
+  {
+    "id": "turf_108",
+    "turfName": "Prime Arena Whitefield",
+    "city": "Bangalore",
+    "area": "Whitefield",
+    "pricePerHour": 2397,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 3.2,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_108.jpg"
+  },
+  {
+    "id": "turf_109",
+    "turfName": "Grand Park Vastrapur",
+    "city": "Ahmedabad",
+    "area": "Vastrapur",
+    "pricePerHour": 2245,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 3.9,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_109.jpg"
+  },
+  {
+    "id": "turf_110",
+    "turfName": "Super Field Indiranagar",
+    "city": "Bangalore",
+    "area": "Indiranagar",
+    "pricePerHour": 2252,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_110.jpg"
+  },
+  {
+    "id": "turf_111",
+    "turfName": "Active Hub Park Street",
+    "city": "Kolkata",
+    "area": "Park Street",
+    "pricePerHour": 1517,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_111.jpg"
+  },
+  {
+    "id": "turf_112",
+    "turfName": "Dynamic Complex Alipore",
+    "city": "Kolkata",
+    "area": "Alipore",
+    "pricePerHour": 1697,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.9,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_112.jpg"
+  },
+  {
+    "id": "turf_113",
+    "turfName": "Ultimate Ground Salt Lake",
+    "city": "Kolkata",
+    "area": "Salt Lake",
+    "pricePerHour": 2030,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_113.jpg"
+  },
+  {
+    "id": "turf_114",
+    "turfName": "Mega Ground Hadapsar",
+    "city": "Pune",
+    "area": "Hadapsar",
+    "pricePerHour": 1101,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.7,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_114.jpg"
+  },
+  {
+    "id": "turf_115",
+    "turfName": "Royal Complex Velachery",
+    "city": "Chennai",
+    "area": "Velachery",
+    "pricePerHour": 2095,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.2,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_115.jpg"
+  },
+  {
+    "id": "turf_116",
+    "turfName": "Mega Arena Rohini",
+    "city": "Delhi",
+    "area": "Rohini",
+    "pricePerHour": 1491,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_116.jpg"
+  },
+  {
+    "id": "turf_117",
+    "turfName": "Pro Field Hauz Khas",
+    "city": "Delhi",
+    "area": "Hauz Khas",
+    "pricePerHour": 2050,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_117.jpg"
+  },
+  {
+    "id": "turf_118",
+    "turfName": "Sporty Park Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 1681,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_118.jpg"
+  },
+  {
+    "id": "turf_119",
+    "turfName": "Ace Zone Aliganj",
+    "city": "Lucknow",
+    "area": "Aliganj",
+    "pricePerHour": 1954,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_119.jpg"
+  },
+  {
+    "id": "turf_120",
+    "turfName": "Ultimate Zone Jankipuram",
+    "city": "Lucknow",
+    "area": "Jankipuram",
+    "pricePerHour": 1650,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_120.jpg"
+  },
+  {
+    "id": "turf_121",
+    "turfName": "Champion Arena Dadar",
+    "city": "Mumbai",
+    "area": "Dadar",
+    "pricePerHour": 863,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_121.jpg"
+  },
+  {
+    "id": "turf_122",
+    "turfName": "Nexus Arena Bandra",
+    "city": "Mumbai",
+    "area": "Bandra",
+    "pricePerHour": 2100,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_122.jpg"
+  },
+  {
+    "id": "turf_123",
+    "turfName": "Super Field Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 2085,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_123.jpg"
+  },
+  {
+    "id": "turf_124",
+    "turfName": "Urban Complex Mansarovar",
+    "city": "Jaipur",
+    "area": "Mansarovar",
+    "pricePerHour": 1446,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_124.jpg"
+  },
+  {
+    "id": "turf_125",
+    "turfName": "Ultimate Hub Karol Bagh",
+    "city": "Delhi",
+    "area": "Karol Bagh",
+    "pricePerHour": 1907,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_125.jpg"
+  },
+  {
+    "id": "turf_126",
+    "turfName": "Ace Turf Bandra",
+    "city": "Mumbai",
+    "area": "Bandra",
+    "pricePerHour": 1976,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_126.jpg"
+  },
+  {
+    "id": "turf_127",
+    "turfName": "Pro Stadium Navrangpura",
+    "city": "Ahmedabad",
+    "area": "Navrangpura",
+    "pricePerHour": 1180,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_127.jpg"
+  },
+  {
+    "id": "turf_128",
+    "turfName": "Super Field Alipore",
+    "city": "Kolkata",
+    "area": "Alipore",
+    "pricePerHour": 2270,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_128.jpg"
+  },
+  {
+    "id": "turf_129",
+    "turfName": "Sporty Complex Mansarovar",
+    "city": "Jaipur",
+    "area": "Mansarovar",
+    "pricePerHour": 1428,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_129.jpg"
+  },
+  {
+    "id": "turf_130",
+    "turfName": "Power Field Bodakdev",
+    "city": "Ahmedabad",
+    "area": "Bodakdev",
+    "pricePerHour": 876,
+    "availableTimeSlots": [
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_130.jpg"
+  },
+  {
+    "id": "turf_131",
+    "turfName": "Star Turf Juhu",
+    "city": "Mumbai",
+    "area": "Juhu",
+    "pricePerHour": 2331,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_131.jpg"
+  },
+  {
+    "id": "turf_132",
+    "turfName": "Swift Arena Malviya Nagar",
+    "city": "Jaipur",
+    "area": "Malviya Nagar",
+    "pricePerHour": 1399,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_132.jpg"
+  },
+  {
+    "id": "turf_133",
+    "turfName": "Active Hub Andheri",
+    "city": "Mumbai",
+    "area": "Andheri",
+    "pricePerHour": 1693,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_133.jpg"
+  },
+  {
+    "id": "turf_134",
+    "turfName": "Royal Arena Anna Nagar",
+    "city": "Chennai",
+    "area": "Anna Nagar",
+    "pricePerHour": 2445,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_134.jpg"
+  },
+  {
+    "id": "turf_135",
+    "turfName": "Grand Hub Connaught Place",
+    "city": "Delhi",
+    "area": "Connaught Place",
+    "pricePerHour": 1780,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 4.3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_135.jpg"
+  },
+  {
+    "id": "turf_136",
+    "turfName": "Grand Park Vaishali Nagar",
+    "city": "Jaipur",
+    "area": "Vaishali Nagar",
+    "pricePerHour": 1714,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 3.2,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_136.jpg"
+  },
+  {
+    "id": "turf_137",
+    "turfName": "Star Club Baner",
+    "city": "Pune",
+    "area": "Baner",
+    "pricePerHour": 1935,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_137.jpg"
+  },
+  {
+    "id": "turf_138",
+    "turfName": "Ace Park C-Scheme",
+    "city": "Jaipur",
+    "area": "C-Scheme",
+    "pricePerHour": 1590,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_138.jpg"
+  },
+  {
+    "id": "turf_139",
+    "turfName": "Power Arena HSR Layout",
+    "city": "Bangalore",
+    "area": "HSR Layout",
+    "pricePerHour": 1542,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_139.jpg"
+  },
+  {
+    "id": "turf_140",
+    "turfName": "Champion Arena Koregaon Park",
+    "city": "Pune",
+    "area": "Koregaon Park",
+    "pricePerHour": 1173,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.3,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_140.jpg"
+  },
+  {
+    "id": "turf_141",
+    "turfName": "Elite Ground Viman Nagar",
+    "city": "Pune",
+    "area": "Viman Nagar",
+    "pricePerHour": 1863,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_141.jpg"
+  },
+  {
+    "id": "turf_142",
+    "turfName": "Victory Complex C-Scheme",
+    "city": "Jaipur",
+    "area": "C-Scheme",
+    "pricePerHour": 1541,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.2,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_142.jpg"
+  },
+  {
+    "id": "turf_143",
+    "turfName": "Prime Park Indiranagar",
+    "city": "Bangalore",
+    "area": "Indiranagar",
+    "pricePerHour": 1353,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_143.jpg"
+  },
+  {
+    "id": "turf_144",
+    "turfName": "Nexus Ground Rohini",
+    "city": "Delhi",
+    "area": "Rohini",
+    "pricePerHour": 1557,
+    "availableTimeSlots": [
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.9,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_144.jpg"
+  },
+  {
+    "id": "turf_145",
+    "turfName": "Mega Hub Juhu",
+    "city": "Mumbai",
+    "area": "Juhu",
+    "pricePerHour": 1749,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_145.jpg"
+  },
+  {
+    "id": "turf_146",
+    "turfName": "Dynamic Arena Borivali",
+    "city": "Mumbai",
+    "area": "Borivali",
+    "pricePerHour": 1529,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_146.jpg"
+  },
+  {
+    "id": "turf_147",
+    "turfName": "Victory Complex Prahlad Nagar",
+    "city": "Ahmedabad",
+    "area": "Prahlad Nagar",
+    "pricePerHour": 1318,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_147.jpg"
+  },
+  {
+    "id": "turf_148",
+    "turfName": "Royal Park Powai",
+    "city": "Mumbai",
+    "area": "Powai",
+    "pricePerHour": 2064,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_148.jpg"
+  },
+  {
+    "id": "turf_149",
+    "turfName": "Urban Ground HSR Layout",
+    "city": "Bangalore",
+    "area": "HSR Layout",
+    "pricePerHour": 1319,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_149.jpg"
+  },
+  {
+    "id": "turf_150",
+    "turfName": "Grand Turf Behala",
+    "city": "Kolkata",
+    "area": "Behala",
+    "pricePerHour": 1021,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 3.9,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_150.jpg"
+  },
+  {
+    "id": "turf_151",
+    "turfName": "Prime Hub Koramangala",
+    "city": "Bangalore",
+    "area": "Koramangala",
+    "pricePerHour": 1989,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_151.jpg"
+  },
+  {
+    "id": "turf_152",
+    "turfName": "Nexus Ground Koramangala",
+    "city": "Bangalore",
+    "area": "Koramangala",
+    "pricePerHour": 824,
+    "availableTimeSlots": [
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_152.jpg"
+  },
+  {
+    "id": "turf_153",
+    "turfName": "Ace Complex Behala",
+    "city": "Kolkata",
+    "area": "Behala",
+    "pricePerHour": 1129,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_153.jpg"
+  },
+  {
+    "id": "turf_154",
+    "turfName": "Pro Complex T. Nagar",
+    "city": "Chennai",
+    "area": "T. Nagar",
+    "pricePerHour": 2166,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_154.jpg"
+  },
+  {
+    "id": "turf_155",
+    "turfName": "Ultimate Stadium Velachery",
+    "city": "Chennai",
+    "area": "Velachery",
+    "pricePerHour": 905,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_155.jpg"
+  },
+  {
+    "id": "turf_156",
+    "turfName": "Nexus Complex T. Nagar",
+    "city": "Chennai",
+    "area": "T. Nagar",
+    "pricePerHour": 1503,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.4,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_156.jpg"
+  },
+  {
+    "id": "turf_157",
+    "turfName": "Mega Hub Velachery",
+    "city": "Chennai",
+    "area": "Velachery",
+    "pricePerHour": 1029,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_157.jpg"
+  },
+  {
+    "id": "turf_158",
+    "turfName": "Pro Ground Aliganj",
+    "city": "Lucknow",
+    "area": "Aliganj",
+    "pricePerHour": 1687,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.3,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_158.jpg"
+  },
+  {
+    "id": "turf_159",
+    "turfName": "Pro Turf Saket",
+    "city": "Delhi",
+    "area": "Saket",
+    "pricePerHour": 1759,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_159.jpg"
+  },
+  {
+    "id": "turf_160",
+    "turfName": "Ultimate Arena Aliganj",
+    "city": "Lucknow",
+    "area": "Aliganj",
+    "pricePerHour": 1565,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_160.jpg"
+  },
+  {
+    "id": "turf_161",
+    "turfName": "Grand Ground Dadar",
+    "city": "Mumbai",
+    "area": "Dadar",
+    "pricePerHour": 1423,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_161.jpg"
+  },
+  {
+    "id": "turf_162",
+    "turfName": "Nexus Club Indiranagar",
+    "city": "Bangalore",
+    "area": "Indiranagar",
+    "pricePerHour": 1134,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_162.jpg"
+  },
+  {
+    "id": "turf_163",
+    "turfName": "Champion Zone Powai",
+    "city": "Mumbai",
+    "area": "Powai",
+    "pricePerHour": 2136,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.1,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_163.jpg"
+  },
+  {
+    "id": "turf_164",
+    "turfName": "Grand Field Mansarovar",
+    "city": "Jaipur",
+    "area": "Mansarovar",
+    "pricePerHour": 1005,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_164.jpg"
+  },
+  {
+    "id": "turf_165",
+    "turfName": "Sporty Field Borivali",
+    "city": "Mumbai",
+    "area": "Borivali",
+    "pricePerHour": 2205,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_165.jpg"
+  },
+  {
+    "id": "turf_166",
+    "turfName": "Champion Turf Indira Nagar",
+    "city": "Lucknow",
+    "area": "Indira Nagar",
+    "pricePerHour": 2204,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_166.jpg"
+  },
+  {
+    "id": "turf_167",
+    "turfName": "Elite Complex Kukatpally",
+    "city": "Hyderabad",
+    "area": "Kukatpally",
+    "pricePerHour": 1493,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_167.jpg"
+  },
+  {
+    "id": "turf_168",
+    "turfName": "Prime Complex Gomti Nagar",
+    "city": "Lucknow",
+    "area": "Gomti Nagar",
+    "pricePerHour": 815,
+    "availableTimeSlots": [
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_168.jpg"
+  },
+  {
+    "id": "turf_169",
+    "turfName": "Nexus Club Vastrapur",
+    "city": "Ahmedabad",
+    "area": "Vastrapur",
+    "pricePerHour": 1832,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.2,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_169.jpg"
+  },
+  {
+    "id": "turf_170",
+    "turfName": "Star Field Alipore",
+    "city": "Kolkata",
+    "area": "Alipore",
+    "pricePerHour": 1584,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_170.jpg"
+  },
+  {
+    "id": "turf_171",
+    "turfName": "Power Ground Navrangpura",
+    "city": "Ahmedabad",
+    "area": "Navrangpura",
+    "pricePerHour": 2253,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.1,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_171.jpg"
+  },
+  {
+    "id": "turf_172",
+    "turfName": "Victory Field Saket",
+    "city": "Delhi",
+    "area": "Saket",
+    "pricePerHour": 2284,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_172.jpg"
+  },
+  {
+    "id": "turf_173",
+    "turfName": "Nexus Park Vaishali Nagar",
+    "city": "Jaipur",
+    "area": "Vaishali Nagar",
+    "pricePerHour": 1723,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_173.jpg"
+  },
+  {
+    "id": "turf_174",
+    "turfName": "Champion Turf Koramangala",
+    "city": "Bangalore",
+    "area": "Koramangala",
+    "pricePerHour": 1162,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.3,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_174.jpg"
+  },
+  {
+    "id": "turf_175",
+    "turfName": "Grand Hub Jayanagar",
+    "city": "Bangalore",
+    "area": "Jayanagar",
+    "pricePerHour": 1651,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_175.jpg"
+  },
+  {
+    "id": "turf_176",
+    "turfName": "Urban Ground Besant Nagar",
+    "city": "Chennai",
+    "area": "Besant Nagar",
+    "pricePerHour": 1284,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_176.jpg"
+  },
+  {
+    "id": "turf_177",
+    "turfName": "Grand Turf Vaishali Nagar",
+    "city": "Jaipur",
+    "area": "Vaishali Nagar",
+    "pricePerHour": 894,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.2,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_177.jpg"
+  },
+  {
+    "id": "turf_178",
+    "turfName": "Elite Club Satellite",
+    "city": "Ahmedabad",
+    "area": "Satellite",
+    "pricePerHour": 2204,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_178.jpg"
+  },
+  {
+    "id": "turf_179",
+    "turfName": "Urban Field C-Scheme",
+    "city": "Jaipur",
+    "area": "C-Scheme",
+    "pricePerHour": 1586,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_179.jpg"
+  },
+  {
+    "id": "turf_180",
+    "turfName": "Prime Ground Bandra",
+    "city": "Mumbai",
+    "area": "Bandra",
+    "pricePerHour": 1758,
+    "availableTimeSlots": [
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_180.jpg"
+  },
+  {
+    "id": "turf_181",
+    "turfName": "Swift Stadium Connaught Place",
+    "city": "Delhi",
+    "area": "Connaught Place",
+    "pricePerHour": 820,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_181.jpg"
+  },
+  {
+    "id": "turf_182",
+    "turfName": "Power Field Hazratganj",
+    "city": "Lucknow",
+    "area": "Hazratganj",
+    "pricePerHour": 1411,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.4,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_182.jpg"
+  },
+  {
+    "id": "turf_183",
+    "turfName": "Victory Field Gariahat",
+    "city": "Kolkata",
+    "area": "Gariahat",
+    "pricePerHour": 1504,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_183.jpg"
+  },
+  {
+    "id": "turf_184",
+    "turfName": "Ace Arena Besant Nagar",
+    "city": "Chennai",
+    "area": "Besant Nagar",
+    "pricePerHour": 2046,
+    "availableTimeSlots": [
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_184.jpg"
+  },
+  {
+    "id": "turf_185",
+    "turfName": "Swift Ground Prahlad Nagar",
+    "city": "Ahmedabad",
+    "area": "Prahlad Nagar",
+    "pricePerHour": 1553,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_185.jpg"
+  },
+  {
+    "id": "turf_186",
+    "turfName": "Prime Park Hingewadi",
+    "city": "Pune",
+    "area": "Hingewadi",
+    "pricePerHour": 1586,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.2,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_186.jpg"
+  },
+  {
+    "id": "turf_187",
+    "turfName": "Prime Complex Behala",
+    "city": "Kolkata",
+    "area": "Behala",
+    "pricePerHour": 2198,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "19:00 - 20:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.5,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_187.jpg"
+  },
+  {
+    "id": "turf_188",
+    "turfName": "Dynamic Club Borivali",
+    "city": "Mumbai",
+    "area": "Borivali",
+    "pricePerHour": 1525,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.6,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_188.jpg"
+  },
+  {
+    "id": "turf_189",
+    "turfName": "Nexus Stadium Gariahat",
+    "city": "Kolkata",
+    "area": "Gariahat",
+    "pricePerHour": 2487,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.3,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_189.jpg"
+  },
+  {
+    "id": "turf_190",
+    "turfName": "Power Zone Jankipuram",
+    "city": "Lucknow",
+    "area": "Jankipuram",
+    "pricePerHour": 2122,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_190.jpg"
+  },
+  {
+    "id": "turf_191",
+    "turfName": "Ace Arena Vaishali Nagar",
+    "city": "Jaipur",
+    "area": "Vaishali Nagar",
+    "pricePerHour": 2082,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_191.jpg"
+  },
+  {
+    "id": "turf_192",
+    "turfName": "Royal Field Borivali",
+    "city": "Mumbai",
+    "area": "Borivali",
+    "pricePerHour": 1910,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00"
+    ],
+    "rating": 4.5,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_192.jpg"
+  },
+  {
+    "id": "turf_193",
+    "turfName": "Sporty Hub Bodakdev",
+    "city": "Ahmedabad",
+    "area": "Bodakdev",
+    "pricePerHour": 1668,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.9,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_193.jpg"
+  },
+  {
+    "id": "turf_194",
+    "turfName": "Star Ground Aliganj",
+    "city": "Lucknow",
+    "area": "Aliganj",
+    "pricePerHour": 1254,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00"
+    ],
+    "rating": 4.2,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_194.jpg"
+  },
+  {
+    "id": "turf_195",
+    "turfName": "Power Hub Gomti Nagar",
+    "city": "Lucknow",
+    "area": "Gomti Nagar",
+    "pricePerHour": 1101,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 3.8,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_195.jpg"
+  },
+  {
+    "id": "turf_196",
+    "turfName": "Super Zone Karol Bagh",
+    "city": "Delhi",
+    "area": "Karol Bagh",
+    "pricePerHour": 1869,
+    "availableTimeSlots": [
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "19:00 - 20:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 5,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_196.jpg"
+  },
+  {
+    "id": "turf_197",
+    "turfName": "Nexus Field Hadapsar",
+    "city": "Pune",
+    "area": "Hadapsar",
+    "pricePerHour": 2192,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "16:00 - 17:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 5,
+    "sportType": "Multi-sport",
+    "imageUrl": "https://placeholder.com/turf_197.jpg"
+  },
+  {
+    "id": "turf_198",
+    "turfName": "Pro Hub Rohini",
+    "city": "Delhi",
+    "area": "Rohini",
+    "pricePerHour": 1965,
+    "availableTimeSlots": [
+      "16:00 - 17:00",
+      "17:00 - 18:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.7,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_198.jpg"
+  },
+  {
+    "id": "turf_199",
+    "turfName": "Victory Club Jankipuram",
+    "city": "Lucknow",
+    "area": "Jankipuram",
+    "pricePerHour": 1798,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "18:00 - 19:00",
+      "20:00 - 21:00",
+      "21:00 - 22:00"
+    ],
+    "rating": 4.8,
+    "sportType": "Football",
+    "imageUrl": "https://placeholder.com/turf_199.jpg"
+  },
+  {
+    "id": "turf_200",
+    "turfName": "Nexus Turf Viman Nagar",
+    "city": "Pune",
+    "area": "Viman Nagar",
+    "pricePerHour": 1642,
+    "availableTimeSlots": [
+      "06:00 - 07:00",
+      "07:00 - 08:00",
+      "08:00 - 09:00",
+      "16:00 - 17:00",
+      "20:00 - 21:00"
+    ],
+    "rating": 4.6,
+    "sportType": "Cricket",
+    "imageUrl": "https://placeholder.com/turf_200.jpg"
+  }
+]
