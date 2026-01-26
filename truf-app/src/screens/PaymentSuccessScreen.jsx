@@ -38,7 +38,7 @@ export const PaymentSuccessScreen = ({ navigation }) => {
                 <View style={styles.footer}>
                     <TouchableOpacity
                         style={styles.homeBtn}
-                        onPress={() => navigation.navigate('Home')}
+                        onPress={() => navigation.navigate('Main')}
                     >
                         <Text style={styles.homeBtnText}>Redirect to home</Text>
                     </TouchableOpacity>

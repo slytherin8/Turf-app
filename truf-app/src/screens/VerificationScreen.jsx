@@ -54,6 +54,13 @@ export const VerificationScreen = ({ navigation }) => {
             Please verify your email to proceed{'\n'}to the dashboard
           </Text>
 
+          <TouchableOpacity
+            style={styles.continueBtn}
+            onPress={() => navigation.navigate('LocationPermission')}
+          >
+            <Text style={styles.continueBtnText}>Continue</Text>
+          </TouchableOpacity>
+
         </View>
       </View>
     </SafeAreaView>
@@ -93,7 +100,7 @@ const styles = StyleSheet.create({
   /* TITLE */
   titleWrapper: {
     alignItems: 'center',
-    
+
     position: 'relative',
   },
 
@@ -127,7 +134,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 240,
     height: 240,
-    
+
   },
 
   /* DESCRIPTION */
@@ -136,5 +143,19 @@ const styles = StyleSheet.create({
     color: '#8E8E93',
     textAlign: 'center',
     lineHeight: 22,
+    marginBottom: 40,
+  },
+  continueBtn: {
+    backgroundColor: '#1C1C1E',
+    height: 56,
+    borderRadius: 28,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  continueBtnText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
