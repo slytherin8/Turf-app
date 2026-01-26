@@ -3,12 +3,12 @@ import {
     View,
     Text,
     StyleSheet,
-    SafeAreaView,
     TouchableOpacity,
     ScrollView,
     Dimensions,
     Image,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, ChevronRight, CreditCard, Plus } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
 

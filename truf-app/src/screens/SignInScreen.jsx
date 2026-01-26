@@ -3,13 +3,13 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
   TouchableOpacity,
   TextInput,
   Image,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Eye, EyeOff } from 'lucide-react-native';
 
 export const SignInScreen = ({ navigation }) => {
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     borderColor: '#E5E5EA',
     paddingHorizontal: 18,
     fontSize: 15,
-     outlineStyle: 'none',
+    outlineStyle: 'none',
   },
   passwordContainer: {
     height: 52,

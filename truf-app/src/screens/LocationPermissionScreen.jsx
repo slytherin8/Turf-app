@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { X, MapPin } from 'lucide-react-native';
 
 export const LocationPermissionScreen = ({ navigation }) => {
@@ -19,8 +20,8 @@ export const LocationPermissionScreen = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.header}>
-                    <TouchableOpacity 
-                        style={styles.backButton} 
+                    <TouchableOpacity
+                        style={styles.backButton}
                         onPress={handleBack}
                         activeOpacity={0.7}
                     >
@@ -53,7 +54,7 @@ export const LocationPermissionScreen = ({ navigation }) => {
                         Your location will be used to show people near you.
                     </Text>
 
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={styles.enableButton}
                         onPress={handleEnable}
                         activeOpacity={0.8}
@@ -61,7 +62,7 @@ export const LocationPermissionScreen = ({ navigation }) => {
                         <Text style={styles.enableButtonText}>Enable Now</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={styles.remindLater}
                         onPress={handleRemindLater}
                     >

@@ -3,13 +3,13 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
   TouchableOpacity,
   TextInput,
   Image,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Eye, EyeOff, Check } from 'lucide-react-native';
 
 export const SignupScreen = ({ navigation }) => {
@@ -260,12 +260,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 18,
-     outlineStyle: 'none',
+    outlineStyle: 'none',
   },
   input: {
     flex: 1,
     fontSize: 15,
-     outlineStyle: 'none',
+    outlineStyle: 'none',
   },
   eyeButton: {
     marginLeft: 6,
@@ -279,14 +279,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
-    
+
   },
   signupButtonText: {
     fontSize: 16,
     fontWeight: '600',
     color: '#FFFFFF',
     letterSpacing: 0.5,
-    
+
   },
 
   /* FOOTER */

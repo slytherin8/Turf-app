@@ -4,10 +4,10 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  SafeAreaView,
   TouchableOpacity,
   Image,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const HomePageScreen = ({ navigation }) => {
   const handlePlayPress = () => {

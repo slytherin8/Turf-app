@@ -3,11 +3,11 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
   TouchableOpacity,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CustomButton } from '../components/CustomButton';
 import { CustomInput } from '../components/CustomInput';
@@ -171,5 +171,5 @@ const styles = StyleSheet.create({
     color: COLORS.text,
     fontWeight: '600',
   },
-  
+
 });

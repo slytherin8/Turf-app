@@ -3,13 +3,13 @@ import {
     View,
     Text,
     StyleSheet,
-    SafeAreaView,
     TouchableOpacity,
     ScrollView,
     Dimensions,
     TextInput,
     Modal,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Star, Edit2, Info, X } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
 
