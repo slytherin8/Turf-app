@@ -8,300 +8,372 @@ import {
     ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-    ChevronRight,
-    Settings,
-    Calendar,
-    Star,
-    User,
-    LogOut,
-    Users,
-    Info,
-    Edit2,
-    Home,
-    Search
-} from 'lucide-react-native';
-import { COLORS, SPACING, SIZES } from '../constants/theme';
 
 export const ProfileScreen = ({ navigation }) => {
-    const [mainNavTab, setMainNavTab] = useState('User');
 
-    const MENU_ITEMS = [
-        { id: 'booking', label: 'My Booking', icon: Calendar, route: 'MyBooking', detail: 'Check your current and past Bookings' },
-        { id: 'rate', label: 'Rate the app', icon: Star, detail: 'Send love to help other Discoveries' },
-        { id: 'account', label: 'My Account', icon: User, route: 'AccountSetting', detail: 'Make changes for your account' },
-        { id: 'logout', label: 'Log out', icon: LogOut, route: 'Logout', detail: 'Log out from current session for safety' },
-    ];
+const [activeTab, setActiveTab] = useState('Profile');
 
-    const OTHER_SECTION = [
-        { id: 'switch', label: 'Switch Account', icon: Users },
-        { id: 'about', label: 'About App', icon: Info },
-    ];
+const handleNavPress = (tab, route) => {
+    setActiveTab(tab);
+    navigation.navigate(route);
+};
 
-    return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.header}>
-                    <Text style={styles.headerTitle}>Profile</Text>
-                </View>
+const MENU_ITEMS = [
+{
+id:'booking',
+label:'My Booking',
+detail:'Check your current and past bookings',
+icon:{ uri:'https://i.postimg.cc/85vnsG8D/event-available-(3).png'},
+route:'MyBooking'
+},
+{
+id:'rate',
+label:'Rate my app',
+detail:'We’d love to hear your thoughts',
+icon:{ uri:'https://i.postimg.cc/hGLdGZyn/Group-37020.png'},
+},
+{
+id:'account',
+label:'My Account',
+detail:'Make changes to your account',
+icon:{ uri:'https://i.postimg.cc/Jzh6ZZwF/Group-37018.png'},
+route:'AccountSetting'
+},
+{
+id:'logout',
+label:'Log out',
+detail:'Further secure your account for safety',
+icon:{ uri:'https://i.postimg.cc/TwnCfcmg/Group-37019.png'},
+route:'Logout'
+},
+];
 
-                {/* USER INFO */}
-                <View style={styles.userInfo}>
-                    <View style={styles.avatarWrapper}>
-                        <Image
-                            source={{ uri: 'https://i.postimg.cc/NG3tC79L/Group-37014.png' }}
-                            style={styles.avatar}
-                        />
-                        <TouchableOpacity
-                            style={styles.editIconBadge}
-                            onPress={() => navigation.navigate('EditProfile')}
-                        >
-                            <Edit2 size={16} color="#000" />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.userTextInfo}>
-                        <Text style={styles.userName}>Hemalatha Abishek</Text>
-                        <Text style={styles.userRole}>Turf owner</Text>
-                    </View>
-                </View>
+const OTHER = [
+{
+id:'support',
+label:'Help & Support',
+icon:{ uri:'https://i.postimg.cc/htpG3F5R/help.png'},
+},
+{
+id:'about',
+label:'About App',
+icon:{ uri:'https://i.postimg.cc/ydSYdDYS/info.png'},
+},
+];
 
-                {/* MENU */}
-                <View style={styles.menuContainer}>
-                    {MENU_ITEMS.map((item) => (
-                        <TouchableOpacity
-                            key={item.id}
-                            style={styles.menuItem}
-                            onPress={() => item.route && navigation.navigate(item.route)}
-                        >
-                            <View style={styles.menuItemLeft}>
-                                <View style={styles.iconBox}>
-                                    <item.icon size={20} color="#8E8E93" />
-                                </View>
-                                <View style={styles.menuTextContainer}>
-                                    <Text style={styles.menuLabel}>{item.label}</Text>
-                                    {item.detail && <Text style={styles.menuDetail}>{item.detail}</Text>}
-                                </View>
-                            </View>
-                            <ChevronRight size={20} color="#8E8E93" />
-                        </TouchableOpacity>
-                    ))}
-                </View>
+return (
+<SafeAreaView style={styles.container}>
+<ScrollView showsVerticalScrollIndicator={false}>
 
-                {/* OTHER SECTION */}
-                <View style={styles.otherSection}>
-                    <Text style={styles.otherTitle}>Other</Text>
-                    {OTHER_SECTION.map((item) => (
-                        <TouchableOpacity key={item.id} style={styles.otherItem}>
-                            <View style={styles.otherLeft}>
-                                <View style={styles.otherIconBox}>
-                                    <item.icon size={20} color="#8E8E93" />
-                                </View>
-                                <Text style={styles.otherLabel}>{item.label}</Text>
-                            </View>
-                            <ChevronRight size={20} color="#8E8E93" />
-                        </TouchableOpacity>
-                    ))}
-                </View>
+<Text style={styles.header}>Profile</Text>
 
-                <View style={{ height: 120 }} />
-            </ScrollView>
+<View style={styles.profileCard}>
+<View style={styles.profileLeft}>
+<Image
+source={{ uri:'https://i.postimg.cc/XvRCNScR/User-image-(1).png'}}
+style={styles.avatar}
+/>
 
-            {/* BOTTOM NAV */}
-            <View style={styles.bottomNavWrapper}>
-                <View style={styles.bottomNav}>
-                    <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Main')}>
-                        <Home size={24} color={COLORS.white} />
-                    </TouchableOpacity>
+<View>
+<Text style={styles.name}>Itunuoluwa Abidoye</Text>
+<Text style={styles.id}>TURFID34345</Text>
+</View>
+</View>
 
-                    <TouchableOpacity style={styles.navItem} onPress={() => { }}>
-                        <Search size={22} color={COLORS.white} />
-                    </TouchableOpacity>
+<TouchableOpacity onPress={()=>navigation.navigate('EditProfile')}>
+<Image
+source={{ uri:'https://i.postimg.cc/9MHD5PCb/border-color.png'}}
+style={styles.editIcon}
+/>
+</TouchableOpacity>
+</View>
 
-                    <TouchableOpacity style={styles.navItem} onPress={() => { }}>
-                        <Calendar size={24} color={COLORS.white} />
-                    </TouchableOpacity>
+<View style={styles.card}>
+{MENU_ITEMS.map((item,index)=>(
+<TouchableOpacity
+key={item.id}
+style={[
+styles.menuRow,
+index !== MENU_ITEMS.length-1 && styles.divider
+]}
+onPress={()=>item.route && navigation.navigate(item.route)}
+>
 
-                    <TouchableOpacity
-                        style={[styles.navItem, styles.activeNavItem]}
-                        onPress={() => { }}
-                    >
-                        <User size={24} color={COLORS.text} />
-                        <Text style={styles.activeNavLabel}>Profile</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </SafeAreaView>
-    );
+<View style={styles.rowLeft}>
+<View style={styles.iconCircle}>
+<Image source={item.icon} style={styles.menuIcon}/>
+</View>
+
+<View>
+<Text style={styles.menuTitle}>{item.label}</Text>
+<Text style={styles.menuSubtitle}>{item.detail}</Text>
+</View>
+</View>
+
+<Image
+source={{ uri:'https://img.icons8.com/ios-filled/100/chevron-right.png'}}
+style={styles.chevron}
+/>
+
+</TouchableOpacity>
+))}
+</View>
+
+<Text style={styles.more}>More</Text>
+
+<View style={styles.card}>
+{OTHER.map((item,index)=>(
+<TouchableOpacity
+key={item.id}
+style={[
+styles.menuRow,
+index !== OTHER.length-1 && styles.divider
+]}
+>
+
+<View style={styles.rowLeft}>
+<View style={styles.iconCircle}>
+<Image source={item.icon} style={styles.menuIcon}/>
+</View>
+
+<Text style={styles.menuTitle}>{item.label}</Text>
+</View>
+
+<Image
+source={{ uri:'https://img.icons8.com/ios-filled/100/chevron-right.png'}}
+style={styles.chevron}
+/>
+
+</TouchableOpacity>
+))}
+</View>
+
+<View style={{height:140}}/>
+
+</ScrollView>
+
+
+{/* BOTTOM NAV */}
+<View style={styles.bottomNav}>
+
+{['Home','Explore','Stats','Profile'].map(tab=>{
+
+const routes={
+Home:'Home',
+Explore:'Explore',
+Stats:'Stats',
+Profile:'Profile'
+};
+
+const icons={
+Home:[
+'https://i.postimg.cc/Jz72pGqt/Home-(1).png',
+'https://i.postimg.cc/x8y6R2Nb/Rectangle-2.png'
+],
+Explore:[
+'https://i.postimg.cc/x1WLcZqR/manage-search-(1).png',
+'https://i.postimg.cc/W4YzdF9m/Group-37017-(1).png'
+],
+Stats:[
+'https://i.postimg.cc/bvZ8F6RW/event-available-(2).png',
+'https://i.postimg.cc/zDKDrc18/event-available-(1).png'
+],
+Profile:[
+'https://i.postimg.cc/NG3tC79L/Group-37014.png',
+'https://i.postimg.cc/bvT4z1wx/Group-37014-(1).png'
+]
+};
+
+const active = activeTab === tab;
+
+return(
+<TouchableOpacity
+key={tab}
+style={active ? styles.activeTab : styles.iconOnly}
+onPress={()=>handleNavPress(tab,routes[tab])}
+activeOpacity={0.8}
+>
+
+<Image
+source={{ uri: active ? icons[tab][0] : icons[tab][1] }}
+style={styles.bottomIcon}
+/>
+
+{active && <Text style={styles.activeLabel}>{tab}</Text>}
+
+</TouchableOpacity>
+);
+})}
+
+</View>
+
+</SafeAreaView>
+);
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.white,
-    },
-    header: {
-        paddingHorizontal: 20,
-        paddingVertical: 20,
-        alignItems: 'center',
-    },
-    headerTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#000',
-    },
-    userInfo: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 20,
-        marginBottom: 30,
-    },
-    avatarWrapper: {
-        position: 'relative',
-        marginRight: 16,
-    },
-    avatar: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        borderWidth: 1,
-        borderColor: '#EFEFEF',
-    },
-    editIconBadge: {
-        position: 'absolute',
-        bottom: -2,
-        right: -2,
-        backgroundColor: '#FFF',
-        width: 24,
-        height: 24,
-        borderRadius: 12,
-        borderWidth: 1,
-        borderColor: '#EFEFEF',
-        justifyContent: 'center',
-        alignItems: 'center',
-        elevation: 3,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
-    },
-    userTextInfo: {
-        flex: 1,
-    },
-    userName: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#000',
-    },
-    userRole: {
-        fontSize: 12,
-        color: '#8E8E93',
-        marginTop: 2,
-    },
-    menuContainer: {
-        paddingHorizontal: 20,
-    },
-    menuItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingVertical: 16,
-        borderBottomWidth: 1,
-        borderBottomColor: '#F2F2F7',
-    },
-    menuItemLeft: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        flex: 1,
-    },
-    iconBox: {
-        width: 40,
-        height: 40,
-        backgroundColor: '#F8F8F8',
-        borderRadius: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 16,
-    },
-    menuTextContainer: {
-        flex: 1,
-    },
-    menuLabel: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: '#000',
-    },
-    menuDetail: {
-        fontSize: 10,
-        color: '#8E8E93',
-        marginTop: 2,
-    },
-    otherSection: {
-        paddingHorizontal: 20,
-        marginTop: 20,
-    },
-    otherTitle: {
-        fontSize: 14,
-        fontWeight: 'bold',
-        color: '#8E8E93',
-        textTransform: 'uppercase',
-        marginBottom: 10,
-    },
-    otherItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingVertical: 12,
-    },
-    otherLeft: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    otherIconBox: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-        borderWidth: 1,
-        borderColor: '#EFEFEF',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 16,
-    },
-    otherLabel: {
-        fontSize: 14,
-        color: '#000',
-    },
-    bottomNavWrapper: {
-        position: 'absolute',
-        bottom: 24,
-        left: 20,
-        right: 20,
-    },
-    bottomNav: {
-        flexDirection: 'row',
-        backgroundColor: '#1C1C1E',
-        borderRadius: 40,
-        padding: 10,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    navItem: {
-        padding: 12,
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-    },
-    activeNavItem: {
-        flexDirection: 'row',
-        backgroundColor: COLORS.accent,
-        borderRadius: 30,
-        paddingHorizontal: 20,
-        paddingVertical: 12,
-        flex: 2,
-    },
-    activeNavLabel: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#000',
-        marginLeft: 8,
-    },
+
+container:{
+flex:1,
+backgroundColor:'#F7F7F7'
+},
+
+header:{
+fontSize:28,
+fontWeight:'700',
+alignSelf:'center',
+marginVertical:30
+},
+
+profileCard:{
+backgroundColor:'#FFF',
+marginHorizontal:20,
+padding:16,
+flexDirection:'row',
+justifyContent:'space-between',
+alignItems:'center',
+borderRadius:14,
+shadowColor:'#000',
+shadowOffset:{width:0,height:4},
+shadowOpacity:0.06,
+shadowRadius:8,
+elevation:5
+},
+
+profileLeft:{
+flexDirection:'row',
+alignItems:'center'
+},
+
+avatar:{
+width:60,
+height:60,
+borderRadius:30,
+marginRight:12
+},
+
+name:{
+fontSize:16,
+fontWeight:'700'
+},
+
+id:{
+color:'#BDBDBD',
+marginTop:4
+},
+
+editIcon:{
+width:24,
+height:24,
+resizeMode:'contain',
+tintColor:'#8E8E93'
+},
+
+card:{
+backgroundColor:'#FFF',
+marginHorizontal:20,
+marginTop:20,
+borderRadius:14,
+paddingVertical:6,
+elevation:3
+},
+
+menuRow:{
+flexDirection:'row',
+alignItems:'center',
+justifyContent:'space-between',
+padding:14
+},
+
+divider:{
+borderBottomWidth:1,
+borderColor:'#F0F0F0'
+},
+
+rowLeft:{
+flexDirection:'row',
+alignItems:'center'
+},
+
+iconCircle:{
+width:42,
+height:42,
+borderRadius:21,
+backgroundColor:'#F2F2F2',
+justifyContent:'center',
+alignItems:'center',
+marginRight:12
+},
+
+menuIcon:{
+width:20,
+height:20,
+resizeMode:'contain'
+},
+
+menuTitle:{
+fontWeight:'600',
+fontSize:14
+},
+
+menuSubtitle:{
+fontSize:11,
+color:'#9E9E9E',
+marginTop:2
+},
+
+chevron:{
+width:16,
+height:16,
+tintColor:'#9E9E9E',
+resizeMode:'contain'
+},
+
+more:{
+marginLeft:24,
+marginTop:24,
+color:'#777',
+fontWeight:'600'
+},
+
+bottomNav:{
+position:'absolute',
+bottom:20,
+left:20,
+right:20,
+flexDirection:'row',
+backgroundColor:'#1C1C1E',
+borderRadius:40,
+padding:10,
+alignItems:'center',
+justifyContent:'space-between'
+},
+
+activeTab:{
+flexDirection:'row',
+alignItems:'center',
+backgroundColor:'#BFFF00',
+borderRadius:30,
+paddingHorizontal:18,
+paddingVertical:10
+},
+
+iconOnly:{
+paddingHorizontal:18,
+paddingVertical:12
+},
+
+bottomIcon:{
+width:22,
+height:22,
+marginRight:6,
+resizeMode:'contain'
+},
+
+activeLabel:{
+fontSize:14,
+fontWeight:'600',
+color:'#000'
+}
+
 });
