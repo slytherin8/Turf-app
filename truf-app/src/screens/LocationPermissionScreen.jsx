@@ -12,6 +12,7 @@ export const LocationPermissionScreen = ({ navigation }) => {
         navigation?.navigate('Main');
     };
 
+    
     const handleRemindLater = () => {
         navigation?.navigate('Main');
     };
