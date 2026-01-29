@@ -51,6 +51,7 @@ export const HomePageScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
+
         </View>
       </SafeAreaView>
     </ImageBackground>
