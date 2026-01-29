@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { X, MapPin } from 'lucide-react-native';
+
 
 export const LocationPermissionScreen = ({ navigation }) => {
     const handleBack = () => {
@@ -20,33 +20,29 @@ export const LocationPermissionScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
-                <View style={styles.header}>
-                    <TouchableOpacity
-                        style={styles.backButton}
-                        onPress={handleBack}
-                        activeOpacity={0.7}
-                    >
-                        <View style={styles.backButtonInner}>
-                            <X size={20} color="#FFFFFF" strokeWidth={2.5} />
-                        </View>
-                    </TouchableOpacity>
-                </View>
-
+               <View style={styles.header}>
+                         <TouchableOpacity onPress={handleBack} activeOpacity={0.7}>
+                           <Image
+                             source={{ uri: 'https://i.postimg.cc/4x0HyzkG/btn.png' }}
+                             style={styles.backImage}
+                             resizeMode="contain"
+                           />
+                         </TouchableOpacity>
+                       </View>
                 <View style={styles.main}>
-                    <Text style={styles.title}>
-                        <Text style={styles.titleAccent}>Enable precise location</Text>
-                    </Text>
+                     <View style={styles.titleWrapper}>
+                                <Text style={styles.title}>Enable precise location</Text>
+                                <View style={styles.titleHighlight} />
+                              </View>
 
                     <View style={styles.iconContainer}>
                         <View style={styles.iconBackground}>
                             <ImageBackground
-                                source={{ uri: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200&q=80' }}
+                                source={{ uri: 'https://i.postimg.cc/RqrLJJBV/image-9.png' }}
                                 style={styles.fieldBackground}
                                 resizeMode="cover"
                             >
-                                <View style={styles.mapPinContainer}>
-                                    <MapPin size={48} color="#000000" strokeWidth={2} fill="none" />
-                                </View>
+                               
                             </ImageBackground>
                         </View>
                     </View>
@@ -84,45 +80,42 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 24,
     },
-    header: {
-        paddingTop: 16,
-        paddingBottom: 16,
-    },
-    backButton: {
-        width: 44,
-        height: 44,
-    },
-    backButtonInner: {
-        width: 44,
-        height: 44,
-        borderRadius: 22,
-        backgroundColor: '#000000',
-        justifyContent: 'center',
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 3,
-    },
+      header: {
+    paddingVertical: 16,
+  },
+  backImage: {
+    width: 64,
+    height: 64,
+    transform: [{ rotate: '180deg' }],
+  },
     main: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         paddingBottom: 40,
     },
-    title: {
-        fontSize: 24,
-        fontWeight: '700',
-        color: '#000000',
-        textAlign: 'center',
-        marginBottom: 48,
-        lineHeight: 32,
-    },
-    titleAccent: {
-        color: '#BFFF00',
-        fontWeight: '700',
-    },
+    
+  /* TITLE */
+  titleWrapper: {
+    alignItems: 'center',
+    marginBottom: 36,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: '700',
+    color: '#1C1C1E',
+    zIndex: 2,
+  },
+  titleHighlight: {
+    position: 'absolute',
+    bottom: 4,
+    right: '74%',
+    height: 10,
+    width: 80,
+    backgroundColor: '#BFFF00',
+    zIndex: 1,
+  },
+
     iconContainer: {
         marginBottom: 32,
         alignItems: 'center',
@@ -149,7 +142,7 @@ const styles = StyleSheet.create({
         color: '#8E8E93',
         textAlign: 'center',
         lineHeight: 20,
-        marginBottom: 48,
+        marginBottom: 28,
         paddingHorizontal: 24,
     },
     enableButton: {
