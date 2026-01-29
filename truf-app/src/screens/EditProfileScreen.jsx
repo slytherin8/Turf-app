@@ -7,6 +7,7 @@ import {
     Image,
     TextInput,
     ScrollView,
+    
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Camera, ChevronDown } from 'lucide-react-native';
