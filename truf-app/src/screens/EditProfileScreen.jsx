@@ -7,205 +7,327 @@ import {
     Image,
     TextInput,
     ScrollView,
-    
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ArrowLeft, Camera, ChevronDown } from 'lucide-react-native';
-import { COLORS, SPACING, SIZES } from '../constants/theme';
+import { ArrowLeft, ChevronDown } from 'lucide-react-native';
 
 export const EditProfileScreen = ({ navigation }) => {
+    const [activeTab, setActiveTab] = useState('Profile');
+
+    const handleNavPress = (tab, route) => {
+        setActiveTab(tab);
+        navigation.navigate(route);
+    };
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
-        gender: 'Please choose',
+        phone: '',
+        gender: '',
     });
 
     return (
         <SafeAreaView style={styles.container}>
+            {/* HEADER */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-                    <ArrowLeft size={24} color="#BFFF00" />
+                    <ArrowLeft size={22} color="#B6FF3B" />
                 </TouchableOpacity>
+
                 <Text style={styles.headerTitle}>Bio-data</Text>
+
                 <View style={{ width: 32 }} />
             </View>
 
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-                {/* AVATAR EDIT */}
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={styles.scrollContent}
+            >
+                {/* AVATAR */}
                 <View style={styles.avatarSection}>
-                    <View style={styles.avatarWrapper}>
-                        <Image
-                            source={{ uri: 'https://i.postimg.cc/NG3tC79L/Group-37014.png' }}
-                            style={styles.avatar}
-                        />
-                        <TouchableOpacity style={styles.cameraBtn}>
-                            <Camera size={20} color="#000" />
-                        </TouchableOpacity>
-                    </View>
-                    <Text style={styles.avatarName}>Hemalatha Abishek</Text>
-                    <Text style={styles.avatarDetail}>Turf owner</Text>
+                    <Image
+                        source={{ uri: 'https://i.postimg.cc/NG3tC79L/Group-37014.png' }}
+                        style={styles.avatar}
+                    />
+
+                    <Text style={styles.avatarName}>Itunuoluwa Abidoye</Text>
+                    <Text style={styles.avatarId}>TURFID34345</Text>
                 </View>
 
                 {/* FORM */}
                 <View style={styles.form}>
-                    <View style={styles.inputGroup}>
-                        <Text style={styles.label}>Tell us First Your name?</Text>
+
+                    <TextInput
+                        placeholder="What’s your first name?"
+                        placeholderTextColor="#9E9E9E"
+                        style={styles.input}
+                        value={formData.firstName}
+                        onChangeText={(val) => setFormData({ ...formData, firstName: val })}
+                    />
+
+                    <TextInput
+                        placeholder="And your last name?"
+                        placeholderTextColor="#9E9E9E"
+                        style={styles.input}
+                        value={formData.lastName}
+                        onChangeText={(val) => setFormData({ ...formData, lastName: val })}
+                    />
+
+                    {/* PHONE */}
+                    <View style={styles.phoneRow}>
+                        <Image
+                            source={{
+                                uri: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_Nigeria.svg',
+                            }}
+                            style={styles.flag}
+                        />
+
                         <TextInput
-                            style={styles.input}
-                            placeholder="Enter your first name"
-                            value={formData.firstName}
-                            onChangeText={(val) => setFormData({ ...formData, firstName: val })}
+                            placeholder="Phone number"
+                            placeholderTextColor="#9E9E9E"
+                            keyboardType="phone-pad"
+                            style={styles.phoneInput}
+                            value={formData.phone}
+                            onChangeText={(val) => setFormData({ ...formData, phone: val })}
                         />
                     </View>
 
-                    <View style={styles.inputGroup}>
-                        <Text style={styles.label}>And your last name?</Text>
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Enter your last name"
-                            value={formData.lastName}
-                            onChangeText={(val) => setFormData({ ...formData, lastName: val })}
-                        />
-                    </View>
+                    {/* GENDER */}
+                    <TouchableOpacity style={styles.selectInput}>
+                        <Text style={styles.selectText}>Select your gender</Text>
+                        <ChevronDown size={20} color="#9E9E9E" />
+                    </TouchableOpacity>
 
-                    <View style={styles.inputGroup}>
-                        <View style={styles.labelRow}>
-                            <Text style={styles.genderIcon}>🚻</Text>
-                            <Text style={styles.label}>Please choose</Text>
-                        </View>
-                        <TouchableOpacity style={styles.selectInput}>
-                            <Text style={styles.selectText}>Select your gender</Text>
-                            <ChevronDown size={20} color="#8E8E93" />
-                        </TouchableOpacity>
-                    </View>
-
+                    {/* BUTTON */}
                     <TouchableOpacity style={styles.updateBtn}>
                         <Text style={styles.updateBtnText}>Update profile</Text>
                     </TouchableOpacity>
+
                 </View>
             </ScrollView>
+
+            {/* BOTTOM NAV — NOT TOUCHED */}
+            <View style={styles.bottomNav}>
+
+            {['Home','Explore','Stats','Profile'].map(tab=>{
+
+            const routes={
+            Home:'Home',
+            Explore:'Explore',
+            Stats:'Stats',
+            Profile:'Profile'
+            };
+
+            const icons={
+            Home:[
+            'https://i.postimg.cc/Jz72pGqt/Home-(1).png',
+            'https://i.postimg.cc/x8y6R2Nb/Rectangle-2.png'
+            ],
+            Explore:[
+            'https://i.postimg.cc/x1WLcZqR/manage-search-(1).png',
+            'https://i.postimg.cc/W4YzdF9m/Group-37017-(1).png'
+            ],
+            Stats:[
+            'https://i.postimg.cc/bvZ8F6RW/event-available-(2).png',
+            'https://i.postimg.cc/zDKDrc18/event-available-(1).png'
+            ],
+            Profile:[
+            'https://i.postimg.cc/NG3tC79L/Group-37014.png',
+            'https://i.postimg.cc/bvT4z1wx/Group-37014-(1).png'
+            ]
+            };
+
+            const active = activeTab === tab;
+
+            return(
+            <TouchableOpacity
+            key={tab}
+            style={active ? styles.activeTab : styles.iconOnly}
+            onPress={()=>handleNavPress(tab,routes[tab])}
+            activeOpacity={0.8}
+            >
+
+            <Image
+            source={{ uri: active ? icons[tab][0] : icons[tab][1] }}
+            style={styles.bottomIcon}
+            />
+
+            {active && <Text style={styles.activeLabel}>{tab}</Text>}
+
+            </TouchableOpacity>
+            );
+            })}
+
+            </View>
+
         </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.white,
-    },
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingHorizontal: 20,
-        paddingVertical: 15,
-    },
-    backBtn: {
-        backgroundColor: '#000',
-        width: 32,
-        height: 32,
-        borderRadius: 16,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    headerTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#000',
-    },
-    scrollContent: {
-        paddingBottom: 40,
-    },
-    avatarSection: {
-        alignItems: 'center',
-        marginVertical: 30,
-    },
-    avatarWrapper: {
-        position: 'relative',
-        marginBottom: 10,
-    },
-    avatar: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
-        borderWidth: 2,
-        borderColor: '#EFEFEF',
-    },
-    cameraBtn: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        backgroundColor: '#FFF',
-        width: 32,
-        height: 32,
-        borderRadius: 16,
-        justifyContent: 'center',
-        alignItems: 'center',
-        elevation: 5,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-    },
-    avatarName: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#000',
-    },
-    avatarDetail: {
-        fontSize: 12,
-        color: '#8E8E93',
-    },
-    form: {
-        paddingHorizontal: 20,
-    },
-    inputGroup: {
-        marginBottom: 24,
-    },
-    label: {
-        fontSize: 16,
-        color: '#000',
-        marginBottom: 12,
-    },
-    labelRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 12,
-    },
-    genderIcon: {
-        marginRight: 10,
-        fontSize: 16,
-    },
-    input: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#E5E5EA',
-        height: 40,
-        fontSize: 14,
-        color: '#000',
-    },
-    selectInput: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        borderBottomWidth: 1,
-        borderBottomColor: '#E5E5EA',
-        height: 40,
-    },
-    selectText: {
-        fontSize: 14,
-        color: '#8E8E93',
-    },
-    updateBtn: {
-        backgroundColor: '#1C1C1E',
-        height: 50,
-        borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 20,
-    },
-    updateBtnText: {
-        color: '#FFF',
-        fontSize: 16,
-        fontWeight: 'bold',
-    }
+container:{
+flex:1,
+backgroundColor:'#F3F4F6'
+},
+
+header:{
+flexDirection:'row',
+alignItems:'center',
+justifyContent:'space-between',
+paddingHorizontal:20,
+paddingVertical:10
+},
+
+backBtn:{
+backgroundColor:'#2C2C2E',
+width:36,
+height:36,
+borderRadius:18,
+justifyContent:'center',
+alignItems:'center'
+},
+
+headerTitle:{
+fontSize: 28,
+    fontWeight: '700',
+    color: '#1C1C1E',
+},
+
+scrollContent:{
+paddingBottom:120
+},
+
+avatarSection:{
+alignItems:'center',
+marginTop:20,
+marginBottom:30
+},
+
+avatar:{
+width:80,
+height:80,
+borderRadius:55,
+borderWidth:4,
+borderColor:'#D9D6FE'
+},
+
+avatarName:{
+marginTop:12,
+fontSize:18,
+fontWeight:'600'
+},
+
+avatarId:{
+fontSize:13,
+color:'#B0B0B0',
+marginTop:4
+},
+
+form:{
+paddingHorizontal:20
+},
+
+input:{
+borderBottomWidth:1,
+borderBottomColor:'#D6D6D6',
+height:55,
+fontSize:16,
+marginBottom:20
+},
+
+phoneRow:{
+flexDirection:'row',
+alignItems:'center',
+borderBottomWidth:1,
+borderBottomColor:'#D6D6D6',
+height:55,
+marginBottom:20
+},
+
+flag:{
+width:26,
+height:18,
+marginRight:10,
+borderRadius:2
+},
+
+phoneInput:{
+flex:1,
+fontSize:16
+},
+
+selectInput:{
+flexDirection:'row',
+alignItems:'center',
+justifyContent:'space-between',
+borderBottomWidth:1,
+borderBottomColor:'#D6D6D6',
+height:55,
+marginBottom:40
+},
+
+selectText:{
+fontSize:16,
+color:'#9E9E9E'
+},
+
+updateBtn:{
+height: 58,
+    borderRadius: 29,
+    backgroundColor: '#1C1C1E',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 2,
+    marginBottom: 2,
+},
+
+updateBtnText:{
+  fontSize: 16,
+    fontWeight: '600',
+    color: '#FFFFFF',
+    letterSpacing: 0.5,
+},
+
+/* BOTTOM NAV (UNCHANGED) */
+
+bottomNav:{
+position:'absolute',
+bottom:20,
+left:20,
+right:20,
+flexDirection:'row',
+backgroundColor:'#1C1C1E',
+borderRadius:40,
+padding:10,
+alignItems:'center',
+justifyContent:'space-between'
+},
+
+activeTab:{
+flexDirection:'row',
+alignItems:'center',
+backgroundColor:'#BFFF00',
+borderRadius:30,
+paddingHorizontal:18,
+paddingVertical:10
+},
+
+iconOnly:{
+paddingHorizontal:18,
+paddingVertical:12
+},
+
+bottomIcon:{
+width:22,
+height:22,
+marginRight:6,
+resizeMode:'contain'
+},
+
+activeLabel:{
+fontSize:14,
+fontWeight:'600',
+color:'#000'
+}
+
 });
