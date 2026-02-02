@@ -83,11 +83,13 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop:28,
     },
     headerTitle: {
         fontSize: 20,
         fontWeight: 'bold',
         color: '#000',
+        marginTop:28,
     },
 profileCard: {
         backgroundColor: '#FFF',
@@ -132,7 +134,7 @@ marginTop:4
     logoutCard: {
         backgroundColor: '#FFF',
         borderRadius: 20,
-        padding: 30,
+        padding: 80,
         alignItems: 'center',
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 4 },
@@ -153,7 +155,7 @@ marginTop:4
         lineHeight: 22,
     },
     logoutBtn: {
-        backgroundColor: '#FF3B30',
+        backgroundColor: '#ED636F',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
