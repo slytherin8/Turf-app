@@ -13,55 +13,81 @@ import { ArrowLeft } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
 
 export const ChangeEmailScreen = ({ navigation }) => {
-    const [emails, setEmails] = useState({ current: '', new: '' });
+    const [emails, setEmails] = useState({
+        current: '',
+        new: '',
+    });
 
     return (
         <SafeAreaView style={styles.container}>
+            {/* HEADER */}
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    style={styles.backBtn}
+                >
                     <ArrowLeft size={24} color="#BFFF00" />
                 </TouchableOpacity>
+
                 <Text style={styles.headerTitle}>Change Email</Text>
                 <View style={{ width: 32 }} />
             </View>
 
             <ScrollView showsVerticalScrollIndicator={false}>
-                {/* USER INFO HEADER */}
-                <View style={styles.userInfo}>
-                    <Image
-                        source={{ uri: 'https://i.postimg.cc/NG3tC79L/Group-37014.png' }}
-                        style={styles.avatar}
-                    />
-                    <View style={styles.userTextInfo}>
-                        <Text style={styles.userName}>Hemalatha Abishek</Text>
-                        <Text style={styles.userRole}>Turf owner</Text>
+                {/* PROFILE CARD */}
+                <View style={styles.profileCard}>
+                    <View style={styles.profileLeft}>
+                        <Image
+                            source={{
+                                uri: 'https://i.postimg.cc/XvRCNScR/User-image-(1).png',
+                            }}
+                            style={styles.avatar}
+                        />
+                        <View>
+                            <Text style={styles.name}>Itunuoluwa Abidoye</Text>
+                            <Text style={styles.id}>TURFID34345</Text>
+                        </View>
                     </View>
                 </View>
 
+                {/* FORM */}
                 <View style={styles.form}>
-                    <View style={styles.inputGroup}>
-                        <Text style={styles.label}>Current Email</Text>
+                    {/* CURRENT EMAIL */}
+                    <View style={styles.inputSection}>
+                        <Text style={styles.label}>Email</Text>
                         <TextInput
                             style={styles.input}
-                            placeholder="Enter current email"
                             value={emails.current}
-                            onChangeText={(val) => setEmails({ ...emails, current: val })}
+                            onChangeText={(text) =>
+                                setEmails({ ...emails, current: text })
+                            }
+                            keyboardType="email-address"
+                            autoCapitalize="none"
                         />
                     </View>
 
-                    <View style={styles.inputGroup}>
+                    {/* NEW EMAIL */}
+                    <View style={styles.inputSection}>
                         <Text style={styles.label}>New Email</Text>
                         <TextInput
                             style={styles.input}
-                            placeholder="Enter new email"
                             value={emails.new}
-                            onChangeText={(val) => setEmails({ ...emails, new: val })}
+                            onChangeText={(text) =>
+                                setEmails({ ...emails, new: text })
+                            }
+                            keyboardType="email-address"
+                            autoCapitalize="none"
                         />
                     </View>
 
                     <TouchableOpacity
                         style={styles.verifyBtn}
-                        onPress={() => navigation.navigate('AccountUpdateVerification', { type: 'Email' })}
+                        onPress={() =>
+                            navigation.navigate(
+                                'AccountUpdateVerification',
+                                { type: 'Email' }
+                            )
+                        }
                     >
                         <Text style={styles.verifyBtnText}>Verify</Text>
                     </TouchableOpacity>
@@ -76,13 +102,16 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.white,
     },
+
     header: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
         paddingVertical: 15,
+        marginTop: 26,
     },
+
     backBtn: {
         backgroundColor: '#000',
         width: 32,
@@ -91,72 +120,91 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+
     headerTitle: {
         fontSize: 20,
         fontWeight: 'bold',
         color: '#000',
     },
-    userInfo: {
+
+    profileCard: {
+        backgroundColor: '#FFF',
+        marginHorizontal: 20,
+        padding: 16,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderRadius: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.06,
+        shadowRadius: 8,
+        elevation: 5,
+    },
+
+    profileLeft: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 20,
-        marginVertical: 20,
-        backgroundColor: 'white',
-        borderRadius: 15,
-        marginHorizontal: 20,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.05,
-        shadowRadius: 5,
-        elevation: 2,
     },
+
     avatar: {
-        width: 50,
-        height: 50,
-        borderRadius: 25,
-        marginRight: 16,
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        marginRight: 12,
     },
-    userName: {
+
+    name: {
         fontSize: 16,
-        fontWeight: 'bold',
-        color: '#000',
+        fontWeight: '700',
     },
-    userRole: {
-        fontSize: 12,
-        color: '#8E8E93',
+
+    id: {
+        color: '#BDBDBD',
+        marginTop: 4,
     },
+
     form: {
         paddingHorizontal: 20,
         marginTop: 20,
     },
-    inputGroup: {
-        marginBottom: 24,
+
+    /* INPUTS */
+    inputSection: {
+        marginBottom: 20,
     },
+
     label: {
-        fontSize: 14,
+        fontSize: 16,
         color: '#8E8E93',
         marginBottom: 8,
+        letterSpacing: 0.5,
     },
+
     input: {
+        height: 52,
+        borderRadius: 26,
         borderWidth: 1,
         borderColor: '#E5E5EA',
-        borderRadius: 10,
-        height: 50,
-        paddingHorizontal: 16,
-        fontSize: 14,
-        color: '#000',
+        paddingHorizontal: 18,
+        fontSize: 15,
+        outlineStyle: 'none',
     },
+
     verifyBtn: {
+        height: 58,
+        borderRadius: 29,
         backgroundColor: '#1C1C1E',
-        height: 50,
-        borderRadius: 25,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: 16,
+        marginBottom: 16,
     },
+
     verifyBtnText: {
-        color: '#FFF',
         fontSize: 16,
-        fontWeight: 'bold',
-    }
+        fontWeight: '600',
+        color: '#FFFFFF',
+        letterSpacing: 0.5,
+    },
 });
