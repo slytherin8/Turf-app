@@ -31,7 +31,7 @@ export const EditProfileScreen = ({ navigation }) => {
             {/* HEADER */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-                    <ArrowLeft size={22} color="#B6FF3B" />
+                    <ArrowLeft size={22} color="#B6FF3B"  />
                 </TouchableOpacity>
 
                 <Text style={styles.headerTitle}>Bio-data</Text>
@@ -46,7 +46,7 @@ export const EditProfileScreen = ({ navigation }) => {
                 {/* AVATAR */}
                 <View style={styles.avatarSection}>
                     <Image
-                        source={{ uri: 'https://i.postimg.cc/NG3tC79L/Group-37014.png' }}
+                        source={{ uri: 'https://i.postimg.cc/XvRCNScR/User-image-(1).png' }}
                         style={styles.avatar}
                     />
 
@@ -180,6 +180,7 @@ paddingVertical:10
 
 backBtn:{
 backgroundColor:'#2C2C2E',
+marginTop:26,
 width:36,
 height:36,
 borderRadius:18,
@@ -188,9 +189,10 @@ alignItems:'center'
 },
 
 headerTitle:{
-fontSize: 28,
+fontSize: 24,
     fontWeight: '700',
     color: '#1C1C1E',
+    marginTop:26,
 },
 
 scrollContent:{
@@ -224,7 +226,8 @@ marginTop:4
 },
 
 form:{
-paddingHorizontal:20
+paddingHorizontal:20,
+
 },
 
 input:{
@@ -232,7 +235,10 @@ borderBottomWidth:1,
 borderBottomColor:'#D6D6D6',
 height:55,
 fontSize:16,
-marginBottom:20
+marginBottom:20,
+
+outlineStyle:'none'
+
 },
 
 phoneRow:{
@@ -253,7 +259,8 @@ borderRadius:2
 
 phoneInput:{
 flex:1,
-fontSize:16
+fontSize:16,
+outlineStyle:'none'
 },
 
 selectInput:{
@@ -272,17 +279,16 @@ color:'#9E9E9E'
 },
 
 updateBtn:{
-height: 58,
+ height: 58,
     borderRadius: 29,
     backgroundColor: '#1C1C1E',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 2,
-    marginBottom: 2,
+    marginTop: 20,
 },
 
 updateBtnText:{
-  fontSize: 16,
+ fontSize: 16,
     fontWeight: '600',
     color: '#FFFFFF',
     letterSpacing: 0.5,
