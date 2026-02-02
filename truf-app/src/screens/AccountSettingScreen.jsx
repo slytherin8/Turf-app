@@ -21,16 +21,20 @@ export const AccountSettingScreen = ({ navigation }) => {
                 <View style={{ width: 32 }} />
             </View>
 
-            <View style={styles.userInfo}>
-                <Image
-                    source={{ uri: 'https://i.postimg.cc/NG3tC79L/Group-37014.png' }}
-                    style={styles.avatar}
-                />
-                <View style={styles.userTextInfo}>
-                    <Text style={styles.userName}>Hemalatha Abishek</Text>
-                    <Text style={styles.userRole}>Turf owner</Text>
-                </View>
-            </View>
+            <View style={styles.profileCard}>
+                                <View style={styles.profileLeft}>
+                                    <Image
+                                        source={{
+                                            uri: 'https://i.postimg.cc/XvRCNScR/User-image-(1).png',
+                                        }}
+                                        style={styles.avatar}
+                                    />
+                                    <View>
+                                        <Text style={styles.name}>Itunuoluwa Abidoye</Text>
+                                        <Text style={styles.id}>TURFID34345</Text>
+                                    </View>
+                                </View>
+                            </View>
 
             <View style={styles.options}>
                 <TouchableOpacity
@@ -74,6 +78,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 20,
         paddingVertical: 15,
+        marginTop: 26,
     },
     backBtn: {
         backgroundColor: '#000',
@@ -88,35 +93,41 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#000',
     },
-    userInfo: {
+    profileCard: {
+        backgroundColor: '#FFF',
+        marginHorizontal: 20,
+        padding: 16,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderRadius: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.06,
+        shadowRadius: 8,
+        elevation: 5,
+    },
+
+    profileLeft: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 20,
-        marginVertical: 20,
-        backgroundColor: 'white',
-        borderRadius: 15,
-        marginHorizontal: 20,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.05,
-        shadowRadius: 5,
-        elevation: 2,
     },
-    avatar: {
-        width: 50,
-        height: 50,
-        borderRadius: 25,
-        marginRight: 16,
-    },
-    userName: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#000',
-    },
-    userRole: {
-        fontSize: 12,
-        color: '#8E8E93',
-    },
+    avatar:{
+width:60,
+height:60,
+borderRadius:30,
+marginRight:12
+},
+
+name:{
+fontSize:16,
+fontWeight:'700'
+},
+
+id:{
+color:'#BDBDBD',
+marginTop:4
+},
     options: {
         paddingHorizontal: 20,
         marginTop: 20,
