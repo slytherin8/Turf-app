@@ -16,10 +16,45 @@ export const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+const API_URL = "http://10.190.138.136:5000/api/auth";
 
-  const handleLogin = () => {
-    navigation?.navigate('Main');
-  };
+ const handleLogin = async () => {
+  if (!email || !password) {
+    alert("Please enter email and password");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include", // VERY IMPORTANT for cookies
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || "Login failed");
+      return;
+    }
+
+    console.log("Login success:", data);
+        setEmail("");
+    setPassword("");
+    // Navigate after success
+    navigation.navigate("Verification");
+
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+};
 
   const handleGoogleSignIn = () => {
     navigation?.navigate('Main');

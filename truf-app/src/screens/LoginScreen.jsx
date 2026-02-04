@@ -17,11 +17,47 @@ import { COLORS, SPACING, SIZES } from '../constants/theme';
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+const API_URL = "http://192.168.1.105:5000/api/auth";
 
   // LOGIN → VERIFICATION
-  const handleLogin = () => {
-    navigation.navigate('Verification');
-  };
+const handleLogin = async () => {
+  if (!email || !password) {
+    alert("Please enter email and password");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include", // VERY IMPORTANT for cookies
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || "Login failed");
+      return;
+    }
+
+    console.log("Login success:", data);
+        setEmail("");
+    setPassword("");
+    // Navigate after success
+    navigation.navigate("Verification");
+
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+};
+
 
   // GOOGLE LOGIN → VERIFICATION
   const handleGoogleSignIn = () => {
@@ -46,7 +82,8 @@ export const LoginScreen = ({ navigation }) => {
 
         {/* MAIN CONTENT */}
         <View style={styles.main}>
-          <Text style={styles.title}>Welcome!</Text>
+          <Text style={styles.title}>Welc
+            me!</Text>
 
           <CustomButton
             title="CONTINUE WIT GOOGLE"
@@ -69,7 +106,7 @@ export const LoginScreen = ({ navigation }) => {
               onChangeText={setEmail}
             />
             <CustomInput
-              label="PASSWORD"
+              label="sS"
               placeholder=""
               value={password}
               onChangeText={setPassword}
@@ -78,7 +115,7 @@ export const LoginScreen = ({ navigation }) => {
           </View>
 
           <CustomButton
-            title="LOG IN"
+            title="LO"
             onPress={handleLogin}
             style={styles.loginButton}
           />

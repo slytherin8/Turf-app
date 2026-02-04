@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -11,15 +11,78 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Eye, EyeOff, Check } from 'lucide-react-native';
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
 
+WebBrowser.maybeCompleteAuthSession();
 export const SignupScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [request, response, promptAsync] = Google.useAuthRequest({
+  expoClientId: "27356358338-njcl9fc07eds8e227ld3k3tfh30tkkr9.apps.googleusercontent.com",
+  androidClientId: "27356358338-35dhf7i8ieqo6dar7u55e81v0eo5qmb4.apps.googleusercontent.com",
+  iosClientId: "27356358338-6v710u52bno685fr2sklscfeh90i14c5.apps.googleusercontent.com",
+  webClientId: "27356358338-njcl9fc07eds8e227ld3k3tfh30tkkr9.apps.googleusercontent.com",
+  scopes: ['profile', 'email'],
+});
+  const API_URL = "http://10.190.138.136:5000/api/auth";
 
-  const handleSignup = () => navigation?.navigate('Verification');
-  const handleGoogleSignIn = () => navigation?.navigate('Verification');
+  useEffect(() => {
+  if (response?.type === "success") {
+    const { id_token } = response.authentication;
+
+    fetch(`${API_URL}/google-login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ idToken: id_token }),
+    });
+  }
+}, [response]);
+
+const handleSignup = async () => {
+  if (!email || !password || !username) {
+    alert("Please enter email and password");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || "Registration failed");
+      return;
+    }
+
+    alert("Registration successful!");
+    navigation.navigate("SignIn");
+
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+
+};
+const handleGoogleSignIn = async () => {
+  if (!request) return;
+  await promptAsync({ useProxy: true });
+};
+
+
   const handleLogin = () => navigation?.navigate('SignIn');
   const handleBack = () => navigation?.goBack();
 
@@ -57,6 +120,7 @@ export const SignupScreen = ({ navigation }) => {
           {/* GOOGLE BUTTON */}
           <TouchableOpacity
             style={styles.googleButton}
+            disabled={!request}
             onPress={handleGoogleSignIn}
             activeOpacity={0.8}
           >

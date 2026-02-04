@@ -1,38 +1,25 @@
-import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { connectDB } from './config/db.js';
+import authRoutes from './routes/auth.js';
+import cookieParser from 'cookie-parser';
 
-const userSchema = new mongoose.Schema(
-  {
-        email: {
-     type: String,
-     required: true,
-     unique: true
-    },
+dotenv.config();
 
-    password: {
-      type: String,
-      required: true
-    },
-    sessionToken: { type: String },
+const app = express();
 
-    resetToken: { type: String },
-    resetTokenExpiry: { type: Date },
-  },
-    
-  { timestamps: true }
-);
-// Hash password before saving
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
+app.use(express.json());
+app.use(cookieParser());
 
-// Compare password
-userSchema.methods.matchPassword = async function(enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
+app.use(cors({
+  origin:true,
+  credentials: true
+}));
 
-const User = mongoose.model('User', userSchema);
-export default User;
+connectDB();
+
+app.use('/api/auth', authRoutes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, '0.0.0.0',() => console.log(`Server running on port ${PORT}`));
