@@ -9,31 +9,31 @@ export const LocationPermissionScreen = ({ navigation }) => {
     };
 
     const handleEnable = () => {
-        navigation?.navigate('Main');
+        navigation?.navigate('HomeScreenwithoutEnable');
     };
 
-    
+
     const handleRemindLater = () => {
-        navigation?.navigate('Main');
+        navigation?.navigate('HomeScreenwithoutEnable');
     };
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
-               <View style={styles.header}>
-                         <TouchableOpacity onPress={handleBack} activeOpacity={0.7}>
-                           <Image
-                             source={{ uri: 'https://i.postimg.cc/4x0HyzkG/btn.png' }}
-                             style={styles.backImage}
-                             resizeMode="contain"
-                           />
-                         </TouchableOpacity>
-                       </View>
+                <View style={styles.header}>
+                    <TouchableOpacity onPress={handleBack} activeOpacity={0.7}>
+                        <Image
+                            source={{ uri: 'https://i.postimg.cc/4x0HyzkG/btn.png' }}
+                            style={styles.backImage}
+                            resizeMode="contain"
+                        />
+                    </TouchableOpacity>
+                </View>
                 <View style={styles.main}>
-                     <View style={styles.titleWrapper}>
-                                <Text style={styles.title}>Enable precise location</Text>
-                                <View style={styles.titleHighlight} />
-                              </View>
+                    <View style={styles.titleWrapper}>
+                        <Text style={styles.title}>Enable precise location</Text>
+                        <View style={styles.titleHighlight} />
+                    </View>
 
                     <View style={styles.iconContainer}>
                         <View style={styles.iconBackground}>
@@ -42,7 +42,7 @@ export const LocationPermissionScreen = ({ navigation }) => {
                                 style={styles.fieldBackground}
                                 resizeMode="cover"
                             >
-                               
+
                             </ImageBackground>
                         </View>
                     </View>
@@ -80,41 +80,41 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 24,
     },
-      header: {
-    paddingVertical: 16,
-  },
-  backImage: {
-    width: 64,
-    height: 64,
-    transform: [{ rotate: '180deg' }],
-  },
+    header: {
+        paddingVertical: 16,
+    },
+    backImage: {
+        width: 64,
+        height: 64,
+        transform: [{ rotate: '180deg' }],
+    },
     main: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         paddingBottom: 40,
     },
-    
-  /* TITLE */
-  titleWrapper: {
-    alignItems: 'center',
-    marginBottom: 36,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#1C1C1E',
-    zIndex: 2,
-  },
-  titleHighlight: {
-    position: 'absolute',
-    bottom: 4,
-    right: '74%',
-    height: 10,
-    width: 80,
-    backgroundColor: '#BFFF00',
-    zIndex: 1,
-  },
+
+    /* TITLE */
+    titleWrapper: {
+        alignItems: 'center',
+        marginBottom: 36,
+    },
+    title: {
+        fontSize: 28,
+        fontWeight: '700',
+        color: '#1C1C1E',
+        zIndex: 2,
+    },
+    titleHighlight: {
+        position: 'absolute',
+        bottom: 4,
+        right: '74%',
+        height: 10,
+        width: 80,
+        backgroundColor: '#BFFF00',
+        zIndex: 1,
+    },
 
     iconContainer: {
         marginBottom: 32,
