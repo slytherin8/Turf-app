@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image,  } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
@@ -9,7 +9,7 @@ export const LocationPermissionScreen = ({ navigation }) => {
     };
 
     const handleEnable = () => {
-        navigation?.navigate('HomeScreenwithoutEnable');
+        navigation?.navigate('HomeScreen');
     };
 
 
@@ -37,13 +37,12 @@ export const LocationPermissionScreen = ({ navigation }) => {
 
                     <View style={styles.iconContainer}>
                         <View style={styles.iconBackground}>
-                            <ImageBackground
-                                source={{ uri: 'https://i.postimg.cc/RqrLJJBV/image-9.png' }}
-                                style={styles.fieldBackground}
-                                resizeMode="cover"
-                            >
-
-                            </ImageBackground>
+                             <Image
+                              source={require('../../assets/location.png')}
+                              style={styles.icon}
+                              resizeMode="contain"
+                            />
+                            
                         </View>
                     </View>
 
