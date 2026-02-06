@@ -27,7 +27,7 @@ export const SignupScreen = ({ navigation }) => {
   webClientId: "27356358338-njcl9fc07eds8e227ld3k3tfh30tkkr9.apps.googleusercontent.com",
   scopes: ['profile', 'email'],
 });
-  const API_URL = "http://10.190.138.136:5000/api/auth";
+  const API_URL = "http://10.96.161.219:5000/api/auth";
 
   useEffect(() => {
   if (response?.type === "success") {
