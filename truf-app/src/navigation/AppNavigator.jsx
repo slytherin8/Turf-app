@@ -68,6 +68,7 @@ export function AppNavigator() {
         initialRouteName="HomePage"
       >
         <Stack.Screen name="HomePage" component={HomePageScreen} />
+         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="SignUp" component={SignupScreen} />
         <Stack.Screen name="Verification" component={VerificationScreen} />
