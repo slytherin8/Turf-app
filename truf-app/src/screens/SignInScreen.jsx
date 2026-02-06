@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
   View,
   Text,
@@ -16,7 +18,7 @@ export const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-const API_URL = "http://10.96.161.219:5000/api/auth";
+  const API_URL = "http://10.190.138.136:5000/api/auth";
 
  const handleLogin = async () => {
   if (!email || !password) {
@@ -27,10 +29,10 @@ const API_URL = "http://10.96.161.219:5000/api/auth";
   try {
     const response = await fetch(`${API_URL}/login`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include", // VERY IMPORTANT for cookies
       body: JSON.stringify({
         email,
         password,
@@ -38,6 +40,7 @@ const API_URL = "http://10.96.161.219:5000/api/auth";
     });
 
     const data = await response.json();
+    await AsyncStorage.setItem("token", data.token);
 
     if (!response.ok) {
       alert(data.message || "Login failed");

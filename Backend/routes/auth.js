@@ -1,7 +1,11 @@
 import express from "express";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
+import crypto from 'crypto';
+
 import { OAuth2Client } from "google-auth-library";
+
+
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const router = express.Router();
@@ -9,30 +13,18 @@ const router = express.Router();
 
 router.post("/register", async (req, res) => {
   try {
-    const { username,email, password } = req.body || {};
+  const { username, email, password } = req.body;
 
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+    return res.status(400).json({ message: "User already exists" });
+  }
 
-    if (!username || !email || !password) {
-      return res.status(400).json({ message: "All fields required" });
-    }
+  const user = await User.create({ username, email, password });
 
-    const userExists = await User.findOne({ email });
-    if (userExists) {
-      return res.status(400).json({ message: "User already exists" });
-    }
-
-    const user = await User.create({ username ,email, password });
-
-    res.status(201).json({
-      message: "User registered successfully",
-      user: {
-        id: user._id,
-        email: user.email,
-      },
-    });
+res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -46,32 +38,43 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+     const token = crypto.randomBytes(32).toString('hex');
+    user.sessionToken = token;
+    await user.save();
+      res.json({
+  message: "Login successful",
+  token: token,
+});
 
-    // store token in cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // true in production (https)
-      sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
 
-    res.json({
-      message: "Login successful",
-      user: {
-        id: user._id,
-        email: user.email,
-      },
-    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 });
+
+router.get('/me', async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+      return res.status(401).json({ message: 'Not authenticated' });
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    const user = await User.findOne({ sessionToken: token })
+      .select('-password -resetToken -resetTokenExpiry');
+
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    res.json({ user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
 
 router.post("/google-login", async (req, res) => {
   try {

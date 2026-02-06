@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import {
     View,
     Text,
@@ -9,10 +9,36 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BottomNav from '../components/BottomNav';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 export const ProfileScreen = ({ navigation }) => {
-
+    const [user, setUser] = useState(null)
     const [activeTab, setActiveTab] = useState('Profile');
+    const API_URL = "http://10.190.138.136:5000/api/auth";
+    
+    useEffect(() => {
+  const fetchProfile = async () => {
+    const token = await AsyncStorage.getItem("token");
+
+    try {
+      const res = await fetch(`${API_URL}/me`, {
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${token}`,
+
+  },
+});
+
+      const data = await res.json();
+      setUser(data.user);
+    } catch (err) {
+      console.log("Profile fetch failed", err);
+    }
+  };
+
+  fetchProfile();
+}, []);
 
     const handleNavPress = (tab, route) => {
         setActiveTab(tab);
@@ -76,8 +102,13 @@ export const ProfileScreen = ({ navigation }) => {
                         />
 
                         <View>
-                            <Text style={styles.name}>Itunuoluwa Abidoye</Text>
-                            <Text style={styles.id}>TURFID34345</Text>
+                            <Text style={styles.name}>
+                            {user?.username || "Loading..."}
+                            </Text>
+
+                            <Text style={styles.id}>
+                            {user?.email}
+                            </Text>
                         </View>
                     </View>
 
