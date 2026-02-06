@@ -11,8 +11,9 @@ import {
     Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Search, MapPin, ChevronDown, Heart, Calendar, User, Home, Star } from 'lucide-react-native';
+import { Search, MapPin, ChevronDown, Heart, Star } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
+import BottomNav from '../components/BottomNav';
 
 const { width } = Dimensions.get('window');
 
@@ -121,12 +122,12 @@ export const HomeScreen = ({ navigation }) => {
                             <Text style={styles.specialPriceSubtext}>for{item.specialPrice.split('for')[1]}</Text>
                         </View>
                         <TouchableOpacity style={styles.nextBtn}>
-  <Image
-    source={{ uri: 'https://i.postimg.cc/hG6gbxgk/Group-37033.png' }}
-    style={styles.nextArrowImg}
-    resizeMode="contain"
-  />
-</TouchableOpacity>
+                            <Image
+                                source={{ uri: 'https://i.postimg.cc/hG6gbxgk/Group-37033.png' }}
+                                style={styles.nextArrowImg}
+                                resizeMode="contain"
+                            />
+                        </TouchableOpacity>
 
                     </View>
                 )}
@@ -146,10 +147,10 @@ export const HomeScreen = ({ navigation }) => {
                     />
                     <View style={styles.locationSelector}>
                         <MapPin size={24} color={COLORS.text} fill={'none'} />
-                       
-                                  
+
+
                         <Text style={styles.locationMain}>Avadi, Chennai</Text>
-                          <View style={styles.titleHighlight} />
+                        <View style={styles.titleHighlight} />
                         <ChevronDown size={20} color="#5856D6" />
                     </View>
                     <View style={{ width: 40 }} /> {/* Spacer */}
@@ -203,33 +204,7 @@ export const HomeScreen = ({ navigation }) => {
                 <View style={{ height: 100 }} />
             </ScrollView>
 
-            {/* BOTTOM NAV */}
-            <View style={styles.bottomNavWrapper}>
-                <View style={styles.bottomNav}>
-                    <TouchableOpacity style={styles.navItem} onPress={() => setActiveTab('Home')}>
-                        <Home size={24} color={activeTab === 'Home' ? COLORS.white : COLORS.white} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={[styles.navItem, styles.activeNavItem]}
-                        onPress={() => setActiveTab('Search')}
-                    >
-                        <Search size={22} color={COLORS.text} />
-                        <Text style={styles.activeNavLabel}>Search</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.navItem} onPress={() => setActiveTab('Calendar')}>
-                        <Calendar size={24} color={COLORS.white} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={styles.navItem}
-                        onPress={() => navigation.navigate('Main', { screen: 'Profile' })}
-                    >
-                        <User size={24} color={COLORS.white} />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <BottomNav navigation={navigation} activeTab="Search" />
         </SafeAreaView>
     );
 };
@@ -256,24 +231,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     locationMain: {
-         fontSize: 18,
-    fontWeight: '700',
-    color: '#1C1C1E',
-    zIndex: 2,
-        
+        fontSize: 18,
+        fontWeight: '700',
+        color: '#1C1C1E',
+        zIndex: 2,
+
         marginHorizontal: 4,
-        
+
         paddingHorizontal: 4,
     },
     titleHighlight: {
-    position: 'absolute',
-    bottom: 0,
-    right: '26%',
-    height: 10,
-    width: 100,
-    backgroundColor: '#BFFF00',
-    zIndex: 1,
-  },
+        position: 'absolute',
+        bottom: 0,
+        right: '26%',
+        height: 10,
+        width: 100,
+        backgroundColor: '#BFFF00',
+        zIndex: 1,
+    },
     searchContainer: {
         paddingHorizontal: 20,
         marginBottom: 24,
@@ -378,7 +353,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         paddingHorizontal: 8,
         paddingVertical: 4,
-       
+
     },
     priceText: {
         fontSize: 16,
@@ -395,7 +370,7 @@ const styles = StyleSheet.create({
     nearbyCard: {
         width: '100%',
         height: 200,
-        borderRadius:6,
+        borderRadius: 6,
         marginBottom: 16,
         overflow: 'hidden',
     },
@@ -421,11 +396,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
-        
+
     },
     nearbyName: {
         fontSize: 18,
-        
+
         color: COLORS.white,
     },
     nearbyLocation: {
@@ -476,45 +451,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 8,
     },
-    
-    nextArrowImg: {
-  width: 8,
-  height: 12,
-},
 
-    bottomNavWrapper: {
-        position: 'absolute',
-        bottom: 24,
-        left: 20,
-        right: 20,
+    nextArrowImg: {
+        width: 8,
+        height: 12,
     },
-    bottomNav: {
-        flexDirection: 'row',
-        backgroundColor: '#1C1C1E',
-        borderRadius: 40,
-        padding: 10,
-        marginBottom: 24,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    navItem: {
-        padding: 12,
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-    },
-    activeNavItem: {
-        flexDirection: 'row',
-        backgroundColor: COLORS.accent,
-        borderRadius: 30,
-        paddingHorizontal: 20,
-        paddingVertical: 12,
-        flex: 2,
-    },
-    activeNavLabel: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#000',
-        marginLeft: 8,
-    },
+
+
 });
