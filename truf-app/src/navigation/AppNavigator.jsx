@@ -8,6 +8,7 @@ import { SignupScreen } from '../screens/SignupScreen';
 import { VerificationScreen } from '../screens/VerificationScreen';
 import { LocationPermissionScreen } from '../screens/LocationPermissionScreen';
 import { HomeScreen } from '../screens/HomeScreen';
+import HomeScreenWithoutEnable from '../screens/HomeScreenwithoutEnable';
 import { TurfDetailScreen } from '../screens/Truf page';
 import { BookingScreen } from '../screens/BookingScreen';
 import { ReviewPaymentScreen } from '../screens/ReviewPaymentScreen';
@@ -21,6 +22,8 @@ import { LogoutScreen } from '../screens/LogoutScreen';
 import { ChangeEmailScreen } from '../screens/ChangeEmailScreen';
 import { ChangePasswordScreen } from '../screens/ChangePasswordScreen';
 import { AccountUpdateVerificationScreen } from '../screens/AccountUpdateVerificationScreen';
+import { TurfGalleryPage } from '../screens/TurfGalleryPage';
+import { TurfReviewPage } from '../screens/TurfReviewPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,6 +72,7 @@ export function AppNavigator() {
         <Stack.Screen name="SignUp" component={SignupScreen} />
         <Stack.Screen name="Verification" component={VerificationScreen} />
         <Stack.Screen name="LocationPermission" component={LocationPermissionScreen} />
+        <Stack.Screen name="HomeScreenwithoutEnable" component={HomeScreenWithoutEnable} />
         <Stack.Screen name="Main" component={MainTabs} />
         <Stack.Screen name="TurfDetail" component={TurfDetailScreen} />
         <Stack.Screen name="TurfBooking" component={BookingScreen} />
@@ -82,6 +86,8 @@ export function AppNavigator() {
         <Stack.Screen name="ChangeEmail" component={ChangeEmailScreen} />
         <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
         <Stack.Screen name="AccountUpdateVerification" component={AccountUpdateVerificationScreen} />
+        <Stack.Screen name="TurfGalleryPage" component={TurfGalleryPage} />
+        <Stack.Screen name="TurfReviewPage" component={TurfReviewPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
