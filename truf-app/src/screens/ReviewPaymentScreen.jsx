@@ -28,6 +28,7 @@ export const ReviewPaymentScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
 
+
       {/* ---------------- SCROLL CONTENT ---------------- */}
       <ScrollView
         showsVerticalScrollIndicator={false}
