@@ -41,13 +41,12 @@ export const VerificationScreen = ({ navigation }) => {
           </View>
 
           {/* ICON */}
-          <Image
-            source={{
-              uri: 'https://i.postimg.cc/m2jb2M1r/Chat-GPT-Image-Jan-4-2026-07-31-50-PM-2.png', // email + check icon
-            }}
-            style={styles.icon}
-            resizeMode="contain"
-          />
+         <Image
+  source={require('../../assets/verification.png')}
+  style={styles.icon}
+  resizeMode="contain"
+/>
+
 
           {/* DESCRIPTION */}
           <Text style={styles.description}>
