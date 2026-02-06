@@ -131,7 +131,10 @@ export const TurfDetailScreen = ({ navigation, route }) => {
     <View style={styles.tabContentPadding}>
       <View style={styles.tabHeaderRow}>
         <Text style={styles.tabTitle}>Gallery<Text style={styles.tabCount}>(400)</Text></Text>
-        <TouchableOpacity style={styles.addBtn}>
+        <TouchableOpacity
+          style={styles.addBtn}
+          onPress={() => navigation.navigate('TurfGalleryPage')}
+        >
           <ImageIcon size={20} color={COLORS.white} />
           <Text style={styles.addBtnText}>Add photo</Text>
         </TouchableOpacity>
@@ -158,7 +161,10 @@ export const TurfDetailScreen = ({ navigation, route }) => {
     <View style={styles.tabContentPadding}>
       <View style={styles.tabHeaderRow}>
         <Text style={styles.tabTitle}>Reviews</Text>
-        <TouchableOpacity style={styles.addBtn}>
+        <TouchableOpacity
+          style={styles.addBtn}
+          onPress={() => navigation.navigate('TurfReviewPage')}
+        >
           <Edit size={20} color={COLORS.white} />
           <Text style={styles.addBtnText}>add review</Text>
         </TouchableOpacity>
