@@ -15,14 +15,12 @@ import {
   ChevronDown,
   Search,
   Heart,
-  Home,
-  Calendar,
-  User,
 } from 'lucide-react-native';
+import BottomNav from '../components/BottomNav';
 
 const { width } = Dimensions.get('window');
 
-const HomeScreenWithoutEnable = () => {
+const HomeScreenWithoutEnable = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -58,7 +56,16 @@ const HomeScreenWithoutEnable = () => {
         </View>
 
         <View style={styles.exploreRow}>
-          <TouchableOpacity style={styles.exploreCard}>
+          <TouchableOpacity
+            style={styles.exploreCard}
+            onPress={() => navigation.navigate('TurfDetail', {
+              turf: {
+                id: 'football_1',
+                name: 'Football Turf',
+                image: 'https://i.postimg.cc/8c8kPz8Z/football.jpg'
+              }
+            })}
+          >
             <Image
               source={{ uri: 'https://i.postimg.cc/8c8kPz8Z/football.jpg' }}
               style={styles.exploreImage}
@@ -71,7 +78,16 @@ const HomeScreenWithoutEnable = () => {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.exploreCard}>
+          <TouchableOpacity
+            style={styles.exploreCard}
+            onPress={() => navigation.navigate('TurfDetail', {
+              turf: {
+                id: 'cricket_1',
+                name: 'Cricket Turf',
+                image: 'https://i.postimg.cc/6qM5Xy0T/cricket.jpg'
+              }
+            })}
+          >
             <Image
               source={{ uri: 'https://i.postimg.cc/6qM5Xy0T/cricket.jpg' }}
               style={styles.exploreImage}
@@ -86,7 +102,20 @@ const HomeScreenWithoutEnable = () => {
           <Text style={styles.seeAll}>See all</Text>
         </View>
 
-        <View style={styles.recommendedCard}>
+        <TouchableOpacity
+          style={styles.recommendedCard}
+          onPress={() => navigation.navigate('TurfDetail', {
+            turf: {
+              id: 'mini_1',
+              name: 'Game Mini Turf',
+              location: 'Avadi, Chennai',
+              rating: 5,
+              reviews: 84,
+              price: 80,
+              image: 'https://i.postimg.cc/Gp1JxX7b/turf.jpg'
+            }
+          })}
+        >
           <Image
             source={{ uri: 'https://i.postimg.cc/Gp1JxX7b/turf.jpg' }}
             style={styles.recommendedImage}
@@ -114,21 +143,12 @@ const HomeScreenWithoutEnable = () => {
               <Text style={styles.offerText}>for 6 / hrs</Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
 
         <View style={{ height: 120 }} />
       </ScrollView>
 
-      {/* BOTTOM NAV */}
-      <View style={styles.bottomNav}>
-        <Home size={22} color="#fff" />
-        <View style={styles.activeTab}>
-          <Search size={18} color="#000" />
-          <Text style={styles.activeText}>Search</Text>
-        </View>
-        <Calendar size={22} color="#fff" />
-        <User size={22} color="#fff" />
-      </View>
+      <BottomNav navigation={navigation} activeTab="Home" />
     </SafeAreaView>
   );
 };
@@ -315,30 +335,5 @@ const styles = StyleSheet.create({
     color: '#666',
   },
 
-  bottomNav: {
-    position: 'absolute',
-    bottom: 25,
-    left: 20,
-    right: 20,
-    backgroundColor: '#111',
-    borderRadius: 40,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 12,
-    alignItems: 'center',
-  },
 
-  activeTab: {
-    flexDirection: 'row',
-    backgroundColor: '#9AFF00',
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    borderRadius: 25,
-    alignItems: 'center',
-    gap: 6,
-  },
-
-  activeText: {
-    fontWeight: '600',
-  },
 });
