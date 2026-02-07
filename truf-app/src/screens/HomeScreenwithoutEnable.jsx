@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -14,13 +14,13 @@ import {
   MapPin,
   ChevronDown,
   Search,
-  Heart,
 } from 'lucide-react-native';
 import BottomNav from '../components/BottomNav';
 
 const { width } = Dimensions.get('window');
 
 const HomeScreenWithoutEnable = ({ navigation }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -30,13 +30,15 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
           <Image
             source={{ uri: 'https://i.postimg.cc/JnDCdhKY/Ellipse-4.png' }}
             style={styles.logo}
+            resizeMode="contain"
           />
-
-          <View style={styles.locationRow}>
-            <MapPin size={20} color="#000" />
-            <Text style={styles.locationText}>Choose your location</Text>
-            <ChevronDown size={18} color="#000" />
+          <View style={styles.locationSelector}>
+            <MapPin size={24} color="#1C1C1E" fill="none" />
+            <Text style={styles.locationMain}>Avadi, Chennai</Text>
+            <View style={styles.titleHighlight} />
+            <ChevronDown size={20} color="#5856D6" />
           </View>
+          <View style={{ width: 40 }} />
         </View>
 
         {/* SEARCH */}
@@ -58,16 +60,10 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
         <View style={styles.exploreRow}>
           <TouchableOpacity
             style={styles.exploreCard}
-            onPress={() => navigation.navigate('TurfDetail', {
-              turf: {
-                id: 'football_1',
-                name: 'Football Turf',
-                image: 'https://i.postimg.cc/8c8kPz8Z/football.jpg'
-              }
-            })}
+              onPress={() => navigation.navigate('TurfDetail')}
           >
             <Image
-              source={{ uri: 'https://i.postimg.cc/8c8kPz8Z/football.jpg' }}
+              source={require('../../assets/turf img.png')}
               style={styles.exploreImage}
             />
             <View style={styles.exploreFooter}>
@@ -80,16 +76,10 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
 
           <TouchableOpacity
             style={styles.exploreCard}
-            onPress={() => navigation.navigate('TurfDetail', {
-              turf: {
-                id: 'cricket_1',
-                name: 'Cricket Turf',
-                image: 'https://i.postimg.cc/6qM5Xy0T/cricket.jpg'
-              }
-            })}
+         onPress={() => navigation.navigate('TurfDetail')}
           >
             <Image
-              source={{ uri: 'https://i.postimg.cc/6qM5Xy0T/cricket.jpg' }}
+              source={require('../../assets/turf-app 1.png')}
               style={styles.exploreImage}
             />
             <Text style={styles.exploreText}>Cricket</Text>
@@ -104,25 +94,24 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
 
         <TouchableOpacity
           style={styles.recommendedCard}
-          onPress={() => navigation.navigate('TurfDetail', {
-            turf: {
-              id: 'mini_1',
-              name: 'Game Mini Turf',
-              location: 'Avadi, Chennai',
-              rating: 5,
-              reviews: 84,
-              price: 80,
-              image: 'https://i.postimg.cc/Gp1JxX7b/turf.jpg'
-            }
-          })}
+          onPress={() => navigation.navigate('TurfDetail')}
         >
           <Image
-            source={{ uri: 'https://i.postimg.cc/Gp1JxX7b/turf.jpg' }}
+            source={require('../../assets/turf img.png')}
             style={styles.recommendedImage}
           />
 
-          <TouchableOpacity style={styles.heartIcon}>
-            <Heart size={18} color="#9AFF00" />
+          <TouchableOpacity 
+            style={styles.heartIcon}
+            onPress={() => setIsFavorite(!isFavorite)}
+          >
+            <Image
+              source={isFavorite 
+                ? require('../../../assets/heart 2.png') 
+                : require('../../../assets/heart (1).png')
+              }
+              style={styles.heartImage}
+            />
           </TouchableOpacity>
 
           <View style={styles.recommendedOverlay}>
@@ -163,26 +152,40 @@ const styles = StyleSheet.create({
 
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingTop: 10,
+    marginBottom: 20,
   },
 
   logo: {
-    width: 50,
-    height: 50,
-    resizeMode: 'contain',
+    width: 60,
+    height: 60,
   },
 
-  locationRow: {
+  locationSelector: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
   },
 
-  locationText: {
-    fontSize: 16,
-    fontWeight: '600',
+  locationMain: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#1C1C1E',
+    zIndex: 2,
+    marginHorizontal: 4,
+    paddingHorizontal: 4,
+  },
+
+  titleHighlight: {
+    position: 'absolute',
+    bottom: 0,
+    right: '26%',
+    height: 10,
+    width: 100,
+    backgroundColor: '#BFFF00',
+    zIndex: 1,
   },
 
   searchBox: {
@@ -275,6 +278,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.4)',
     padding: 6,
     borderRadius: 20,
+  },
+
+  heartImage: {
+    width: 18,
+    height: 18,
   },
 
   recommendedOverlay: {
