@@ -34,8 +34,8 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
           />
           <View style={styles.locationSelector}>
             <MapPin size={24} color="#1C1C1E" fill="none" />
-            <Text style={styles.locationMain}>CHOOSE YOUR LOCATION</Text>
-            <View style={styles.titleHighlight} />
+            <Text style={styles.locationMain}>Choose Your Location</Text>
+            <View style={styles.titleHighlight} /> 
             <ChevronDown size={20} color="#5856D6" />
           </View>
           <View style={{ width: 40 }} />
@@ -82,10 +82,12 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
               source={require('../../assets/turf_app_1.png')}
               style={styles.exploreImage}
             />
-            <Text style={styles.exploreText}>Cricket</Text>
-               <View style={styles.exploreBtn}>
+             <View style={styles.exploreFooter}>
+              <Text style={styles.exploreText}>Cricket</Text>
+              <View style={styles.exploreBtn}>
                 <Text style={styles.exploreBtnText}>Explore</Text>
               </View>
+            </View>
           </TouchableOpacity>
         </View>
 
