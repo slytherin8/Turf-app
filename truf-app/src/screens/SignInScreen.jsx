@@ -18,7 +18,7 @@ export const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const API_URL = "http://10.190.138.136:5000/api/auth";
+  const API_URL = "http://10.243.180.219:5000/api/auth";
 
  const handleLogin = async () => {
   if (!email || !password) {
