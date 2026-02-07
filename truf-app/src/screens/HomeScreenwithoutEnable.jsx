@@ -34,7 +34,7 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
           />
           <View style={styles.locationSelector}>
             <MapPin size={24} color="#1C1C1E" fill="none" />
-            <Text style={styles.locationMain}>Avadi, Chennai</Text>
+            <Text style={styles.locationMain}>CHOOSE YOUR LOCATION</Text>
             <View style={styles.titleHighlight} />
             <ChevronDown size={20} color="#5856D6" />
           </View>
@@ -63,7 +63,7 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
               onPress={() => navigation.navigate('TurfDetail')}
           >
             <Image
-              source={require('../../assets/turf img.png')}
+              source={require('../../assets/turf_img.png')}
               style={styles.exploreImage}
             />
             <View style={styles.exploreFooter}>
@@ -79,10 +79,13 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
          onPress={() => navigation.navigate('TurfDetail')}
           >
             <Image
-              source={require('../../assets/turf-app 1.png')}
+              source={require('../../assets/turf_app_1.png')}
               style={styles.exploreImage}
             />
             <Text style={styles.exploreText}>Cricket</Text>
+               <View style={styles.exploreBtn}>
+                <Text style={styles.exploreBtnText}>Explore</Text>
+              </View>
           </TouchableOpacity>
         </View>
 
@@ -97,7 +100,7 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
           onPress={() => navigation.navigate('TurfDetail')}
         >
           <Image
-            source={require('../../assets/turf img.png')}
+            source={require('../../assets/turf_img.png')}
             style={styles.recommendedImage}
           />
 
@@ -107,8 +110,8 @@ const HomeScreenWithoutEnable = ({ navigation }) => {
           >
             <Image
               source={isFavorite 
-                ? require('../../../assets/heart 2.png') 
-                : require('../../../assets/heart (1).png')
+                ? require('../../assets/heart_2.png')
+      : require('../../assets/heart_1.png')
               }
               style={styles.heartImage}
             />
