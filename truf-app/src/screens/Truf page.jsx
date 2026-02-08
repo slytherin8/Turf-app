@@ -34,14 +34,12 @@ import { COLORS, SPACING, SIZES } from '../constants/theme';
 const { width } = Dimensions.get('window');
 
 const GALLERY_IMAGES = [
-  'https://i.postimg.cc/85z1zQnK/galaxy-turf.jpg',
-  'https://i.postimg.cc/7Z9QDn5B/turf-bg.jpg',
-  'https://i.postimg.cc/mD8zQZ7y/game-mini-turf.jpg',
-  'https://i.postimg.cc/G3xV2W1n/hex-turf.jpg',
-  'https://i.postimg.cc/85z1zQnK/galaxy-turf.jpg',
-  'https://i.postimg.cc/G3xV2W1n/hex-turf.jpg',
-  'https://i.postimg.cc/7Z9QDn5B/turf-bg.jpg',
-  'https://i.postimg.cc/mD8zQZ7y/game-mini-turf.jpg',
+  require('../../assets/turf_img.png'),
+  require('../../assets/turf_app_1.png'),
+  require('../../assets/homebg.png'),
+  require('../../assets/turf_img.png'),
+  require('../../assets/turf_app_1.png'),
+  require('../../assets/homebg.png'),
 ];
 
 const REVIEWS = [
@@ -57,6 +55,7 @@ const REVIEWS = [
 export const TurfDetailScreen = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState('About');
   const [mainNavTab, setMainNavTab] = useState('Search');
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const renderAbout = () => (
     <View style={styles.venueInfo}>
@@ -76,16 +75,32 @@ export const TurfDetailScreen = ({ navigation, route }) => {
         <Text style={styles.sizeCount}>• 1 Court</Text>
       </View>
 
+      <Text style={styles.sectionTitle}>What We Offer</Text>
       <View style={styles.amenities}>
         <View style={styles.amenityRow}>
           <View style={styles.amenityItem}>
-            <Square size={24} color="#333" />
+            <Square size={20} color="#333" />
+            <View style={styles.amenityBadge}>
+              <Text style={styles.amenityText}>Artificial Turf</Text>
+            </View>
+          </View>
+          <View style={styles.amenityItem}>
+            <Flag size={20} color="#333" />
+            <View style={styles.amenityBadge}>
+              <Text style={styles.amenityText}>Dugout</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.amenityRow}>
+          <View style={styles.amenityItem}>
+            <Square size={20} color="#333" />
             <View style={styles.amenityBadge}>
               <Text style={styles.amenityText}>2000 sqft</Text>
             </View>
           </View>
           <View style={styles.amenityItem}>
-            <Bath size={24} color="#333" />
+            <Bath size={20} color="#333" />
             <View style={styles.amenityBadge}>
               <Text style={styles.amenityText}>Washroom</Text>
             </View>
@@ -94,13 +109,13 @@ export const TurfDetailScreen = ({ navigation, route }) => {
 
         <View style={styles.amenityRow}>
           <View style={styles.amenityItem}>
-            <Shirt size={24} color="#333" />
+            <Shirt size={20} color="#333" />
             <View style={styles.amenityBadge}>
               <Text style={styles.amenityText}>Changing Rooms</Text>
             </View>
           </View>
           <View style={styles.amenityItem}>
-            <Car size={24} color="#333" />
+            <Car size={20} color="#333" />
             <View style={styles.amenityBadge}>
               <Text style={styles.amenityText}>Car Parking</Text>
             </View>
@@ -109,7 +124,7 @@ export const TurfDetailScreen = ({ navigation, route }) => {
 
         <View style={styles.amenityRow}>
           <View style={styles.amenityItem}>
-            <Flag size={24} color="#333" />
+            <Flag size={20} color="#333" />
             <View style={styles.amenityBadge}>
               <Text style={styles.amenityText}>No rebound walls</Text>
             </View>
@@ -139,21 +154,28 @@ export const TurfDetailScreen = ({ navigation, route }) => {
           <Text style={styles.addBtnText}>Add photo</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.galleryGrid}>
-        {GALLERY_IMAGES.map((img, index) => (
-          <Image key={index} source={{ uri: img }} style={styles.galleryItem} />
-        ))}
-      </View>
+      
+      <ScrollView 
+        style={styles.galleryScrollView}
+        showsVerticalScrollIndicator={false}
+        nestedScrollEnabled={true}
+      >
+        <View style={styles.galleryGrid}>
+          {GALLERY_IMAGES.map((img, index) => (
+            <Image key={index} source={img} style={styles.galleryItem} />
+          ))}
+        </View>
 
-      {/* UPLOAD PLACEHOLDER */}
-      <View style={styles.uploadContainer}>
-        <View style={styles.uploadDashedBox}>
-          <CloudUpload size={40} color="#8E8E93" />
+        {/* UPLOAD PLACEHOLDER */}
+        <View style={styles.uploadContainer}>
+          <View style={styles.uploadDashedBox}>
+            <CloudUpload size={40} color="#8E8E93" />
+          </View>
+          <View style={styles.uploadLabelBox}>
+            <Text style={styles.uploadLabelText}>Upload</Text>
+          </View>
         </View>
-        <View style={styles.uploadLabelBox}>
-          <Text style={styles.uploadLabelText}>Upload</Text>
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 
@@ -190,7 +212,7 @@ export const TurfDetailScreen = ({ navigation, route }) => {
         {/* HERO SECTION */}
         <View style={styles.heroContainer}>
           <Image
-            source={{ uri: 'https://i.postimg.cc/mD8zQZ7y/game-mini-turf.jpg' }}
+            source={GALLERY_IMAGES[selectedImageIndex]}
             style={styles.heroImage}
           />
           <View style={styles.heroHeader}>
@@ -208,15 +230,16 @@ export const TurfDetailScreen = ({ navigation, route }) => {
           {/* GALLERY THUMBNAILS */}
           <View style={styles.thumbnailContainer}>
             {GALLERY_IMAGES.slice(0, 6).map((img, index) => (
-              <View
+              <TouchableOpacity
                 key={index}
                 style={[
                   styles.thumbnailWrapper,
-                  index === 0 && styles.activeThumbnail
+                  selectedImageIndex === index && styles.activeThumbnail
                 ]}
+                onPress={() => setSelectedImageIndex(index)}
               >
-                <Image source={{ uri: img }} style={styles.thumbnail} />
-              </View>
+                <Image source={img} style={styles.thumbnail} />
+              </TouchableOpacity>
             ))}
           </View>
         </View>
@@ -316,13 +339,14 @@ const styles = StyleSheet.create({
   },
   heroContainer: {
     width: '100%',
-    height: 280,
+    height: 300,
     backgroundColor: '#000',
   },
   heroImage: {
     width: '100%',
     height: '100%',
-    opacity: 0.8,
+    opacity: 0.9,
+    resizeMode: 'cover',
   },
   heroHeader: {
     position: 'absolute',
@@ -343,7 +367,7 @@ const styles = StyleSheet.create({
   },
   thumbnailContainer: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 16,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
@@ -351,20 +375,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   thumbnailWrapper: {
-    width: width / 6 - 8,
-    height: 40,
-    borderRadius: 6,
-    borderWidth: 1,
-    borderColor: '#FFF',
+    width: (width - 80) / 6,
+    height: 45,
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.5)',
     overflow: 'hidden',
+    backgroundColor: 'rgba(0,0,0,0.2)',
   },
   activeThumbnail: {
     borderColor: COLORS.accent,
-    borderWidth: 2,
+    borderWidth: 3,
+    shadowColor: COLORS.accent,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 5,
   },
   thumbnail: {
     width: '100%',
     height: '100%',
+    opacity: 0.9,
   },
   infoSection: {
     padding: 20,
@@ -516,18 +547,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
+    marginBottom: 8,
   },
   amenityBadge: {
     backgroundColor: '#1C1C1E',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 15,
-    marginLeft: 12,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+    marginLeft: 8,
   },
   amenityText: {
     color: COLORS.accent,
-    fontSize: 12,
-    fontWeight: 'bold',
+    fontSize: 11,
+    fontWeight: '600',
   },
   addressText: {
     fontSize: 14,
@@ -619,6 +651,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+  },
+  galleryScrollView: {
+    maxHeight: 400,
   },
   galleryItem: {
     width: (width - 60) / 2,
