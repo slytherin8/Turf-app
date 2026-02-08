@@ -16,114 +16,155 @@ import {
   ChevronLeft,
   ChevronRight,
   Share2,
+  Home,
+  Search,
+  Calendar,
+  User,
 } from 'lucide-react-native';
 import { COLORS, SPACING } from '../constants/theme';
 
 const { width } = Dimensions.get('window');
 
 const DAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
-const DATES = Array.from({ length: 31 }, (_, i) => i + 1);
+const MORNING_TIMES = ['5 am', '7 am', '9 am', '11 am'];
+const AFTERNOON_TIMES = ['12 pm', '2 pm', '4 pm'];
+const EVENING_TIMES = ['6 pm', '8 pm', '10 pm'];
+const NIGHT_TIMES = ['11 pm', '12 am', '1 am'];
 
 export const BookingScreen = ({ navigation }) => {
-  const [selectedDate, setSelectedDate] = useState(10);
+  const [selectedDate, setSelectedDate] = useState(14);
   const [selectedCourt, setSelectedCourt] = useState('5 vs 5');
-  const [activeTimeTab, setActiveTimeTab] = useState('Evening');
+  const [activeTimeTab, setActiveTimeTab] = useState('Morning');
+  const [selectedTime, setSelectedTime] = useState('5 am');
+  const [currentMonth, setCurrentMonth] = useState('October 2025');
+
+  const getDatesInMonth = () => {
+    return Array.from({ length: 31 }, (_, i) => i + 1);
+  };
+
+  const getTimesForTab = () => {
+    switch (activeTimeTab) {
+      case 'Morning': return MORNING_TIMES;
+      case 'Afternoon': return AFTERNOON_TIMES;
+      case 'Evening': return EVENING_TIMES;
+      case 'Night': return NIGHT_TIMES;
+      default: return MORNING_TIMES;
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-
-      {/* ---------------- SCROLL CONTENT ---------------- */}
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 220 }}
+        contentContainerStyle={{ paddingBottom: 120 }}
       >
-
         {/* HEADER */}
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-            <ArrowLeft size={20} color="#FFF" />
+            <ArrowLeft size={24} color="#000" />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Book Your Slot</Text>
           <View style={{ width: 32 }} />
         </View>
 
-        {/* TURF INFO */}
-        <View style={styles.summaryCard}>
-          <Image
-            source={{ uri: 'https://i.postimg.cc/mD8zQZ7y/game-mini-turf.jpg' }}
-            style={styles.summaryImage}
-          />
-          <View style={styles.summaryInfo}>
-            <Text style={styles.turfName}>Game Mini Turf</Text>
-            <Text style={styles.locationText}>Avadi, Chennai</Text>
-
-            <View style={styles.ratingRow}>
-              {[1, 2, 3, 4].map(i => (
-                <Star key={i} size={14} color="#FFD700" fill="#FFD700" />
-              ))}
-              <Star size={14} color="#D1D1D1" fill="#D1D1D1" />
-              <Text style={styles.reviewCount}>(84 reviews)</Text>
+        {/* TURF INFO CARD */}
+        <View style={styles.turfInfoCard}>
+          <View style={styles.turfHeader}>
+            <View style={styles.turfDetails}>
+              <Text style={styles.turfName}>Game Mini Turf</Text>
+              <Text style={styles.locationText}>Avadi,Chennai</Text>
+            </View>
+            <View style={styles.ratingSection}>
+              <View style={styles.starsRow}>
+                {[1, 2, 3, 4].map(i => (
+                  <Star key={i} size={16} color="#FFD700" fill="#FFD700" />
+                ))}
+                <Star size={16} color="#D1D1D1" fill="#D1D1D1" />
+              </View>
+              <Text style={styles.reviewCount}>(84) reviews</Text>
             </View>
           </View>
         </View>
 
-        {/* COURT TYPE */}
+        {/* COURT TYPE SECTION */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Court Type</Text>
-
-          <View style={styles.row}>
-            {['5 vs 5', '7 vs 7'].map(type => (
+          <View style={styles.courtTypeContainer}>
+            <View style={styles.courtRow}>
               <TouchableOpacity
-                key={type}
                 style={[
-                  styles.courtBadge,
-                  selectedCourt === type && styles.activeCourtBadge,
+                  styles.courtChip,
+                  selectedCourt === '5 vs 5' && styles.activeCourtChip,
                 ]}
-                onPress={() => setSelectedCourt(type)}
+                onPress={() => setSelectedCourt('5 vs 5')}
               >
                 <Text
                   style={[
-                    styles.courtBadgeText,
-                    selectedCourt === type && styles.activeCourtText,
+                    styles.courtChipText,
+                    selectedCourt === '5 vs 5' && styles.activeCourtText,
                   ]}
                 >
-                  {type}
+                  5 vs 5
                 </Text>
               </TouchableOpacity>
-            ))}
+              <Text style={styles.courtCount}>• 2 Courts</Text>
+            </View>
+            <View style={styles.courtRow}>
+              <TouchableOpacity
+                style={[
+                  styles.courtChip,
+                  selectedCourt === '7 vs 7' && styles.activeCourtChip,
+                ]}
+                onPress={() => setSelectedCourt('7 vs 7')}
+              >
+                <Text
+                  style={[
+                    styles.courtChipText,
+                    selectedCourt === '7 vs 7' && styles.activeCourtText,
+                  ]}
+                >
+                  7 vs 7
+                </Text>
+              </TouchableOpacity>
+              <Text style={styles.courtCount}>• 1 Court</Text>
+            </View>
           </View>
         </View>
 
-        {/* CALENDAR */}
+        {/* CALENDAR SECTION */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Select Date</Text>
-
+          <Text style={styles.sectionTitle}>Select date</Text>
           <View style={styles.calendarCard}>
             <View style={styles.calendarHeader}>
-              <Text style={styles.monthText}>October 2025</Text>
+              <Text style={styles.monthText}>{currentMonth}</Text>
               <View style={styles.calendarNav}>
-                <ChevronLeft size={18} />
-                <ChevronRight size={18} />
+                <TouchableOpacity style={styles.navButton}>
+                  <ChevronLeft size={20} color="#666" />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.navButton}>
+                  <ChevronRight size={20} color="#666" />
+                </TouchableOpacity>
               </View>
             </View>
 
-            <View style={styles.daysRow}>
+            <View style={styles.daysHeader}>
               {DAYS.map(day => (
                 <Text key={day} style={styles.dayLabel}>{day}</Text>
               ))}
             </View>
 
             <View style={styles.datesGrid}>
+              {/* Empty cells for month start */}
               {Array.from({ length: 3 }).map((_, i) => (
-                <View key={i} style={styles.dateItem} />
+                <View key={`empty-${i}`} style={styles.dateCell} />
               ))}
-
-              {DATES.map(date => (
+              
+              {getDatesInMonth().map(date => (
                 <TouchableOpacity
                   key={date}
                   style={[
-                    styles.dateItem,
-                    selectedDate === date && styles.activeDate,
+                    styles.dateCell,
+                    selectedDate === date && styles.activeDateCell,
                   ]}
                   onPress={() => setSelectedDate(date)}
                 >
@@ -141,30 +182,54 @@ export const BookingScreen = ({ navigation }) => {
           </View>
         </View>
 
-        {/* TIME */}
+        {/* TIME SELECTION */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Select Time of Day</Text>
-
-          <View style={styles.timeRow}>
-            {['Morning', 'Afternoon', 'Evening', 'Night'].map(time => (
+          
+          {/* Time of Day Tabs */}
+          <View style={styles.timeTabsContainer}>
+            {['Morning', 'Afternoon', 'Evening', 'Night'].map(timeSlot => (
               <TouchableOpacity
-                key={time}
+                key={timeSlot}
                 style={[
                   styles.timeTab,
-                  activeTimeTab === time && styles.activeTimeTab,
+                  activeTimeTab === timeSlot && styles.activeTimeTab,
                 ]}
-                onPress={() => setActiveTimeTab(time)}
+                onPress={() => setActiveTimeTab(timeSlot)}
               >
                 <View
                   style={[
                     styles.timeDot,
-                    activeTimeTab === time && styles.activeTimeDot,
+                    activeTimeTab === timeSlot && styles.activeTimeDot,
                   ]}
                 />
                 <Text
                   style={[
-                    styles.timeText,
-                    activeTimeTab === time && styles.activeTimeText,
+                    styles.timeTabText,
+                    activeTimeTab === timeSlot && styles.activeTimeTabText,
+                  ]}
+                >
+                  {timeSlot}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          {/* Time Slots */}
+          <View style={styles.timeSlotsContainer}>
+            {getTimesForTab().map(time => (
+              <TouchableOpacity
+                key={time}
+                style={[
+                  styles.timeSlot,
+                  selectedTime === time && styles.activeTimeSlot,
+                ]}
+                onPress={() => setSelectedTime(time)}
+              >
+                <Text
+                  style={[
+                    styles.timeSlotText,
+                    selectedTime === time && styles.activeTimeSlotText,
                   ]}
                 >
                   {time}
@@ -175,183 +240,342 @@ export const BookingScreen = ({ navigation }) => {
         </View>
       </ScrollView>
 
-      {/* ---------------- FIXED BOTTOM ---------------- */}
-      <View style={styles.fixedBottom}>
-
-        {/* MINI NAV */}
-        <View style={styles.miniBottomNav}>
-          <View style={styles.miniIcon} />
-          <View style={styles.miniIcon} />
-          <View style={styles.activeMini}>
-            <Text style={styles.activeMiniText}>Booking</Text>
-          </View>
-          <View style={styles.miniIcon} />
-        </View>
-
-        {/* ACTIONS */}
-        <View style={styles.footer}>
+      {/* FIXED BOTTOM SECTION */}
+      <View style={styles.bottomSection}>
+        <View style={styles.actionButtons}>
           <TouchableOpacity
-            style={styles.nextBtn}
+            style={styles.nextButton}
             onPress={() => navigation.navigate('ReviewPayment')}
           >
-            <Text style={styles.nextText}>Next</Text>
+            <Text style={styles.nextButtonText}>Next</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity style={styles.shareBtn}>
-            <Share2 size={22} color={COLORS.accent} />
+          <TouchableOpacity style={styles.shareButton}>
+            <Share2 size={20} color={COLORS.accent} />
           </TouchableOpacity>
         </View>
 
+        {/* BOTTOM NAVIGATION */}
+        <View style={styles.bottomNav}>
+          <TouchableOpacity style={styles.navItem}>
+            <Home size={24} color="#FFF" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navItem}>
+            <Search size={24} color="#FFF" />
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.navItem, styles.activeNavItem]}>
+            <Calendar size={20} color="#000" />
+            <Text style={styles.activeNavText}>Booking</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navItem}>
+            <User size={24} color="#FFF" />
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
 };
 
-/* ---------------- STYLES ---------------- */
-
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.white },
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
 
   header: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
   },
   backBtn: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: '#000',
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#F8F8F8',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  headerTitle: { fontSize: 18, fontWeight: 'bold' },
-
-  summaryCard: { flexDirection: 'row', padding: 20 },
-  summaryImage: { width: 90, height: 90, borderRadius: 12 },
-  summaryInfo: { marginLeft: 16 },
-  turfName: { fontSize: 18, fontWeight: 'bold' },
-  locationText: { color: '#777', marginVertical: 4 },
-  ratingRow: { flexDirection: 'row', alignItems: 'center' },
-  reviewCount: { fontSize: 12, marginLeft: 6 },
-
-  section: { paddingHorizontal: 20, marginBottom: 20 },
-  sectionTitle: { fontSize: 16, fontWeight: 'bold', marginBottom: 12 },
-
-  row: { flexDirection: 'row', gap: 16 },
-  courtBadge: {
-    backgroundColor: COLORS.accent,
-    paddingHorizontal: 16,
-    paddingVertical: 6,
-    borderRadius: 16,
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#000',
   },
-  activeCourtBadge: { backgroundColor: '#000' },
-  courtBadgeText: { fontSize: 12 },
-  activeCourtText: { color: COLORS.accent, fontWeight: 'bold' },
+
+  turfInfoCard: {
+    marginHorizontal: 20,
+    marginBottom: 24,
+  },
+  turfHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
+  turfDetails: {
+    flex: 1,
+  },
+  turfName: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#000',
+    marginBottom: 4,
+  },
+  locationText: {
+    fontSize: 16,
+    color: '#8E8E93',
+    marginBottom: 8,
+  },
+  ratingSection: {
+    alignItems: 'flex-end',
+  },
+  starsRow: {
+    flexDirection: 'row',
+    marginBottom: 4,
+  },
+  reviewCount: {
+    fontSize: 12,
+    color: '#8E8E93',
+  },
+
+  section: {
+    marginHorizontal: 20,
+    marginBottom: 24,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#000',
+    marginBottom: 16,
+  },
+
+  courtTypeContainer: {
+    gap: 12,
+  },
+  courtRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  courtChip: {
+    backgroundColor: '#F8F8F8',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
+  },
+  activeCourtChip: {
+    backgroundColor: '#BFFF00',
+    borderColor: '#BFFF00',
+  },
+  courtChipText: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#666',
+  },
+  activeCourtText: {
+    color: '#000',
+    fontWeight: '600',
+  },
+  courtCount: {
+    fontSize: 14,
+    color: '#8E8E93',
+    marginLeft: 12,
+  },
 
   calendarCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 20,
     borderWidth: 1,
-    borderColor: '#EEE',
-    borderRadius: 14,
-    padding: 16,
+    borderColor: '#F0F0F0',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    elevation: 3,
   },
   calendarHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  monthText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#000',
+  },
+  calendarNav: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  navButton: {
+    padding: 4,
+  },
+
+  daysHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     marginBottom: 12,
   },
-  monthText: { fontWeight: 'bold' },
-  calendarNav: { flexDirection: 'row', gap: 10 },
+  dayLabel: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#8E8E93',
+    textAlign: 'center',
+    width: (width - 80) / 7,
+  },
 
-  daysRow: { flexDirection: 'row', justifyContent: 'space-between' },
-  dayLabel: { width: width / 9, textAlign: 'center', fontSize: 12 },
-
-  datesGrid: { flexDirection: 'row', flexWrap: 'wrap' },
-  dateItem: {
-    width: width / 9,
-    height: width / 9,
+  datesGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  dateCell: {
+    width: (width - 80) / 7,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 8,
   },
-  activeDate: {
-    backgroundColor: COLORS.accent,
-    borderRadius: width / 18,
+  activeDateCell: {
+    backgroundColor: '#BFFF00',
+    borderRadius: 20,
   },
-  dateText: { fontSize: 12 },
-  activeDateText: { fontWeight: 'bold' },
+  dateText: {
+    fontSize: 16,
+    color: '#000',
+  },
+  activeDateText: {
+    fontWeight: '600',
+    color: '#000',
+  },
 
-  timeRow: { flexDirection: 'row', justifyContent: 'space-between' },
-  timeTab: { flexDirection: 'row', alignItems: 'center' },
+  timeTabsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  timeTab: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
   activeTimeTab: {
-    backgroundColor: '#F2F2F7',
-    paddingHorizontal: 10,
-    borderRadius: 14,
+    backgroundColor: '#F8F8F8',
   },
   timeDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: '#CCC',
-    marginRight: 6,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#D1D1D6',
+    marginRight: 8,
   },
-  activeTimeDot: { backgroundColor: COLORS.accent },
-  timeText: { fontSize: 12, color: '#777' },
-  activeTimeText: { color: '#000', fontWeight: 'bold' },
+  activeTimeDot: {
+    backgroundColor: '#BFFF00',
+  },
+  timeTabText: {
+    fontSize: 14,
+    color: '#8E8E93',
+  },
+  activeTimeTabText: {
+    color: '#000',
+    fontWeight: '500',
+  },
 
-  fixedBottom: {
+  timeSlotsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  timeSlot: {
+    backgroundColor: '#F8F8F8',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
+  },
+  activeTimeSlot: {
+    backgroundColor: '#BFFF00',
+    borderColor: '#BFFF00',
+  },
+  timeSlotText: {
+    fontSize: 14,
+    color: '#666',
+  },
+  activeTimeSlotText: {
+    color: '#000',
+    fontWeight: '500',
+  },
+
+  bottomSection: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: COLORS.white,
-    paddingBottom: Platform.OS === 'ios' ? 24 : 10,
-    elevation: 20,
+    backgroundColor: '#FFFFFF',
+    paddingTop: 16,
+    paddingBottom: Platform.OS === 'ios' ? 34 : 16,
   },
 
-  miniBottomNav: {
+  actionButtons: {
     flexDirection: 'row',
-    backgroundColor: '#000',
-    marginHorizontal: 20,
-    borderRadius: 30,
-    padding: 10,
-    justifyContent: 'space-between',
-  },
-  miniIcon: {
-    width: 18,
-    height: 18,
-    borderWidth: 1,
-    borderColor: '#FFF',
-    borderRadius: 4,
-  },
-  activeMini: {
-    backgroundColor: COLORS.accent,
-    paddingHorizontal: 18,
-    paddingVertical: 6,
-    borderRadius: 18,
-  },
-  activeMiniText: { fontWeight: 'bold' },
-
-  footer: {
-    flexDirection: 'row',
-    padding: 20,
     alignItems: 'center',
+    paddingHorizontal: 20,
+    marginBottom: 16,
   },
-  nextBtn: {
+  nextButton: {
     flex: 1,
+    backgroundColor: '#1C1C1E',
     height: 50,
-    backgroundColor: '#000',
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 14,
+    marginRight: 12,
   },
-  nextText: { color: '#FFF', fontWeight: 'bold' },
-  shareBtn: {
+  nextButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  shareButton: {
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#000',
+    backgroundColor: '#1C1C1E',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  bottomNav: {
+    flexDirection: 'row',
+    backgroundColor: '#1C1C1E',
+    marginHorizontal: 20,
+    borderRadius: 30,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  navItem: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+  },
+  activeNavItem: {
+    flexDirection: 'row',
+    backgroundColor: '#BFFF00',
+    borderRadius: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  activeNavText: {
+    color: '#000',
+    fontSize: 14,
+    fontWeight: '600',
+    marginLeft: 6,
   },
 });
