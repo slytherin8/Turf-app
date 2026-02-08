@@ -22,6 +22,7 @@ import { LogoutScreen } from '../screens/LogoutScreen';
 import { ChangeEmailScreen } from '../screens/ChangeEmailScreen';
 import { ChangePasswordScreen } from '../screens/ChangePasswordScreen';
 import { AccountUpdateVerificationScreen } from '../screens/AccountUpdateVerificationScreen';
+
 import { TurfGalleryPage } from '../screens/TurfGalleryPage';
 import { TurfReviewPage } from '../screens/TurfReviewPage';
 
@@ -80,6 +81,7 @@ export function AppNavigator() {
         <Stack.Screen name="ReviewPayment" component={ReviewPaymentScreen} />
         <Stack.Screen name="PaymentMethod" component={PaymentMethodScreen} />
         <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} />
+       
         <Stack.Screen name="MyBooking" component={MyBookingScreen} />
         <Stack.Screen name="AccountSetting" component={AccountSettingScreen} />
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
