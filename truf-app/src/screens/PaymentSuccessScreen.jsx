@@ -1,52 +1,74 @@
-import React from 'react';
 import {
     View,
     Text,
     StyleSheet,
     TouchableOpacity,
-    Dimensions,
+    Image,
+    ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Share2, CreditCard, ChevronDown, Check } from 'lucide-react-native';
-import { COLORS, SPACING, SIZES } from '../constants/theme';
-
-const { width } = Dimensions.get('window');
+import { Share2 } from 'lucide-react-native';
 
 export const PaymentSuccessScreen = ({ navigation }) => {
+    const handleRedirectToHome = () => {
+        // Navigate to home screen and reset navigation stack
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Main' }],
+        });
+    };
+
+    const handleShare = () => {
+        // Handle share functionality
+        console.log('Share booking details');
+    };
+
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.content}>
-                <View style={styles.successBox}>
-                    <Text style={styles.successTitle}>
-                        <Text style={styles.paymentText}>Payment</Text> successful
-                    </Text>
-
-                    <View style={styles.illustration}>
-                        <View style={styles.cardOutline}>
-                            <View style={styles.cardStrip} />
-                            <View style={styles.checkCircle}>
-                                <Check size={24} color="#000" strokeWidth={3} />
-                            </View>
-                        </View>
+            <ScrollView
+                contentContainerStyle={styles.scrollContent}
+                showsVerticalScrollIndicator={false}
+            >
+                <View style={styles.content}>
+                    {/* SUCCESS HEADING WITH HIGHLIGHT */}
+                    <View style={styles.headingContainer}>
+                        <Text style={styles.heading}>
+                            <Text style={styles.paymentText}>Payment</Text> successful
+                        </Text>
+                        <View style={styles.titleHighlight} />
                     </View>
 
-                    <Text style={styles.message}>
-                        Kindly reach out to the respective turf venue for further clarification.
-                    </Text>
-                </View>
+                    {/* SUCCESS ICON - CREDIT SCORE IMAGE */}
+                    <View style={styles.iconContainer}>
+                        <Image
+                            source={require('../../assets/credit_score.png')}
+                            style={styles.creditScoreImage}
+                            resizeMode="contain"
+                        />
+                    </View>
 
-                <View style={styles.footer}>
-                    <TouchableOpacity
-                        style={styles.homeBtn}
-                        onPress={() => navigation.navigate('Main')}
-                    >
-                        <Text style={styles.homeBtnText}>Redirect to home</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.shareBtn}>
-                        <Share2 size={24} color={COLORS.accent} />
-                    </TouchableOpacity>
+                    {/* CONFIRMATION MESSAGE */}
+                    <View style={styles.messageContainer}>
+                        <Text style={styles.message}>
+                            Kindly reach out to the respective turf venue for further clarification.
+                        </Text>
+                    </View>
+
+                    {/* BOTTOM ACTIONS */}
+                    <View style={styles.actionsContainer}>
+                        <TouchableOpacity
+                            style={styles.redirectButton}
+                            onPress={handleRedirectToHome}
+                        >
+                            <Text style={styles.redirectText}>Redirect to home</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
+                            <Share2 size={20} color="#BFFF00" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };
@@ -54,90 +76,89 @@ export const PaymentSuccessScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.white,
+        backgroundColor: '#FFFFFF',
+    },
+    scrollContent: {
+        flexGrow: 1,
+        justifyContent: 'center',
+        paddingHorizontal: 20,
+        paddingVertical: 40,
     },
     content: {
-        flex: 1,
-        justifyContent: 'center',
-        paddingHorizontal: 40,
-    },
-    successBox: {
         alignItems: 'center',
-        marginBottom: 60,
+        justifyContent: 'center',
+        minHeight: '80%',
     },
-    successTitle: {
+
+    headingContainer: {
+        marginBottom: 60,
+        position: 'relative',
+        alignItems: 'center',
+    },
+    heading: {
         fontSize: 24,
         fontWeight: 'bold',
         color: '#000',
-        marginBottom: 40,
         textAlign: 'center',
-    },
-    paymentText: {
-        color: '#BFFF00',
-        backgroundColor: '#0A4A29',
+        zIndex: 2,
         paddingHorizontal: 4,
     },
-    illustration: {
-        width: 140,
-        height: 100,
-        justifyContent: 'center',
+    paymentText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#000',
+    },
+    titleHighlight: {
+       position: 'absolute',
+    bottom: 0,
+    right: '59%',
+    height: 10,
+    width: 80,
+    backgroundColor: '#BFFF00',
+    zIndex: 1,
+    },
+
+    iconContainer: {
+        marginBottom: 60,
         alignItems: 'center',
-        marginBottom: 40,
     },
-    cardOutline: {
-        width: 100,
-        height: 70,
-        borderWidth: 3,
-        borderColor: '#000',
-        borderRadius: 8,
-        position: 'relative',
-        justifyContent: 'center',
+    creditScoreImage: {
+        width: 120,
+        height: 120,
     },
-    cardStrip: {
-        height: 10,
-        backgroundColor: '#000',
-        width: '100%',
-        position: 'absolute',
-        top: 10,
-    },
-    checkCircle: {
-        position: 'absolute',
-        bottom: -15,
-        right: -15,
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-        backgroundColor: '#BFFF00',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: 2,
-        borderColor: '#FFF',
+
+    messageContainer: {
+        marginBottom: 80,
+        paddingHorizontal: 20,
     },
     message: {
-        fontSize: 12,
+        fontSize: 16,
         color: '#8E8E93',
         textAlign: 'center',
-        lineHeight: 18,
+        lineHeight: 24,
     },
-    footer: {
+
+    actionsContainer: {
         flexDirection: 'row',
         alignItems: 'center',
+        gap: 16,
+        width: '100%',
+        maxWidth: 320,
     },
-    homeBtn: {
+    redirectButton: {
         flex: 1,
         backgroundColor: '#1C1C1E',
         height: 50,
         borderRadius: 25,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 16,
     },
-    homeBtnText: {
-        color: COLORS.white,
+    redirectText: {
         fontSize: 16,
-        fontWeight: 'bold',
+        fontWeight: '600',
+        color: '#FFFFFF',
     },
-    shareBtn: {
+    shareButton: {
         width: 50,
         height: 50,
         borderRadius: 25,
