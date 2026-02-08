@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     View,
     Text,
@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Search, MapPin, ChevronDown, Heart, Star } from 'lucide-react-native';
-import { COLORS, SPACING, SIZES } from '../constants/theme';
+import { COLORS, SPACING, SIZES, COMMON_STYLES } from '../constants/theme';
 import BottomNav from '../components/BottomNav';
 
 const { width } = Dimensions.get('window');
@@ -69,24 +69,10 @@ export const HomeScreen = ({ navigation }) => {
             onPress={() => navigation.navigate('TurfDetail', { turf: item })}
         >
             <Image source={{ uri: item.image }} style={styles.recommendedImage} />
-            <TouchableOpacity style={styles.wishlistBtn}>
-                <Heart size={20} color={COLORS.accent} />
-            </TouchableOpacity>
-            <View style={styles.cardInfo}>
-                <Text style={styles.turfName}>{item.name}</Text>
-                <View style={styles.locationRow}>
-                    <MapPin size={12} color={COLORS.secondary} />
-                    <Text style={styles.locationText}>{item.location}</Text>
-                </View>
-                <View style={styles.ratingRow}>
-                    {[1, 2, 3, 4].map((i) => (
-                        <Star key={i} size={12} color="#FFD700" fill="#FFD700" />
-                    ))}
-                    <Star size={12} color="#D1D1D1" fill="#D1D1D1" />
-                    <Text style={styles.reviewText}>({item.reviews}) reviews</Text>
-                </View>
-                <View style={styles.priceContainer}>
-                    <Text style={styles.priceText}>₹{item.price}<Text style={styles.perHr}>/hr</Text></Text>
+            <View style={styles.recommendedOverlay}>
+                <Text style={styles.recommendedText}>{item.name}</Text>
+                <View style={styles.recommendedBtn}>
+                    <Text style={styles.recommendedBtnText}>Explore</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -290,9 +276,9 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     recommendedCard: {
-        width: width * 0.5,
+        width: width * 0.45,
         backgroundColor: COLORS.white,
-        borderRadius: 10,
+        borderRadius: 12,
         marginRight: 16,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
@@ -306,63 +292,33 @@ const styles = StyleSheet.create({
     recommendedImage: {
         width: '100%',
         height: 120,
-        borderRadius: 12,
-        marginTop: 8,
-        marginHorizontal: 8,
-        width: (width * 0.5) - 16,
     },
-    wishlistBtn: {
+    recommendedOverlay: {
         position: 'absolute',
-        top: 15,
-        right: 15,
-        backgroundColor: 'rgba(0,0,0,0.3)',
-        borderRadius: 20,
-        padding: 5,
-    },
-    cardInfo: {
+        bottom: 0,
+        left: 0,
+        right: 0,
         padding: 12,
+        backgroundColor: 'rgba(0,0,0,0.6)',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
-    turfName: {
+    recommendedText: {
         fontSize: 16,
-        fontWeight: 'regular',
+        fontWeight: '600',
+        color: '#fff',
+    },
+    recommendedBtn: {
+        backgroundColor: '#9AFF00',
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        borderRadius: 20,
+    },
+    recommendedBtnText: {
         color: '#000',
-        marginBottom: 4,
-    },
-    locationRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 6,
-    },
-    locationText: {
         fontSize: 12,
-        color: COLORS.secondary,
-        marginLeft: 4,
-    },
-    ratingRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 8,
-    },
-    reviewText: {
-        fontSize: 12,
-        color: '#8E8E93',
-        marginLeft: 8,
-    },
-    priceContainer: {
-        backgroundColor: '#192126',
-        alignSelf: 'flex-start',
-        paddingHorizontal: 8,
-        paddingVertical: 4,
-
-    },
-    priceText: {
-        fontSize: 16,
-
-        color: COLORS.accent,
-    },
-    perHr: {
-        fontSize: 10,
-        color: COLORS.white,
+        fontWeight: '600',
     },
     nearbyList: {
         paddingHorizontal: 20,
