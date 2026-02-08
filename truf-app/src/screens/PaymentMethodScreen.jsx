@@ -1,208 +1,223 @@
-import React from 'react';
+import { useState } from 'react';
 import {
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    ScrollView,
-    Dimensions,
-    Image,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, ChevronRight, CreditCard, Plus } from 'lucide-react-native';
-import { COLORS, SPACING, SIZES } from '../constants/theme';
-
-const { width } = Dimensions.get('window');
-
-const PAYMENT_METHODS = {
-    RECOMMENDED: [
-        { id: 'bhim', name: 'BHIM UPI', icon: 'https://i.postimg.cc/qvvY8Z7N/logo-turf.png' }, // Placeholder icons
-        { id: 'paytm', name: 'Paytm UPI', icon: 'https://i.postimg.cc/qvvY8Z7N/logo-turf.png' },
-        { id: 'supermoney', name: 'supermoney UPI', icon: 'https://i.postimg.cc/qvvY8Z7N/logo-turf.png' },
-    ],
-    UPI: [
-        { id: 'gpay', name: 'Google pay UPI', icon: 'https://i.postimg.cc/qvvY8Z7N/logo-turf.png' },
-        { id: 'phonepe', name: 'phonepe UPI', icon: 'https://i.postimg.cc/qvvY8Z7N/logo-turf.png' },
-    ]
-};
 
 export const PaymentMethodScreen = ({ navigation }) => {
-    const handlePaymentSelect = () => {
-        navigation.navigate('PaymentSuccess');
-    };
+  const [selectedMethod, setSelectedMethod] = useState(null);
 
-    const renderMethod = (item) => (
-        <TouchableOpacity
-            key={item.id}
-            style={styles.methodItem}
-            onPress={handlePaymentSelect}
-        >
-            <View style={styles.methodLeft}>
-                <View style={styles.iconBox}>
-                    {/* Placeholder for actual logos */}
-                    <Image source={{ uri: item.icon }} style={styles.methodIcon} resizeMode="contain" />
-                </View>
-                <Text style={styles.methodName}>{item.name}</Text>
-            </View>
-            <ChevronRight size={20} color="#8E8E93" />
-        </TouchableOpacity>
-    );
+  const paymentMethods = {
+    recommended: [
+      {
+        id: 'bhim',
+        name: 'BHIM UPI',
+        icon: '💳',
+        type: 'upi'
+      },
+      {
+        id: 'paytm',
+        name: 'Paytm UPI',
+        icon: '📱',
+        type: 'upi'
+      },
+      {
+        id: 'supermoney',
+        name: 'supermoney UPI',
+        icon: '💰',
+        type: 'upi'
+      }
+    ],
+    cards: [
+      {
+        id: 'add_card',
+        name: 'Add credit or debit cards',
+        icon: <CreditCard size={20} color="#666" />,
+        type: 'card'
+      }
+    ],
+    upiApps: [
+      {
+        id: 'googlepay',
+        name: 'Google pay UPI',
+        icon: '🔴',
+        type: 'upi'
+      },
+      {
+        id: 'phonepe',
+        name: 'phonepe UPI',
+        icon: '🟣',
+        type: 'upi'
+      },
+      {
+        id: 'add_upi',
+        name: 'Add new UPI ID',
+        icon: <Plus size={20} color="#666" />,
+        type: 'upi'
+      }
+    ]
+  };
 
-    return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-                    <ArrowLeft size={24} color="#BFFF00" />
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>select payment method</Text>
-                <View style={{ width: 32 }} />
-            </View>
+  const handleMethodSelect = (method) => {
+    setSelectedMethod(method.id);
+    // Navigate to payment processing or success screen
+    setTimeout(() => {
+      navigation.navigate('PaymentSuccess');
+    }, 500);
+  };
 
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.section}>
-                    <View style={styles.sectionHeader}>
-                        <View style={styles.line} />
-                        <Text style={styles.sectionHeaderText}>RECOMMENDED</Text>
-                        <View style={styles.line} />
-                    </View>
-                    <View style={styles.methodsList}>
-                        {PAYMENT_METHODS.RECOMMENDED.map(renderMethod)}
-                    </View>
-                </View>
+  const renderPaymentOption = (method) => (
+    <TouchableOpacity
+      key={method.id}
+      style={[
+        styles.paymentOption,
+        selectedMethod === method.id && styles.selectedOption
+      ]}
+      onPress={() => handleMethodSelect(method)}
+    >
+      <View style={styles.optionContent}>
+        <View style={styles.optionLeft}>
+          {typeof method.icon === 'string' ? (
+            <Text style={styles.iconText}>{method.icon}</Text>
+          ) : (
+            method.icon
+          )}
+          <Text style={styles.optionName}>{method.name}</Text>
+        </View>
+        <ChevronRight size={20} color="#8E8E93" />
+      </View>
+    </TouchableOpacity>
+  );
 
-                <View style={styles.section}>
-                    <View style={styles.sectionHeader}>
-                        <View style={styles.line} />
-                        <Text style={styles.sectionHeaderText}>CARDS</Text>
-                        <View style={styles.line} />
-                    </View>
-                    <TouchableOpacity
-                        style={styles.methodItem}
-                        onPress={handlePaymentSelect}
-                    >
-                        <View style={styles.methodLeft}>
-                            <View style={styles.iconBox}>
-                                <CreditCard size={20} color="#000" />
-                            </View>
-                            <Text style={styles.methodName}>Add credit or debit cards</Text>
-                        </View>
-                        <ChevronRight size={20} color="#8E8E93" />
-                    </TouchableOpacity>
-                </View>
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* HEADER */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+            <ArrowLeft size={24} color="#BFFF00" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>select payment method</Text>
+          <View style={{ width: 40 }} />
+        </View>
 
-                <View style={styles.section}>
-                    <View style={styles.sectionHeader}>
-                        <View style={styles.line} />
-                        <Text style={styles.sectionHeaderText}>PAY BY ANY UPI APP</Text>
-                        <View style={styles.line} />
-                    </View>
-                    <View style={styles.methodsList}>
-                        {PAYMENT_METHODS.UPI.map(renderMethod)}
-                        <TouchableOpacity
-                            style={styles.methodItem}
-                            onPress={handlePaymentSelect}
-                        >
-                            <View style={styles.methodLeft}>
-                                <View style={styles.iconBox}>
-                                    <Plus size={20} color="#000" />
-                                </View>
-                                <Text style={styles.methodName}>Add new UPI ID</Text>
-                            </View>
-                            <ChevronRight size={20} color="#8E8E93" />
-                        </TouchableOpacity>
-                    </View>
-                </View>
+        {/* RECOMMENDED SECTION */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>RECOMMENDED</Text>
+          <View style={styles.optionsContainer}>
+            {paymentMethods.recommended.map(renderPaymentOption)}
+          </View>
+        </View>
 
-                <View style={{ height: 40 }} />
-            </ScrollView>
-        </SafeAreaView>
-    );
+        {/* CARDS SECTION */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>CARDS</Text>
+          <View style={styles.optionsContainer}>
+            {paymentMethods.cards.map(renderPaymentOption)}
+          </View>
+        </View>
+
+        {/* PAY BY ANY UPI APP SECTION */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>PAY BY ANY UPI APP</Text>
+          <View style={styles.optionsContainer}>
+            {paymentMethods.upiApps.map(renderPaymentOption)}
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.white,
+  container: {
+    flex: 1,
+    backgroundColor: '#F8F8F8',
+  },
+
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    backgroundColor: '#FFFFFF',
+  },
+  backBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#1C1C1E',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#000',
+  },
+
+  section: {
+    marginTop: 24,
+    paddingHorizontal: 20,
+  },
+  sectionTitle: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#8E8E93',
+    letterSpacing: 0.5,
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+
+  optionsContainer: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
     },
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingHorizontal: 20,
-        paddingVertical: 15,
-        borderBottomWidth: 1,
-        borderBottomColor: '#F2F2F7',
-    },
-    backBtn: {
-        backgroundColor: '#000',
-        width: 32,
-        height: 32,
-        borderRadius: 16,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    headerTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#000',
-        flex: 1,
-        textAlign: 'center',
-    },
-    section: {
-        marginTop: 24,
-    },
-    sectionHeader: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 20,
-        marginBottom: 16,
-    },
-    line: {
-        flex: 1,
-        height: 1,
-        backgroundColor: '#E5E5EA',
-    },
-    sectionHeaderText: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        color: '#8E8E93',
-        marginHorizontal: 16,
-    },
-    methodsList: {
-        paddingHorizontal: 16,
-    },
-    methodItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 16,
-        backgroundColor: '#FFF',
-        borderWidth: 1,
-        borderColor: '#E5E5EA',
-        borderRadius: 15,
-        marginBottom: 12,
-    },
-    methodLeft: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    iconBox: {
-        width: 40,
-        height: 40,
-        borderWidth: 1,
-        borderColor: '#E5E5EA',
-        borderRadius: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 16,
-    },
-    methodIcon: {
-        width: 24,
-        height: 24,
-    },
-    methodName: {
-        fontSize: 16,
-        fontWeight: '500',
-        color: '#000',
-    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+
+  paymentOption: {
+    backgroundColor: '#FFFFFF',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0F0F0',
+  },
+  selectedOption: {
+    backgroundColor: '#F0F8FF',
+  },
+  optionContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+  },
+  optionLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  iconText: {
+    fontSize: 20,
+    marginRight: 16,
+  },
+  optionName: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#000',
+    flex: 1,
+  },
 });
