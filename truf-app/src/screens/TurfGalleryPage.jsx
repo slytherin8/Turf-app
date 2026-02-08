@@ -4,7 +4,6 @@ import {
     Text,
     StyleSheet,
     TouchableOpacity,
-    Image,
     Dimensions,
     ScrollView,
 } from 'react-native';
@@ -13,17 +12,6 @@ import { CloudUpload, Image as ImageIcon, ArrowLeft } from 'lucide-react-native'
 import { COLORS } from '../constants/theme';
 
 const { width } = Dimensions.get('window');
-
-const GALLERY_IMAGES = [
-    'https://i.postimg.cc/85z1zQnK/galaxy-turf.jpg',
-    'https://i.postimg.cc/7Z9QDn5B/turf-bg.jpg',
-    'https://i.postimg.cc/mD8zQZ7y/game-mini-turf.jpg',
-    'https://i.postimg.cc/G3xV2W1n/hex-turf.jpg',
-    'https://i.postimg.cc/85z1zQnK/galaxy-turf.jpg',
-    'https://i.postimg.cc/G3xV2W1n/hex-turf.jpg',
-    'https://i.postimg.cc/7Z9QDn5B/turf-bg.jpg',
-    'https://i.postimg.cc/mD8zQZ7y/game-mini-turf.jpg',
-];
 
 export const TurfGalleryPage = ({ navigation }) => {
     return (
@@ -63,9 +51,10 @@ export const TurfGalleryPage = ({ navigation }) => {
                     </View>
 
                     <View style={styles.galleryGrid}>
-                        {GALLERY_IMAGES.map((img, index) => (
-                            <Image key={index} source={{ uri: img }} style={styles.galleryItem} />
-                        ))}
+                        {/* Gallery images removed as requested - keeping only layout structure */}
+                        <View style={styles.galleryPlaceholder}>
+                            <Text style={styles.galleryPlaceholderText}>Gallery content will be displayed here</Text>
+                        </View>
                     </View>
                 </View>
             </ScrollView>
@@ -187,10 +176,19 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'space-between',
     },
-    galleryItem: {
-        width: (width - 60) / 2,
-        height: 120,
+    galleryPlaceholder: {
+        width: '100%',
+        height: 100,
+        backgroundColor: '#F8F8F8',
         borderRadius: 12,
-        marginBottom: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#E5E5E5',
+    },
+    galleryPlaceholderText: {
+        fontSize: 14,
+        color: '#8E8E93',
+        fontStyle: 'italic',
     },
 });
