@@ -30,51 +30,28 @@ res.status(201).json({ message: 'User registered successfully' });
 
 
 router.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
-    if (!user || !(await user.matchPassword(password))) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
-
-     const token = crypto.randomBytes(32).toString('hex');
-    user.sessionToken = token;
-    await user.save();
-      res.json({
-  message: "Login successful",
-  token: token,
-});
-
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+  const user = await User.findOne({ email });
+  if (!user || !(await user.matchPassword(password))) {
+    return res.status(401).json({ message: "Invalid credentials" });
   }
+
+  const token = jwt.sign(
+    { id: user._id },
+    process.env.JWT_SECRET,
+    { expiresIn: "7d" }
+  );
+
+  res.json({
+    message: "Login successful",
+    token,
+  });
 });
 
-router.get('/me', async (req, res) => {
-  try {
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader) {
-      return res.status(401).json({ message: 'Not authenticated' });
-    }
-
-    const token = authHeader.split(" ")[1];
-
-    const user = await User.findOne({ sessionToken: token })
-      .select('-password -resetToken -resetTokenExpiry');
-
-    if (!user) return res.status(404).json({ message: 'User not found' });
-
-    res.json({ user });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+router.get("/me", authMiddleware, (req, res) => {
+  res.json(req.user);
 });
-
-
 
 router.post("/google-login", async (req, res) => {
   try {
@@ -104,20 +81,17 @@ router.post("/google-login", async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      sameSite: "lax",
-      secure: false,
-    });
 
-    res.json({
-      message: "Google login success",
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-      },
-    });
+
+ res.json({
+  token,
+  user: {
+    id: user._id,
+    username: user.username,
+    email: user.email,
+  },
+});
+
   } catch (err) {
     console.error(err);
     res.status(401).json({ message: "Google auth failed" });
