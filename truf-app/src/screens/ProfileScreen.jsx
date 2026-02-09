@@ -15,7 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export const ProfileScreen = ({ navigation }) => {
     const [user, setUser] = useState(null)
     const [activeTab, setActiveTab] = useState('Profile');
-    const API_URL = "http://10.202.38.136:5000/api/auth";
+    const API_URL = "http://192.168.0.104:5000/api/auth";
     
     useEffect(() => {
   const fetchProfile = async () => {
@@ -31,7 +31,7 @@ export const ProfileScreen = ({ navigation }) => {
 });
 
       const data = await res.json();
-      setUser(data.user);
+      setUser(data);
     } catch (err) {
       console.log("Profile fetch failed", err);
     }
