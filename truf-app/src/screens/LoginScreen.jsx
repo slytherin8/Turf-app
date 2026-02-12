@@ -17,7 +17,7 @@ import { COLORS, SPACING, SIZES } from '../constants/theme';
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-const API_URL = "http://192.168.1.105:5000/api/auth";
+const API_URL = "http://10.172.12.84:5000/api/auth";
 
   // LOGIN → VERIFICATION
 const handleLogin = async () => {

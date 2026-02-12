@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import authRoutes from './routes/auth.js';
+import turfRoutes from './routes/turf.js';
 
 dotenv.config();
 
@@ -17,6 +18,12 @@ app.use(express.json());
 connectDB();
 
 app.use('/api/auth', authRoutes);
+app.use('/api/turfs', turfRoutes);
+
+app.get('/', (req, res) => {
+  res.send('Turf App Backend is running 🚀');
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () =>
