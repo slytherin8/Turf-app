@@ -9,11 +9,24 @@ const router = express.Router();
  * @access  Public
  */
 router.get("/recommended", async (req, res) => {
+    try {
+        const turfs = await Turf.find({ isRecommended: true });
+        res.json(turfs); // ⚠️ MUST be array
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Nearby turfs (simple version – location based text match)
+router.get("/nearby", async (req, res) => {
   try {
-    const turfs = await Turf.find({ isRecommended: true });
+    const { location } = req.query;
+    const turfs = await Turf.find({
+      location: { $regex: location, $options: "i" },
+    });
     res.json(turfs);
-  } catch (error) {
-    res.status(500).json({ message: "Failed to fetch turfs" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 

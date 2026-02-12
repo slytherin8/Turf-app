@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
 import { CustomButton } from '../components/CustomButton';
 import { CustomInput } from '../components/CustomInput';
 import { BackButton } from '../components/BackButton';
@@ -17,34 +16,35 @@ import { COLORS, SPACING, SIZES } from '../constants/theme';
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-const API_URL = "http://10.172.12.84:5000/api/auth";
+  const API_URL = "http://10.172.12.84:5000/api/auth";
 
   // LOGIN → VERIFICATION
-const handleLogin = async () => {
-  if (!email || !password) {
-    alert("Please enter email and password");
-    return;
-  }
-
-  try {
-    const response = await fetch(`${API_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include", // VERY IMPORTANT for cookies
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(data.message || "Login failed");
+  const handleLogin = async () => {
+    if (!email || !password) {
+      alert("Please enter email and password");
       return;
     }
+
+    try {
+      const response = await fetch(`${API_URL}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // VERY IMPORTANT for cookies
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+
+      if (!response.ok) {
+        alert(data.message || "Login failed");
+        return;
+      }
 
     console.log("Login success:", data);
         setEmail("");
@@ -82,22 +82,18 @@ const handleLogin = async () => {
 
         {/* MAIN CONTENT */}
         <View style={styles.main}>
-          <Text style={styles.title}>Welc
-            me!</Text>
-
+          <Text style={styles.title}>Welcome Back!</Text>
           <CustomButton
             title="CONTINUE WIT GOOGLE"
             onPress={handleGoogleSignIn}
             variant="google"
             style={styles.googleButton}
           />
-
           <View style={styles.divider}>
             <View style={styles.dividerLine} />
             <Text style={styles.dividerText}>OR LOG IN WITH EMAIL</Text>
             <View style={styles.dividerLine} />
           </View>
-
           <View style={styles.inputSection}>
             <CustomInput
               label="EMAIL"
@@ -113,13 +109,11 @@ const handleLogin = async () => {
               secureTextEntry
             />
           </View>
-
           <CustomButton
             title="LO"
             onPress={handleLogin}
             style={styles.loginButton}
           />
-
           <TouchableOpacity style={styles.forgotPassword}>
             <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
           </TouchableOpacity>
@@ -208,5 +202,4 @@ const styles = StyleSheet.create({
     color: COLORS.text,
     fontWeight: '600',
   },
-
 });
