@@ -12,7 +12,8 @@ const app = express();
 app.use(cors({
   origin:true,
   credentials: true
-})); 
+}));
+
 app.use(express.json());
 
 connectDB();
@@ -23,7 +24,6 @@ app.use('/api/turfs', turfRoutes);
 app.get('/', (req, res) => {
   res.send('Turf App Backend is running 🚀');
 });
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () =>

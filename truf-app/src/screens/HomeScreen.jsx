@@ -1,15 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    Image,
-    ScrollView,
-    TextInput,
-    FlatList,
-    Dimensions,
-} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput, FlatList, Dimensions, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Search, MapPin, ChevronDown, Heart, Star } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES, COMMON_STYLES } from '../constants/theme';
@@ -17,18 +7,16 @@ import BottomNav from '../components/BottomNav';
 
 const { width } = Dimensions.get('window');
 
-
 export const HomeScreen = ({ navigation }) => {
     const [activeTab, setActiveTab] = useState('Search');
     const [turfs, setTurfs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [nearbyTurfs, setNearbyTurfs] = useState([]);
 
-    
     const fetchTurfs = async () => {
             try {
                 const response = await fetch(
-                    "http://10.172.12.84:5000/api/turfs/recommended" // Android emulator
+                    "http://10.120.207.84:5000/api/turfs/recommended"
                 );
                 const data = await response.json();
                 setTurfs(data);
@@ -42,7 +30,7 @@ export const HomeScreen = ({ navigation }) => {
         const fetchNearbyTurfs = async () => {
             try {
                 const response = await fetch(
-                    "http://10.172.12.84:5000/api/turfs/nearby?location=Avadi"
+                    "http://10.120.207.84:5000/api/turfs/nearby?location=Avadi"
                 );
                 const data = await response.json();
                 console.log("Nearby API Data:", data);
@@ -71,7 +59,6 @@ export const HomeScreen = ({ navigation }) => {
             </View>
         </TouchableOpacity>
     );
-
 
     const renderNearbyCard = ({ item }) => (
         <TouchableOpacity
@@ -184,7 +171,7 @@ export const HomeScreen = ({ navigation }) => {
                     renderItem={renderNearbyCard}
                     scrollEnabled={false}
                     />
-
+                    
                 <View style={{ height: 100 }} />
             </ScrollView>
 

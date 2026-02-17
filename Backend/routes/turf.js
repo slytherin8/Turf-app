@@ -9,40 +9,58 @@ const router = express.Router();
  * @access  Public
  */
 router.get("/recommended", async (req, res) => {
-    try {
-        const turfs = await Turf.find({ isRecommended: true });
-        res.json(turfs); // ⚠️ MUST be array
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
+  try {
+    const turfs = await Turf.find({ isRecommended: true });
+    res.status(200).json(turfs);
+  } catch (err) {
+    console.error("Recommended turfs error:", err);
+    res.status(500).json({ message: "Failed to fetch recommended turfs" });
+  }
 });
 
-// Nearby turfs (simple version – location based text match)
+/**
+ * @route   GET /api/turfs/nearby
+ * @desc    Get nearby turfs based on location
+ * @access  Public
+ */
 router.get("/nearby", async (req, res) => {
   try {
     const { location } = req.query;
+
+    if (!location) {
+      return res.status(400).json({
+        message: "Location query parameter is required",
+      });
+    }
+
     const turfs = await Turf.find({
       location: { $regex: location, $options: "i" },
     });
-    res.json(turfs);
+
+    res.status(200).json(turfs);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.error("Nearby turfs error:", err);
+    res.status(500).json({ message: "Failed to fetch nearby turfs" });
   }
 });
 
 /**
  * @route   GET /api/turfs/:id
- * @desc    Get turf details
+ * @desc    Get turf details by ID
+ * @access  Public
  */
 router.get("/:id", async (req, res) => {
   try {
     const turf = await Turf.findById(req.params.id);
+
     if (!turf) {
       return res.status(404).json({ message: "Turf not found" });
     }
-    res.json(turf);
+
+    res.status(200).json(turf);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching turf" });
+    console.error("Turf detail error:", error);
+    res.status(500).json({ message: "Error fetching turf details" });
   }
 });
 

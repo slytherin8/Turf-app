@@ -17,7 +17,7 @@ export const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const API_URL = "http://10.172.12.84:5000/api/auth";
+  const API_URL = "http://10.120.207.84:5000/api/auth";
 
  const handleLogin = async () => {
   if (!email || !password) {
