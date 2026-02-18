@@ -248,39 +248,41 @@ export const BookingScreen = ({ navigation ,route }) => {
           <TouchableOpacity
             style={styles.nextButton}
             onPress={async () => {
-              try {
-                const userId = await AsyncStorage.getItem("userId");
+  try {
+    const userId = await AsyncStorage.getItem("userId");
 
-                const response = await fetch(
-                  `${API_URL}/booking/create`,
-                  {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      userId,
-                      turfName,
-                      location: "Avadi, Chennai",
-                      courtType: selectedCourt,
-                      date: `${selectedDate} ${currentMonth}`,
-                      time: selectedTime,
-                    }),
-                  }
-                );
+    const response = await fetch(`${API_URL}/booking/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId,
+        turfName,
+        location: "Avadi, Chennai",
+        courtType: selectedCourt,
+        date: `${selectedDate} ${currentMonth}`,
+        time: selectedTime,
+      }),
+    });
 
-                const data = await response.json();
+    const data = await response.json();
 
-                if (data.success) {
-                  navigation.navigate("ReviewPayment");
-                } else {
-                  alert("Booking failed");
-                }
-              } catch (error) {
-                console.log(error);
-                alert("Something went wrong");
-              }
-            }}
+    if (!response.ok) {
+      // Show the server message in alert
+      alert(data.message || "Booking failed");
+      return;
+    }
+
+    alert(data.message); // e.g., "Booking successful"
+    navigation.navigate("ReviewPayment");
+
+  } catch (error) {
+    console.log(error);
+    alert("Something went wrong");
+  }
+}}
+
           >
             <Text style={styles.nextButtonText}>Next</Text>
           </TouchableOpacity>
