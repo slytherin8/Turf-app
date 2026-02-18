@@ -7,10 +7,11 @@ import {
   Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-
-export const VerificationScreen = ({ navigation }) => {
+export const VerificationScreen = ({ navigation ,route , setIsLoggedIn}) => {
+  const { token } = route.params
   const handleBack = () => {
     navigation?.goBack();
   };
@@ -55,7 +56,10 @@ export const VerificationScreen = ({ navigation }) => {
 
           <TouchableOpacity
             style={styles.continueBtn}
-            onPress={() => navigation.navigate('LocationPermission')}
+            onPress={async () => {
+              await AsyncStorage.setItem("userToken", token);
+              setIsLoggedIn(true);   //  THIS triggers stack switch
+            }}
           >
             <Text style={styles.continueBtnText}>Continue</Text>
           </TouchableOpacity>

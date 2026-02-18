@@ -9,8 +9,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, AlertTriangle, LogOut } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const LogoutScreen = ({ navigation }) => {
+export const LogoutScreen = ({ navigation ,setIsLoggedIn}) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
@@ -50,10 +51,14 @@ export const LogoutScreen = ({ navigation }) => {
 
                     <Text style={styles.question}>Are you sure you want to log out of your account?</Text>
 
-                    <TouchableOpacity
+                        <TouchableOpacity
                         style={styles.logoutBtn}
-                        onPress={() => navigation.navigate('SignIn')}
-                    >
+                        onPress={async () => {
+                            await AsyncStorage.removeItem("userToken");
+                            setIsLoggedIn(false);
+                        }}
+                        >
+
                         <Text style={styles.logoutBtnText}>Logout </Text>
                         <LogOut size={16} color="#FFF" />
                     </TouchableOpacity>

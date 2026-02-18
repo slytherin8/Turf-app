@@ -51,7 +51,8 @@ export const SignInScreen = ({ navigation }) => {
         setEmail("");
     setPassword("");
     // Navigate after success
-    navigation.navigate("Verification");
+    navigation.navigate("Verification", { token: data.token });
+
 
   } catch (error) {
     console.error(error);

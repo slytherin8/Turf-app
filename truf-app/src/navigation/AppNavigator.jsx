@@ -45,7 +45,7 @@ function MainTabs() {
   );
 }
 
-export function AppNavigator() {
+export function AppNavigator({ isLoggedIn ,setIsLoggedIn }) {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -66,31 +66,48 @@ export function AppNavigator() {
             };
           },
         }}
-        initialRouteName="HomePage"
       >
-        <Stack.Screen name="HomePage" component={HomePageScreen} />
-         <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen name="SignIn" component={SignInScreen} />
-        <Stack.Screen name="SignUp" component={SignupScreen} />
-        <Stack.Screen name="Verification" component={VerificationScreen} />
-        <Stack.Screen name="LocationPermission" component={LocationPermissionScreen} />
-        <Stack.Screen name="HomeScreenwithoutEnable" component={HomeScreenWithoutEnable} />
-        <Stack.Screen name="Main" component={MainTabs} />
-        <Stack.Screen name="TurfDetail" component={TurfDetailScreen} />
-        <Stack.Screen name="TurfBooking" component={BookingScreen} />
-        <Stack.Screen name="ReviewPayment" component={ReviewPaymentScreen} />
-        <Stack.Screen name="PaymentMethod" component={PaymentMethodScreen} />
-        <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} />
-       
-        <Stack.Screen name="MyBooking" component={MyBookingScreen} />
-        <Stack.Screen name="AccountSetting" component={AccountSettingScreen} />
-        <Stack.Screen name="EditProfile" component={EditProfileScreen} />
-        <Stack.Screen name="Logout" component={LogoutScreen} />
-        <Stack.Screen name="ChangeEmail" component={ChangeEmailScreen} />
-        <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
-        <Stack.Screen name="AccountUpdateVerification" component={AccountUpdateVerificationScreen} />
-        <Stack.Screen name="TurfGalleryPage" component={TurfGalleryPage} />
-        <Stack.Screen name="TurfReviewPage" component={TurfReviewPage} />
+
+        {isLoggedIn ? (
+          <>
+            <Stack.Screen name="Main" component={MainTabs} />
+            <Stack.Screen name="LocationPermission" component={LocationPermissionScreen} />
+            <Stack.Screen name="HomeScreenwithoutEnable" component={HomeScreenWithoutEnable} />
+            <Stack.Screen name="TurfDetail" component={TurfDetailScreen} />
+            <Stack.Screen name="TurfBooking" component={BookingScreen} />
+            <Stack.Screen name="ReviewPayment" component={ReviewPaymentScreen} />
+            <Stack.Screen name="PaymentMethod" component={PaymentMethodScreen} />
+            <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} />
+            <Stack.Screen name="MyBooking" component={MyBookingScreen} />
+            <Stack.Screen name="AccountSetting" component={AccountSettingScreen} />
+            <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+            <Stack.Screen name="Logout">
+              {(props) => (
+                <LogoutScreen
+                  {...props}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
+              )}
+            </Stack.Screen>
+            <Stack.Screen name="ChangeEmail" component={ChangeEmailScreen} />
+            <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
+            <Stack.Screen name="AccountUpdateVerification" component={AccountUpdateVerificationScreen} />
+            <Stack.Screen name="TurfGalleryPage" component={TurfGalleryPage} />
+            <Stack.Screen name="TurfReviewPage" component={TurfReviewPage} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="HomePage" component={HomePageScreen} />
+            <Stack.Screen name="SignIn" component={SignInScreen} />
+            <Stack.Screen name="SignUp" component={SignupScreen} />
+            <Stack.Screen name="Verification">
+              {(props) => (
+                <VerificationScreen {...props} setIsLoggedIn={setIsLoggedIn} />
+              )}
+            </Stack.Screen>   
+          </>
+        )}
+
       </Stack.Navigator>
     </NavigationContainer>
   );
