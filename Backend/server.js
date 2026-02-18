@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import authRoutes from './routes/auth.js';
 import turfRoutes from './routes/turf.js';
+const bookingRoutes = require("./routes/bookingRoutes");
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ connectDB();
 
 app.use('/api/auth', authRoutes);
 app.use('/api/turfs', turfRoutes);
+app.use("/api/booking", bookingRoutes);
+
 
 app.get('/', (req, res) => {
   res.send('Turf App Backend is running 🚀');
