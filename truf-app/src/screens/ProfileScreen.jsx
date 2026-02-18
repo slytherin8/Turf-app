@@ -15,7 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export const ProfileScreen = ({ navigation }) => {
     const [user, setUser] = useState(null)
     const [activeTab, setActiveTab] = useState('Profile');
-    const API_URL = "http://192.168.0.104:5000/api/auth";
+    const API_URL = process.env.EXPO_PUBLIC_API_URL;
     
     useEffect(() => {
   const fetchProfile = async () => {
