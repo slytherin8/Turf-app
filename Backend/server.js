@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import authRoutes from './routes/auth.js';
 import turfRoutes from './routes/turf.js';
-const bookingRoutes = require("./routes/bookingRoutes");
+import bookingRoutes from "./routes/bookingRoutes.js";
 
 dotenv.config();
 

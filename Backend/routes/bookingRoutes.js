@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const Booking = require("../models/Booking");
+import Booking from "../models/Booking.js";
 
 router.post("/create", async (req, res) => {
   try {
@@ -38,4 +38,4 @@ router.post("/create", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
