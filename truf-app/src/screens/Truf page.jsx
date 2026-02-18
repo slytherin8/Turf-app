@@ -31,6 +31,7 @@ import {
 } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
 
+
 const { width } = Dimensions.get('window');
 
 const GALLERY_IMAGES = [

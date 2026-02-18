@@ -22,7 +22,7 @@ export const ProfileScreen = ({ navigation }) => {
     const token = await AsyncStorage.getItem("token");
 
     try {
-      const res = await fetch(`${API_URL}/me`, {
+      const res = await fetch(`${API_URL}/auth/me`, {
   method: "GET",
   headers: {
     Authorization: `Bearer ${token}`,

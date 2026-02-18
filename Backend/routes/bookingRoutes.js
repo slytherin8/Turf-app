@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const Booking = require("../models/Booking");
-
+import Booking from "../models/Booking.js";
+import mongoose from "mongoose";
 router.post("/create", async (req, res) => {
   try {
     const {
@@ -13,8 +13,15 @@ router.post("/create", async (req, res) => {
       time,
     } = req.body;
 
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: "User not logged in",
+      });
+    }
+
     const newBooking = new Booking({
-      userId,
+      userId: new mongoose.Types.ObjectId(userId),
       turfName,
       location,
       courtType,
@@ -26,16 +33,20 @@ router.post("/create", async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Booking created successfully",
+      message: "Booking successful",
       booking: newBooking,
     });
+
   } catch (error) {
+    console.log("BOOKING ERROR:", error);
+
     res.status(500).json({
       success: false,
-      message: "Booking failed",
-      error: error.message,
+      message: error.message,
     });
   }
 });
 
-module.exports = router;
+
+
+export default router;

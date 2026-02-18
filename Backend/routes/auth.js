@@ -31,7 +31,7 @@ res.status(201).json({ message: 'User registered successfully' });
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
+  console.log("Login request body:", req.body);
   const user = await User.findOne({ email });
   if (!user || !(await user.matchPassword(password))) {
     return res.status(401).json({ message: "Invalid credentials" });
@@ -46,8 +46,14 @@ router.post("/login", async (req, res) => {
   res.json({
     message: "Login successful",
     token,
+    user: {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    },
   });
 });
+
 
 router.get("/me", authMiddleware, (req, res) => {
   res.json(req.user);

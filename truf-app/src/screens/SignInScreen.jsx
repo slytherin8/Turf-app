@@ -27,33 +27,39 @@ export const SignInScreen = ({ navigation }) => {
   }
 
   try {
-    const response = await fetch(`${API_URL}/login`, {
+    const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      body: JSON.stringify({ email, password }),
     });
 
     const data = await response.json();
-    await AsyncStorage.setItem("token", data.token);
 
     if (!response.ok) {
+      // Handle error from backend
       alert(data.message || "Login failed");
       return;
     }
 
+    if (!data.user) {
+      alert("User data not returned from server");
+      return;
+    }
+
+    // Save token and userId safely
+    await AsyncStorage.setItem("token", data.token);
+    await AsyncStorage.setItem("userId", data.user._id);
+
     console.log("Login success:", data);
-        setEmail("");
+
+    // Reset form
+    setEmail("");
     setPassword("");
+
     // Navigate after success
     navigation.navigate("Verification", { token: data.token });
-
-
   } catch (error) {
     console.error(error);
     alert("Server error");

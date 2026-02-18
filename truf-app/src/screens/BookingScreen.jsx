@@ -22,8 +22,9 @@ import {
   User,
 } from 'lucide-react-native';
 import { COLORS, SPACING } from '../constants/theme';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const { width } = Dimensions.get('window');
+const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
 const DAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 const MORNING_TIMES = ['5 am', '7 am', '9 am', '11 am'];
@@ -31,12 +32,13 @@ const AFTERNOON_TIMES = ['12 pm', '2 pm', '4 pm'];
 const EVENING_TIMES = ['6 pm', '8 pm', '10 pm'];
 const NIGHT_TIMES = ['11 pm', '12 am', '1 am'];
 
-export const BookingScreen = ({ navigation }) => {
+export const BookingScreen = ({ navigation ,route }) => {
   const [selectedDate, setSelectedDate] = useState(14);
   const [selectedCourt, setSelectedCourt] = useState('5 vs 5');
   const [activeTimeTab, setActiveTimeTab] = useState('Morning');
   const [selectedTime, setSelectedTime] = useState('5 am');
   const [currentMonth, setCurrentMonth] = useState('October 2025');
+  const { turfName } = route.params;
 
   const getDatesInMonth = () => {
     return Array.from({ length: 31 }, (_, i) => i + 1);
@@ -245,7 +247,40 @@ export const BookingScreen = ({ navigation }) => {
         <View style={styles.actionButtons}>
           <TouchableOpacity
             style={styles.nextButton}
-            onPress={() => navigation.navigate('ReviewPayment')}
+            onPress={async () => {
+              try {
+                const userId = await AsyncStorage.getItem("userId");
+
+                const response = await fetch(
+                  `${API_URL}/booking/create`,
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      userId,
+                      turfName,
+                      location: "Avadi, Chennai",
+                      courtType: selectedCourt,
+                      date: `${selectedDate} ${currentMonth}`,
+                      time: selectedTime,
+                    }),
+                  }
+                );
+
+                const data = await response.json();
+
+                if (data.success) {
+                  navigation.navigate("ReviewPayment");
+                } else {
+                  alert("Booking failed");
+                }
+              } catch (error) {
+                console.log(error);
+                alert("Something went wrong");
+              }
+            }}
           >
             <Text style={styles.nextButtonText}>Next</Text>
           </TouchableOpacity>

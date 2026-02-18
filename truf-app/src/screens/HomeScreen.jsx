@@ -6,7 +6,7 @@ import { COLORS, SPACING, SIZES, COMMON_STYLES } from '../constants/theme';
 import BottomNav from '../components/BottomNav';
 
 const { width } = Dimensions.get('window');
-const API_URL = process.env.EXPO_PUBLIC_API_URL_TURF;
+const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
 export const HomeScreen = ({ navigation }) => {
     const [activeTab, setActiveTab] = useState('Search');
@@ -17,7 +17,7 @@ export const HomeScreen = ({ navigation }) => {
     const fetchTurfs = async () => {
             try {
                 const response = await fetch(
-                    `${API_URL}/recommended`
+                    `${API_URL}/turfs/recommended`
                 );
                 const data = await response.json();
                 setTurfs(data);
@@ -31,7 +31,7 @@ export const HomeScreen = ({ navigation }) => {
         const fetchNearbyTurfs = async () => {
             try {
                 const response = await fetch(
-                    `${API_URL}/nearby?location=Avadi`
+                    `${API_URL}/turfs/nearby?location=Avadi`
                 );
                 const data = await response.json();
                 console.log("Nearby API Data:", data);
