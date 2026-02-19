@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import {
     View,
     Text,
@@ -14,10 +14,36 @@ import {
 } from 'lucide-react-native';
 import BottomNav from '../components/BottomNav';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export const MyBookingScreen = ({ navigation }) => {
-    const [mainNavTab, setMainNavTab] = useState('User');
+        const [user, setUser] = useState(null)
+        const API_URL = process.env.EXPO_PUBLIC_API_URL;
+        const [mainNavTab, setMainNavTab] = useState('User');
 
+         useEffect(() => {
+          const fetchProfile = async () => {
+            const token = await AsyncStorage.getItem("token");
+        
+            try {
+              const res = await fetch(`${API_URL}/auth/me`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+        
+          },
+        });
+        
+              const data = await res.json();
+              setUser(data);
+            } catch (err) {
+              console.log("Profile fetch failed", err);
+            }
+          };
+        
+          fetchProfile();
+        }, []);
+        
     const CURRENT_BOOKINGS = [
         {
             id: 'c1',
@@ -82,8 +108,13 @@ export const MyBookingScreen = ({ navigation }) => {
                             style={styles.avatar}
                         />
                         <View>
-                            <Text style={styles.name}>Itunuoluwa Abidoye</Text>
-                            <Text style={styles.id}>TURFID34345</Text>
+                            <Text style={styles.name}>
+                            {user?.username || "Loading..."}
+                            </Text>
+
+                            <Text style={styles.id}>
+                            {user?.email}
+                            </Text>
                         </View>
                     </View>
                 </View>

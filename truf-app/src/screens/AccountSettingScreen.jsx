@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState ,useEffect } from 'react';
+
 import {
     View,
     Text,
@@ -9,6 +10,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, ChevronRight, Mail, Lock } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export const AccountSettingScreen = ({ navigation }) => {
     return (

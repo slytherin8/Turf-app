@@ -11,12 +11,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import BottomNav from '../components/BottomNav';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-
 export const ProfileScreen = ({ navigation }) => {
     const [user, setUser] = useState(null)
     const [activeTab, setActiveTab] = useState('Profile');
     const API_URL = process.env.EXPO_PUBLIC_API_URL;
-    
+
     useEffect(() => {
   const fetchProfile = async () => {
     const token = await AsyncStorage.getItem("token");
