@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState ,useEffect } from 'react';
 import {
     View,
     Text,
@@ -12,6 +12,32 @@ import { COLORS, SPACING, SIZES } from '../constants/theme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const LogoutScreen = ({ navigation ,setIsLoggedIn}) => {
+        const [user, setUser] = useState(null)
+        const API_URL = process.env.EXPO_PUBLIC_API_URL;
+
+        
+    useEffect(() => {
+  const fetchProfile = async () => {
+    const token = await AsyncStorage.getItem("token");
+
+    try {
+      const res = await fetch(`${API_URL}/auth/me`, {
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${token}`,
+
+  },
+});
+
+      const data = await res.json();
+      setUser(data);
+    } catch (err) {
+      console.log("Profile fetch failed", err);
+    }
+  };
+
+  fetchProfile();
+}, []);
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
@@ -30,10 +56,15 @@ export const LogoutScreen = ({ navigation ,setIsLoggedIn}) => {
                                                    }}
                                                    style={styles.avatar}
                                                />
-                                               <View>
-                                                   <Text style={styles.name}>Itunuoluwa Abidoye</Text>
-                                                   <Text style={styles.id}>TURFID34345</Text>
-                                               </View>
+                                                <View>
+                                                    <Text style={styles.name}>
+                                                    {user?.username || "Loading..."}
+                                                    </Text>
+
+                                                    <Text style={styles.id}>
+                                                    {user?.email}
+                                                    </Text>
+                                                </View>
                                            </View>
                                        </View>
 
