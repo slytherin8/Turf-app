@@ -11,7 +11,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export const VerificationScreen = ({ navigation ,route , setIsLoggedIn}) => {
-  const { token } = route.params
+  setIsLoggedIn(true);
+
   const handleBack = () => {
     navigation?.goBack();
   };

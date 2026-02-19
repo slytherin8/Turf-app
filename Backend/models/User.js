@@ -5,10 +5,14 @@ const userSchema = new mongoose.Schema(
   {
      username: {
       type: String,
-      required: true,
     },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    password: { type: String ,    required: function () {
+      return !this.googleId; // required only if NOT Google user
+    }, },
+      googleId: {
+    type: String,
+  },
     sessionToken: { type: String },
     resetToken: { type: String },
     resetTokenExpiry: { type: Date },

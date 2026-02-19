@@ -133,48 +133,54 @@ router.get("/me", authMiddleware, (req, res) => {
   res.json(req.user);
 });
 
-router.post("/google-login", async (req, res) => {
+router.post("/google", async (req, res) => {
   try {
     const { idToken } = req.body;
 
+    if (!idToken) {
+      return res.status(400).json({ message: "No token provided" });
+    }
+    console.log("Audience:", process.env.GOOGLE_CLIENT_ID);
     const ticket = await client.verifyIdToken({
       idToken,
       audience: process.env.GOOGLE_CLIENT_ID,
     });
+    
 
     const payload = ticket.getPayload();
-    const { email, name } = payload;
 
+    const { email, name, sub } = payload;
+
+    // Find or create user
     let user = await User.findOne({ email });
+if (!user) {
+  const usernameFromEmail = email.split("@")[0];
+  let existingUsername = await User.findOne({ username: usernameFromEmail });
 
-    if (!user) {
-      user = await User.create({
-        username: name,
-        email,
-        password: "GOOGLE_AUTH", // dummy password
-      });
-    }
+if (existingUsername) {
+  usernameFromEmail = usernameFromEmail + Date.now();
+}
+  user = await User.create({
+    email,
+    username: usernameFromEmail,
+    googleId: sub,
+  });
+}
 
     const token = jwt.sign(
-      { id: user._id },
+      { userId: user._id },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 
+    res.json({
+      token,
+      user,
+    });
 
-
- res.json({
-  token,
-  user: {
-    id: user._id,
-    username: user.username,
-    email: user.email,
-  },
-});
-
-  } catch (err) {
-    console.error(err);
-    res.status(401).json({ message: "Google auth failed" });
+  } catch (error) {
+    console.error("Google Auth Error:", error);
+    res.status(500).json({ message: "Google authentication failed" });
   }
 });
 

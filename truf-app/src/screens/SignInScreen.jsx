@@ -12,13 +12,21 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Eye, EyeOff } from 'lucide-react-native';
+import * as Google from "expo-auth-session/providers/google";
+import * as AuthSession from "expo-auth-session";
 
 export const SignInScreen = ({ navigation, setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const API_URL = process.env.EXPO_PUBLIC_API_URL;
-
+  const [request, response, promptAsync] = Google.useAuthRequest({
+  expoClientId: "27356358338-njcl9fc07eds8e227ld3k3tfh30tkkr9.apps.googleusercontent.com",
+    webClientId: "27356358338-njcl9fc07eds8e227ld3k3tfh30tkkr9.apps.googleusercontent.com",
+      scopes: ["openid", "profile", "email"],
+  responseType: "id_token",
+  });
+  console.log(AuthSession.makeRedirectUri());
 
  const handleLogin = async () => {
   if (!email || !password) {
@@ -66,9 +74,49 @@ export const SignInScreen = ({ navigation, setIsLoggedIn }) => {
   }
 };
 
-  const handleGoogleSignIn = () => {
-    setIsLoggedIn(true);
-  };
+const handleGoogleSignIn = async () => {
+  const result = await promptAsync();
+
+  console.log("Google Result:", result);
+
+  if (result?.type === "success") {
+
+    const idToken = result.params?.id_token;
+
+    if (!idToken) {
+      alert("No ID token received");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/auth/google`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ idToken }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Google login failed");
+        return;
+      }
+
+      await AsyncStorage.setItem("token", data.token);
+      await AsyncStorage.setItem("userId", data.user._id);
+
+      navigation.navigate("Verification");
+
+    } catch (error) {
+      console.error(error);
+      alert("Google login failed");
+    }
+  }
+};
+
+
 
   const handleSignUp = () => {
     navigation?.navigate('SignUp');
