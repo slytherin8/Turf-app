@@ -7,16 +7,71 @@ import {
     Image,
     TextInput,
     ScrollView,
+    Alert,
+    ActivityIndicator
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft } from 'lucide-react-native';
-import { COLORS, SPACING, SIZES } from '../constants/theme';
+import { COLORS } from '../constants/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const ChangeEmailScreen = ({ navigation }) => {
+
     const [emails, setEmails] = useState({
         current: '',
         new: '',
     });
+
+    const [loading, setLoading] = useState(false);
+
+    const API_URL = process.env.EXPO_PUBLIC_API_URL;
+
+    const handleUpdateEmail = async () => {
+
+        if (!emails.new) {
+            Alert.alert("Error", "Please enter new email");
+            return;
+        }
+
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emails.new)) {
+            Alert.alert("Error", "Invalid email format");
+            return;
+        }
+
+        try {
+            setLoading(true);
+
+            const token = await AsyncStorage.getItem("token");
+
+            const response = await fetch(`${API_URL}/auth/update-email`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    newEmail: emails.new,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Something went wrong");
+            }
+
+            Alert.alert("Success", "Email updated successfully");
+
+            navigation.goBack(); // Go back to AccountSettingScreen
+
+        } catch (error) {
+            Alert.alert("Error", error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <SafeAreaView style={styles.container}>
@@ -52,6 +107,7 @@ export const ChangeEmailScreen = ({ navigation }) => {
 
                 {/* FORM */}
                 <View style={styles.form}>
+
                     {/* CURRENT EMAIL */}
                     <View style={styles.inputSection}>
                         <Text style={styles.label}>Email</Text>
@@ -82,15 +138,16 @@ export const ChangeEmailScreen = ({ navigation }) => {
 
                     <TouchableOpacity
                         style={styles.verifyBtn}
-                        onPress={() =>
-                            navigation.navigate(
-                                'AccountUpdateVerification',
-                                { type: 'Email' }
-                            )
-                        }
+                        onPress={handleUpdateEmail}
+                        disabled={loading}
                     >
-                        <Text style={styles.verifyBtnText}>Verify</Text>
+                        {loading ? (
+                            <ActivityIndicator color="#FFFFFF" />
+                        ) : (
+                            <Text style={styles.verifyBtnText}>Verify</Text>
+                        )}
                     </TouchableOpacity>
+
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -102,7 +159,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.white,
     },
-
     header: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -111,7 +167,6 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         marginTop: 26,
     },
-
     backBtn: {
         backgroundColor: '#000',
         width: 32,
@@ -120,13 +175,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-
     headerTitle: {
         fontSize: 20,
         fontWeight: 'bold',
         color: '#000',
     },
-
     profileCard: {
         backgroundColor: '#FFF',
         marginHorizontal: 20,
@@ -141,46 +194,37 @@ const styles = StyleSheet.create({
         shadowRadius: 8,
         elevation: 5,
     },
-
     profileLeft: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-
     avatar: {
         width: 60,
         height: 60,
         borderRadius: 30,
         marginRight: 12,
     },
-
     name: {
         fontSize: 16,
         fontWeight: '700',
     },
-
     id: {
         color: '#BDBDBD',
         marginTop: 4,
     },
-
     form: {
         paddingHorizontal: 20,
         marginTop: 20,
     },
-
-    /* INPUTS */
     inputSection: {
         marginBottom: 20,
     },
-
     label: {
         fontSize: 16,
         color: '#8E8E93',
         marginBottom: 8,
         letterSpacing: 0.5,
     },
-
     input: {
         height: 52,
         borderRadius: 26,
@@ -188,9 +232,7 @@ const styles = StyleSheet.create({
         borderColor: '#E5E5EA',
         paddingHorizontal: 18,
         fontSize: 15,
-        outlineStyle: 'none',
     },
-
     verifyBtn: {
         height: 58,
         borderRadius: 29,
@@ -200,7 +242,6 @@ const styles = StyleSheet.create({
         marginTop: 16,
         marginBottom: 16,
     },
-
     verifyBtnText: {
         fontSize: 16,
         fontWeight: '600',

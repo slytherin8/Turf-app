@@ -54,6 +54,49 @@ router.post("/login", async (req, res) => {
   });
 });
 
+router.put("/update-email", authMiddleware, async (req, res) => {
+  try {
+    const { newEmail } = req.body;
+
+    if (!newEmail) {
+      return res.status(400).json({ message: "New email is required" });
+    }
+
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(newEmail)) {
+      return res.status(400).json({ message: "Invalid email format" });
+    }
+
+    // Check if email already exists
+    const emailExists = await User.findOne({ email: newEmail });
+    if (emailExists) {
+      return res.status(400).json({ message: "Email already in use" });
+    }
+
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.email = newEmail;
+    await user.save();
+
+    res.json({
+      message: "Email updated successfully",
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+      },
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 
 router.get("/me", authMiddleware, (req, res) => {
   res.json(req.user);

@@ -1,5 +1,4 @@
-import React, { useState ,useEffect } from 'react';
-
+import React, { useState, useCallback } from 'react';
 import {
     View,
     Text,
@@ -9,36 +8,83 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, ChevronRight, Mail, Lock } from 'lucide-react-native';
-import { COLORS, SPACING, SIZES } from '../constants/theme';
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { COLORS } from '../constants/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
 
 export const AccountSettingScreen = ({ navigation }) => {
+
+    const [user, setUser] = useState(null);
+    const API_URL = process.env.EXPO_PUBLIC_API_URL;
+
+    const fetchProfile = async () => {
+        try {
+            const token = await AsyncStorage.getItem("token");
+
+            const res = await fetch(`${API_URL}/auth/me`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                setUser(data);
+            } else {
+                console.log("Profile fetch error:", data.message);
+            }
+
+        } catch (err) {
+            console.log("Profile fetch failed", err);
+        }
+    };
+
+    // 🔥 This runs EVERY TIME screen is focused
+    useFocusEffect(
+        useCallback(() => {
+            fetchProfile();
+        }, [])
+    );
+
     return (
         <SafeAreaView style={styles.container}>
+
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    style={styles.backBtn}
+                >
                     <ArrowLeft size={24} color="#BFFF00" />
                 </TouchableOpacity>
+
                 <Text style={styles.headerTitle}>Account Setting</Text>
                 <View style={{ width: 32 }} />
             </View>
 
             <View style={styles.profileCard}>
-                                <View style={styles.profileLeft}>
-                                    <Image
-                                        source={{
-                                            uri: 'https://i.postimg.cc/XvRCNScR/User-image-(1).png',
-                                        }}
-                                        style={styles.avatar}
-                                    />
-                                    <View>
-                                        <Text style={styles.name}>Itunuoluwa Abidoye</Text>
-                                        <Text style={styles.id}>TURFID34345</Text>
-                                    </View>
-                                </View>
-                            </View>
+                <View style={styles.profileLeft}>
+                    <Image
+                        source={{
+                            uri: 'https://i.postimg.cc/XvRCNScR/User-image-(1).png',
+                        }}
+                        style={styles.avatar}
+                    />
+                    <View>
+                        <Text style={styles.name}>
+                            {user?.username || "Loading..."}
+                        </Text>
+
+                        <Text style={styles.id}>
+                            {user?.email || ""}
+                        </Text>
+                    </View>
+                </View>
+            </View>
 
             <View style={styles.options}>
+
                 <TouchableOpacity
                     style={styles.optionItem}
                     onPress={() => navigation.navigate('ChangeEmail')}
@@ -64,7 +110,9 @@ export const AccountSettingScreen = ({ navigation }) => {
                     </View>
                     <ChevronRight size={20} color="#8E8E93" />
                 </TouchableOpacity>
+
             </View>
+
         </SafeAreaView>
     );
 };
@@ -109,27 +157,24 @@ const styles = StyleSheet.create({
         shadowRadius: 8,
         elevation: 5,
     },
-
     profileLeft: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-    avatar:{
-width:60,
-height:60,
-borderRadius:30,
-marginRight:12
-},
-
-name:{
-fontSize:16,
-fontWeight:'700'
-},
-
-id:{
-color:'#BDBDBD',
-marginTop:4
-},
+    avatar: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        marginRight: 12
+    },
+    name: {
+        fontSize: 16,
+        fontWeight: '700'
+    },
+    id: {
+        color: '#BDBDBD',
+        marginTop: 4
+    },
     options: {
         paddingHorizontal: 20,
         marginTop: 20,
