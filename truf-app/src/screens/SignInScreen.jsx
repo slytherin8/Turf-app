@@ -13,7 +13,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Eye, EyeOff } from 'lucide-react-native';
 
-export const SignInScreen = ({ navigation }) => {
+export const SignInScreen = ({ navigation, setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -67,7 +67,7 @@ export const SignInScreen = ({ navigation }) => {
 };
 
   const handleGoogleSignIn = () => {
-    navigation?.navigate('Main');
+    setIsLoggedIn(true);
   };
 
   const handleSignUp = () => {

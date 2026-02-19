@@ -98,7 +98,15 @@ export function AppNavigator({ isLoggedIn ,setIsLoggedIn }) {
         ) : (
           <>
             <Stack.Screen name="HomePage" component={HomePageScreen} />
-            <Stack.Screen name="SignIn" component={SignInScreen} />
+            <Stack.Screen name="SignIn">
+              {(props) => (
+                <SignInScreen
+                  {...props}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
+              )}
+            </Stack.Screen>
+
             <Stack.Screen name="SignUp" component={SignupScreen} />
             <Stack.Screen name="Verification">
               {(props) => (
