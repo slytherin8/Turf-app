@@ -11,8 +11,11 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const ChangePasswordScreen = ({ navigation }) => {
+    
+
     const [passwords, setPasswords] = useState({
         current: '',
         new: '',
@@ -20,6 +23,44 @@ export const ChangePasswordScreen = ({ navigation }) => {
 
     const [showCurrent, setShowCurrent] = useState(false);
     const [showNew, setShowNew] = useState(false);
+    const API_URL = process.env.EXPO_PUBLIC_API_URL;    
+
+    //handle of chnage password
+    const handleChangePassword = async () => {
+    if (!passwords.current || !passwords.new) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    try {
+        const token = await AsyncStorage.getItem("token");
+
+        const res = await fetch(`${API_URL}/auth/change-password`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                currentPassword: passwords.current,
+                newPassword: passwords.new,
+            }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw new Error(data.message || "Password update failed");
+        }
+
+        alert("Password updated successfully");
+        navigation.goBack();
+
+    } catch (err) {
+        alert(err.message);
+    }
+};
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -32,7 +73,7 @@ export const ChangePasswordScreen = ({ navigation }) => {
                     <ArrowLeft size={24} color="#BFFF00" />
                 </TouchableOpacity>
 
-                <Text style={styles.headerTitle}>Change Email</Text>
+                <Text style={styles.headerTitle}>Change Password</Text>
                 {/* Title intentionally kept as-is */}
                 <View style={{ width: 32 }} />
             </View>
@@ -110,11 +151,8 @@ export const ChangePasswordScreen = ({ navigation }) => {
 
                     <TouchableOpacity
                         style={styles.verifyBtn}
-                        onPress={() =>
-                            navigation.navigate('AccountUpdateVerification', {
-                                type: 'Password',
-                            })
-                        }
+                        onPress={handleChangePassword}
+
                     >
                         <Text style={styles.verifyBtnText}>Verify</Text>
                     </TouchableOpacity>
