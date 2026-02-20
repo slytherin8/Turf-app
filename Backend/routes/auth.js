@@ -1,31 +1,91 @@
+import nodemailer from "nodemailer";
+import crypto from "crypto";
 import express from "express";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import authMiddleware from "../middleware/authMiddleware.js";
 import { OAuth2Client } from "google-auth-library";
 
-
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const router = express.Router();
 
+const verificationToken = crypto.randomBytes(32).toString("hex");
 
 router.post("/register", async (req, res) => {
   try {
-  const { username, email, password } = req.body;
+    
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+    const { username, email, password } = req.body;
 
-  const userExists = await User.findOne({ email });
-  if (userExists) {
-    return res.status(400).json({ message: "User already exists" });
-  }
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: "User already exists" });
+    }
 
-  const user = await User.create({ username, email, password });
+    // ✅ Generate token HERE (not globally)
+    const verificationToken = crypto.randomBytes(32).toString("hex");
 
-res.status(201).json({ message: 'User registered successfully' });
+    const user = await User.create({
+      username,
+      email,
+      password,
+      verificationToken,
+      isVerified: false,
+    });
+
+    // ✅ Create verification link
+    const verificationUrl = `${process.env.BASE_URL}/api/auth/verify/${verificationToken}`;
+
+    // ✅ Send email
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Verify Your Email",
+      html: `
+        <h2>Email Verification</h2>
+        <p>Click the link below to verify your email:</p>
+        <a href="${verificationUrl}">Verify Email</a>
+      `,
+    });
+
+    res.status(201).json({
+      message: "User registered. Please check your email to verify.",
+    });
+
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 });
+
+router.get("/verify/:token", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      verificationToken: req.params.token,
+    });
+
+    if (!user) {
+      return res.status(400).send("Invalid or expired token");
+    }
+
+    user.isVerified = true;
+    user.verificationToken = undefined;
+    await user.save();
+
+    res.send("Email verified successfully. You can now login.");
+
+  } catch (error) {
+    res.status(500).send("Verification failed");
+  }
+});
+
 
 
 router.post("/login", async (req, res) => {
@@ -35,6 +95,12 @@ router.post("/login", async (req, res) => {
   if (!user || !(await user.matchPassword(password))) {
     return res.status(401).json({ message: "Invalid credentials" });
   }
+  if (!user.isVerified) {
+  return res.status(401).json({
+    message: "Please verify your email before logging in",
+  });
+}
+
 
   const token = jwt.sign(
     { id: user._id },
@@ -163,6 +229,7 @@ if (existingUsername) {
   user = await User.create({
     email,
     username: usernameFromEmail,
+    isVerified: true,
     googleId: sub,
   });
 }

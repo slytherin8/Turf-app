@@ -44,7 +44,7 @@ const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
 const handleSignup = async () => {
   if (!email || !password || !username) {
-    alert("Please enter email and password");
+    alert("Please enter all fields");
     return;
   }
 
@@ -68,14 +68,13 @@ const handleSignup = async () => {
       return;
     }
 
-    alert("Registration successful!");
-    navigation.navigate("SignIn");
+    // ✅ Go to verification screen instead of SignIn
+    navigation.navigate("Verification", { email });
 
   } catch (error) {
     console.error(error);
     alert("Server error");
   }
-
 };
 const handleGoogleSignIn = async () => {
   if (!request) return;

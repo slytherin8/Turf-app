@@ -45,11 +45,11 @@ export const SignInScreen = ({ navigation, setIsLoggedIn }) => {
 
     const data = await response.json();
 
-    if (!response.ok) {
-      // Handle error from backend
-      alert(data.message || "Login failed");
-      return;
-    }
+if (!response.ok) {
+  alert(data.message);
+  return;
+}
+
 
     if (!data.user) {
       alert("User data not returned from server");
@@ -67,8 +67,8 @@ export const SignInScreen = ({ navigation, setIsLoggedIn }) => {
     setPassword("");
 
     // Navigate after success
-    navigation.navigate("Verification", { token: data.token });
-  } catch (error) {
+      setIsLoggedIn(true);
+    } catch (error) {
     console.error(error);
     alert("Server error");
   }
@@ -106,9 +106,7 @@ const handleGoogleSignIn = async () => {
 
       await AsyncStorage.setItem("token", data.token);
       await AsyncStorage.setItem("userId", data.user._id);
-
-      navigation.navigate("Verification");
-
+      setIsLoggedIn(true);  
     } catch (error) {
       console.error(error);
       alert("Google login failed");

@@ -15,14 +15,14 @@ export default function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
-  useEffect(() => {
-    const checkLogin = async () => {
-      const token = await AsyncStorage.getItem("userToken");
-      setIsLoggedIn(!!token);
-    };
+useEffect(() => {
+  const checkLogin = async () => {
+    const token = await AsyncStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  };
 
-    checkLogin();
-  }, []);
+  checkLogin();
+}, []);
  
   if (!fontsLoaded || isLoggedIn === null) {
     return null;

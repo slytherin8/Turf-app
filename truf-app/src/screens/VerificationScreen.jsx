@@ -7,23 +7,21 @@ import {
   Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
+export const VerificationScreen = ({ navigation, route }) => {
 
-export const VerificationScreen = ({ navigation ,route , setIsLoggedIn}) => {
-  setIsLoggedIn(true);
+  const { email } = route.params || {};
 
-  const handleBack = () => {
-    navigation?.goBack();
+  const goToLogin = () => {
+    navigation.replace("SignIn");
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
 
-        {/* HEADER */}
         <View style={styles.header}>
-          <TouchableOpacity onPress={handleBack} activeOpacity={0.7}>
+          <TouchableOpacity onPress={goToLogin} activeOpacity={0.7}>
             <Image
               source={{ uri: 'https://i.postimg.cc/4x0HyzkG/btn.png' }}
               style={styles.backImage}
@@ -32,37 +30,35 @@ export const VerificationScreen = ({ navigation ,route , setIsLoggedIn}) => {
           </TouchableOpacity>
         </View>
 
-        {/* MAIN */}
         <View style={styles.main}>
 
-          {/* TITLE */}
           <View style={styles.titleWrapper}>
             <Text style={styles.title}>Turf Identifier System</Text>
             <View style={styles.titleHighlight} />
             <Text style={styles.subtitle}>Verification</Text>
           </View>
 
-          {/* ICON */}
-         <Image
-  source={require('../../assets/verification.png')}
-  style={styles.icon}
-  resizeMode="contain"
-/>
+          <Image
+            source={require('../../assets/verification.png')}
+            style={styles.icon}
+            resizeMode="contain"
+          />
 
-
-          {/* DESCRIPTION */}
           <Text style={styles.description}>
-            Please verify your email to proceed{'\n'}to the dashboard
+            A verification link has been sent to:
+            {"\n\n"}
+            {email}
+            {"\n\n"}
+            Please verify your email before logging in.
           </Text>
 
           <TouchableOpacity
             style={styles.continueBtn}
-            onPress={async () => {
-              await AsyncStorage.setItem("userToken", token);
-              setIsLoggedIn(true);   //  THIS triggers stack switch
-            }}
+            onPress={goToLogin}
           >
-            <Text style={styles.continueBtnText}>Continue</Text>
+            <Text style={styles.continueBtnText}>
+              Back to Login
+            </Text>
           </TouchableOpacity>
 
         </View>
@@ -70,7 +66,6 @@ export const VerificationScreen = ({ navigation ,route , setIsLoggedIn}) => {
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -82,7 +77,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
 
-  /* HEADER */
   header: {
     paddingTop: 16,
   },
@@ -93,7 +87,6 @@ const styles = StyleSheet.create({
     transform: [{ rotate: '180deg' }],
   },
 
-  /* MAIN */
   main: {
     flex: 1,
     alignItems: 'center',
@@ -101,10 +94,8 @@ const styles = StyleSheet.create({
     paddingBottom: 120,
   },
 
-  /* TITLE */
   titleWrapper: {
     alignItems: 'center',
-
     position: 'relative',
   },
 
@@ -134,14 +125,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  /* ICON */
   icon: {
     width: 240,
     height: 240,
-
   },
 
-  /* DESCRIPTION */
   description: {
     fontSize: 15,
     color: '#8E8E93',
@@ -149,6 +137,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     marginBottom: 40,
   },
+
   continueBtn: {
     backgroundColor: '#1C1C1E',
     height: 56,
@@ -157,6 +146,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   continueBtnText: {
     color: '#FFFFFF',
     fontSize: 16,

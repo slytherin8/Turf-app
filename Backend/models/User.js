@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema(
       googleId: {
     type: String,
   },
+  isVerified: {
+  type: Boolean,
+  default: false,
+},
+verificationToken: String,
     sessionToken: { type: String },
     resetToken: { type: String },
     resetTokenExpiry: { type: Date },
