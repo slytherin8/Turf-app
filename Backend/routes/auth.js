@@ -86,7 +86,20 @@ router.get("/verify/:token", async (req, res) => {
   }
 });
 
+router.get("/check-verification/:email", async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
 
+    if (!user) {
+      return res.status(404).json({ verified: false });
+    }
+
+    res.json({ verified: user.isVerified });
+
+  } catch (error) {
+    res.status(500).json({ verified: false });
+  }
+});
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;

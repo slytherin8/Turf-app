@@ -1,67 +1,78 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const VerificationScreen = ({ navigation, route }) => {
-
   const { email } = route.params || {};
+  const API_URL = process.env.EXPO_PUBLIC_API_URL;
+
+  const [verified, setVerified] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkVerification = async () => {
+      try {
+        const response = await fetch(
+          `${API_URL}/auth/check-verification/${email}`
+        );
+
+        const data = await response.json();
+        setVerified(data.verified);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkVerification();
+
+    // Auto check every 5 seconds
+    const interval = setInterval(checkVerification, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const goToLogin = () => {
-    navigation.replace("SignIn");
+    if (verified) {
+      navigation.replace("SignIn");
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
+      <View style={styles.main}>
 
-        <View style={styles.header}>
-          <TouchableOpacity onPress={goToLogin} activeOpacity={0.7}>
-            <Image
-              source={{ uri: 'https://i.postimg.cc/4x0HyzkG/btn.png' }}
-              style={styles.backImage}
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-        </View>
+        <Text style={styles.title}>Email Verification</Text>
 
-        <View style={styles.main}>
+        <Text style={styles.description}>
+          We sent a verification link to:
+          {"\n\n"}
+          {email}
+        </Text>
 
-          <View style={styles.titleWrapper}>
-            <Text style={styles.title}>Turf Identifier System</Text>
-            <View style={styles.titleHighlight} />
-            <Text style={styles.subtitle}>Verification</Text>
-          </View>
+        {loading && <ActivityIndicator size="large" />}
 
-          <Image
-            source={require('../../assets/verification.png')}
-            style={styles.icon}
-            resizeMode="contain"
-          />
-
-          <Text style={styles.description}>
-            A verification link has been sent to:
-            {"\n\n"}
-            {email}
-            {"\n\n"}
-            Please verify your email before logging in.
+        <TouchableOpacity
+          style={[
+            styles.button,
+            { backgroundColor: verified ? "#1C1C1E" : "#CCCCCC" }
+          ]}
+          onPress={goToLogin}
+          disabled={!verified}
+        >
+          <Text style={styles.buttonText}>
+            {verified ? "Back to Login" : "Waiting for Verification..."}
           </Text>
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.continueBtn}
-            onPress={goToLogin}
-          >
-            <Text style={styles.continueBtnText}>
-              Back to Login
-            </Text>
-          </TouchableOpacity>
-
-        </View>
       </View>
     </SafeAreaView>
   );
