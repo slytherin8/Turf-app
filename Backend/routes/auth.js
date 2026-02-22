@@ -13,13 +13,13 @@ const router = express.Router();
 router.post("/register", async (req, res) => {
   try {
     
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
     const { username, email, password } = req.body;
 
     const userExists = await User.findOne({ email });
