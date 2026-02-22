@@ -62,10 +62,13 @@ export const ChangeEmailScreen = ({ navigation }) => {
                 throw new Error(data.message || "Something went wrong");
             }
 
-            Alert.alert("Success", "Email updated successfully");
+                Alert.alert(
+                "Verification Sent",
+                "Please check your new email to verify before it is updated."
+                );
 
-            navigation.goBack(); // Go back to AccountSettingScreen
-
+               navigation.navigate("AccountUpdateVerification", { type: "Email" });
+               
         } catch (error) {
             Alert.alert("Error", error.message);
         } finally {

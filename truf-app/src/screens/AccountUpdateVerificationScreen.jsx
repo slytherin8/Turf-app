@@ -9,11 +9,30 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Mail, CheckCircle2 } from 'lucide-react-native';
 import { COLORS, SPACING, SIZES } from '../constants/theme';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const { width } = Dimensions.get('window');
 
 export const AccountUpdateVerificationScreen = ({ navigation, route }) => {
     const { type } = route.params || { type: 'Email' };
+        const API_URL = process.env.EXPO_PUBLIC_API_URL;
+
+    const checkVerification = async () => {
+    const token = await AsyncStorage.getItem("token");
+
+    const res = await fetch(`${API_URL}/auth/check-email-verified`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    const data = await res.json();
+
+    if (data.verified) {
+        navigation.navigate("Main");
+    } else {
+        Alert.alert("Not Verified", "Please verify your email first.");
+    }
+};
 
     return (
         <SafeAreaView style={styles.container}>
@@ -39,7 +58,7 @@ export const AccountUpdateVerificationScreen = ({ navigation, route }) => {
 
                 <TouchableOpacity
                     style={styles.dashboardBtn}
-                    onPress={() => navigation.navigate('Main')}
+                    onPress={checkVerification}
                 >
                     <Text style={styles.dashboardBtnText}>Back to Dashboard</Text>
                 </TouchableOpacity>

@@ -10,8 +10,6 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const router = express.Router();
 
-const verificationToken = crypto.randomBytes(32).toString("hex");
-
 router.post("/register", async (req, res) => {
   try {
     
@@ -101,6 +99,21 @@ router.get("/check-verification/:email", async (req, res) => {
   }
 });
 
+router.get("/check-email-verified", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ verified: false });
+    }
+
+    res.json({ verified: user.isVerified });
+
+  } catch (error) {
+    res.status(500).json({ verified: false });
+  }
+});
+
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   console.log("Login request body:", req.body);
@@ -140,13 +153,11 @@ router.put("/update-email", authMiddleware, async (req, res) => {
       return res.status(400).json({ message: "New email is required" });
     }
 
-    // Basic email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(newEmail)) {
       return res.status(400).json({ message: "Invalid email format" });
     }
 
-    // Check if email already exists
     const emailExists = await User.findOne({ email: newEmail });
     if (emailExists) {
       return res.status(400).json({ message: "Email already in use" });
@@ -157,16 +168,37 @@ router.put("/update-email", authMiddleware, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    user.email = newEmail;
+    // ✅ Generate token
+    const token = crypto.randomBytes(32).toString("hex");
+
+    user.pendingEmail = newEmail;
+    user.emailChangeToken = token;
     await user.save();
 
-    res.json({
-      message: "Email updated successfully",
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
+    // ✅ LOCAL transporter (no global)
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
+    });
+
+    const verifyLink = `${process.env.BASE_URL}/api/auth/verify-email-change/${token}`;
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: newEmail,
+      subject: "Verify Your New Email",
+      html: `
+        <h2>Email Change Verification</h2>
+        <p>Click below to verify your new email:</p>
+        <a href="${verifyLink}">Verify Email</a>
+      `,
+    });
+
+    res.json({
+      message: "Verification email sent. Please verify to complete update.",
     });
 
   } catch (err) {
@@ -175,6 +207,28 @@ router.put("/update-email", authMiddleware, async (req, res) => {
   }
 });
 
+router.get("/verify-email-change/:token", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      emailChangeToken: req.params.token,
+    });
+
+    if (!user) {
+      return res.status(400).send("Invalid or expired token");
+    }
+
+    user.email = user.pendingEmail;
+    user.pendingEmail = undefined;
+    user.emailChangeToken = undefined;
+
+    await user.save();
+
+    res.send("Email updated successfully. You can now continue.");
+
+  } catch (error) {
+    res.status(500).send("Email verification failed");
+  }
+});
 
 router.put("/change-password", authMiddleware, async (req, res) => {
   try {
@@ -247,11 +301,11 @@ if (existingUsername) {
   });
 }
 
-    const token = jwt.sign(
-      { userId: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+const token = jwt.sign(
+  { id: user._id },   // ✅ correct
+  process.env.JWT_SECRET,
+  { expiresIn: "7d" }
+);
 
     res.json({
       token,

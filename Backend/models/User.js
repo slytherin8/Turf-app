@@ -21,6 +21,9 @@ verificationToken: String,
     sessionToken: { type: String },
     resetToken: { type: String },
     resetTokenExpiry: { type: Date },
+      pendingEmail: String,
+  emailChangeToken: String,
+    
   },
   { timestamps: true }
 );
