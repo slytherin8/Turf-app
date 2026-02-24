@@ -266,6 +266,48 @@ router.get("/me", authMiddleware, (req, res) => {
   res.json(req.user);
 });
 
+router.put("/update-profile", authMiddleware, async (req, res) => {
+  try {
+    const { username, firstName, lastName, phone, gender } = req.body;
+
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Optional: prevent empty username
+    if (username && username.trim() === "") {
+      return res.status(400).json({ message: "Username cannot be empty" });
+    }
+
+    // Optional: check username uniqueness
+    if (username && username !== user.username) {
+      const usernameExists = await User.findOne({ username });
+      if (usernameExists) {
+        return res.status(400).json({ message: "Username already taken" });
+      }
+      user.username = username;
+    }
+
+    user.firstName = firstName || user.firstName;
+    user.lastName = lastName || user.lastName;
+    user.phone = phone || user.phone;
+    user.gender = gender || user.gender;
+
+    await user.save();
+
+    res.json({
+      message: "Profile updated successfully",
+      user,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Update failed" });
+  }
+});
+
 router.post("/google", async (req, res) => {
   try {
     const { idToken } = req.body;

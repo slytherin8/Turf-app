@@ -2,30 +2,38 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema(
-  {
-     username: {
-      type: String,
-    },
-    email: { type: String, required: true, unique: true },
-    password: { type: String ,    required: function () {
-      return !this.googleId; // required only if NOT Google user
-    }, },
-      googleId: {
+{
+  username: { type: String },
+
+  email: { type: String, required: true, unique: true },
+
+  password: {
     type: String,
+    required: function () {
+      return !this.googleId;
+    },
   },
+
+  googleId: String,
+
+  firstName: String,
+  lastName: String,
+  phone: String,
+  gender: String,
+
   isVerified: {
-  type: Boolean,
-  default: false,
-},
-verificationToken: String,
-    sessionToken: { type: String },
-    resetToken: { type: String },
-    resetTokenExpiry: { type: Date },
-      pendingEmail: String,
-  emailChangeToken: String,
-    
+    type: Boolean,
+    default: false,
   },
-  { timestamps: true }
+
+  verificationToken: String,
+  sessionToken: String,
+  resetToken: String,
+  resetTokenExpiry: Date,
+  pendingEmail: String,
+  emailChangeToken: String,
+},
+{ timestamps: true }
 );
 
 // Hash password before saving

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import {
     View,
     Text,
@@ -10,21 +10,83 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, ChevronDown } from 'lucide-react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export const EditProfileScreen = ({ navigation }) => {
+    const [user, setUser] = useState(null)
     const [activeTab, setActiveTab] = useState('Profile');
-
-    const handleNavPress = (tab, route) => {
-        setActiveTab(tab);
-        navigation.navigate(route);
-    };
-
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         phone: '',
         gender: '',
     });
+    const API_URL = process.env.EXPO_PUBLIC_API_URL;
+
+
+     useEffect(() => {
+      const fetchProfile = async () => {
+        const token = await AsyncStorage.getItem("token");
+    
+        try {
+          const res = await fetch(`${API_URL}/auth/me`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+    
+      },
+    });
+    
+            const data = await res.json();
+            setUser(data);
+
+            setFormData({
+            firstName: data.firstName || "",
+            lastName: data.lastName || "",
+            phone: data.phone || "",
+            gender: data.gender || "",
+            });
+        } catch (err) {
+          console.log("Profile fetch failed", err);
+        }
+      };
+    
+      fetchProfile();
+    }, []);
+
+    const handleNavPress = (tab, route) => {
+        setActiveTab(tab);
+        navigation.navigate(route);
+    };
+    const handleUpdateProfile = async () => {
+  try {
+    const token = await AsyncStorage.getItem("token");
+
+    const res = await fetch(`${API_URL}/auth/update-profile`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        username: user.username,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        gender: formData.gender,
+      }),
+    });
+
+    const data = await res.json();
+    setUser(data.user);        // update UI state
+    setFormData(data.user);
+
+    alert("Profile updated successfully!");
+  } catch (error) {
+    console.log(error);
+    alert("Update failed");
+  }
+};
 
     return (
         <SafeAreaView style={styles.container}>
@@ -50,8 +112,13 @@ export const EditProfileScreen = ({ navigation }) => {
                         style={styles.avatar}
                     />
 
-                    <Text style={styles.avatarName}>Itunuoluwa Abidoye</Text>
-                    <Text style={styles.avatarId}>TURFID34345</Text>
+                            <Text style={styles.name}>
+                            {user?.username || "Loading..."}
+                            </Text>
+
+                            <Text style={styles.id}>
+                            {user?.email}
+                            </Text>
                 </View>
 
                 {/* FORM */}
@@ -99,7 +166,10 @@ export const EditProfileScreen = ({ navigation }) => {
                     </TouchableOpacity>
 
                     {/* BUTTON */}
-                    <TouchableOpacity style={styles.updateBtn}>
+                    <TouchableOpacity 
+                        style={styles.updateBtn}
+                        onPress={handleUpdateProfile}
+                        >
                         <Text style={styles.updateBtnText}>Update profile</Text>
                     </TouchableOpacity>
 

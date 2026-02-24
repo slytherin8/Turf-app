@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import {
     View,
     Text,
@@ -14,8 +14,7 @@ import { COLORS, SPACING, SIZES } from '../constants/theme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const ChangePasswordScreen = ({ navigation }) => {
-    
-
+    const [user, setUser] = useState(null)
     const [passwords, setPasswords] = useState({
         current: '',
         new: '',
@@ -24,6 +23,29 @@ export const ChangePasswordScreen = ({ navigation }) => {
     const [showCurrent, setShowCurrent] = useState(false);
     const [showNew, setShowNew] = useState(false);
     const API_URL = process.env.EXPO_PUBLIC_API_URL;    
+    useEffect(() => {
+      const fetchProfile = async () => {
+        const token = await AsyncStorage.getItem("token");
+    
+        try {
+          const res = await fetch(`${API_URL}/auth/me`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+    
+      },
+    });
+    
+          const data = await res.json();
+          setUser(data);
+        } catch (err) {
+          console.log("Profile fetch failed", err);
+        }
+      };
+    
+      fetchProfile();
+    }, []);
+    
 
     //handle of chnage password
     const handleChangePassword = async () => {
@@ -89,8 +111,13 @@ export const ChangePasswordScreen = ({ navigation }) => {
                             style={styles.avatar}
                         />
                         <View>
-                            <Text style={styles.name}>Itunuoluwa Abidoye</Text>
-                            <Text style={styles.id}>TURFID34345</Text>
+                            <Text style={styles.name}>
+                            {user?.username || "Loading..."}
+                            </Text>
+
+                            <Text style={styles.id}>
+                            {user?.email}
+                            </Text>
                         </View>
                     </View>
                 </View>
