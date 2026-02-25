@@ -249,15 +249,20 @@ export const BookingScreen = ({ navigation ,route }) => {
             style={styles.nextButton}
             onPress={async () => {
   try {
-    const userId = await AsyncStorage.getItem("userId");
+    const token = await AsyncStorage.getItem("token");
+
+    if (!token) {
+      alert("User not logged in");
+      return;
+    }
 
     const response = await fetch(`${API_URL}/booking/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,   // ✅ VERY IMPORTANT
       },
       body: JSON.stringify({
-        userId,
         turfName,
         location: "Avadi, Chennai",
         courtType: selectedCourt,
@@ -269,12 +274,11 @@ export const BookingScreen = ({ navigation ,route }) => {
     const data = await response.json();
 
     if (!response.ok) {
-      // Show the server message in alert
       alert(data.message || "Booking failed");
       return;
     }
 
-    alert(data.message); // e.g., "Booking successful"
+    alert(data.message);
     navigation.navigate("ReviewPayment");
 
   } catch (error) {
@@ -282,7 +286,6 @@ export const BookingScreen = ({ navigation ,route }) => {
     alert("Something went wrong");
   }
 }}
-
           >
             <Text style={styles.nextButtonText}>Next</Text>
           </TouchableOpacity>

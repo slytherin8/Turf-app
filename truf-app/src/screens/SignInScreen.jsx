@@ -20,12 +20,14 @@ export const SignInScreen = ({ navigation, setIsLoggedIn }) => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const API_URL = process.env.EXPO_PUBLIC_API_URL;
-  const [request, response, promptAsync] = Google.useAuthRequest({
+const [request, response, promptAsync] = Google.useAuthRequest({
   expoClientId: "27356358338-njcl9fc07eds8e227ld3k3tfh30tkkr9.apps.googleusercontent.com",
-    webClientId: "27356358338-njcl9fc07eds8e227ld3k3tfh30tkkr9.apps.googleusercontent.com",
-      scopes: ["openid", "profile", "email"],
+  androidClientId: "27356358338-35dhf7i8ieqo6dar7u55e81v0eo5qmb4.apps.googleusercontent.com",
+  iosClientId: "27356358338-6v710u52bno685fr2sklscfeh90i14c5.apps.googleusercontent.com",
+  webClientId: "27356358338-njcl9fc07eds8e227ld3k3tfh30tkkr9.apps.googleusercontent.com",
+  scopes: ["openid", "profile", "email"],
   responseType: "id_token",
-  });
+});
   console.log(AuthSession.makeRedirectUri());
 
  const handleLogin = async () => {

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, ChevronRight, CreditCard, Plus } from 'lucide-react-native';
+import RazorpayCheckout from 'react-native-razorpay';
 
 export const PaymentMethodScreen = ({ navigation }) => {
   const [selectedMethod, setSelectedMethod] = useState(null);
@@ -64,14 +65,74 @@ export const PaymentMethodScreen = ({ navigation }) => {
     ]
   };
 
-  const handleMethodSelect = (method) => {
-    setSelectedMethod(method.id);
-    // Navigate to payment processing or success screen
-    setTimeout(() => {
-      navigation.navigate('PaymentSuccess');
-    }, 500);
-  };
+const handleMethodSelect = async () => {
+  try {
 
+    // 1️⃣ First create booking in backend
+    const bookingResponse = await fetch(`${API_URL}/booking/create`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        // send booking details properly
+      }),
+    });
+
+    const bookingData = await bookingResponse.json();
+
+    // 2️⃣ Create Razorpay order
+    const orderResponse = await fetch(`${API_URL}/booking/create-order`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        bookingId: bookingData._id,
+        amount: 1000, // use turf price dynamically
+      }),
+    });
+
+    const orderData = await orderResponse.json();
+
+    // 3️⃣ Open Razorpay
+    var options = {
+      description: 'Turf Booking',
+      currency: 'INR',
+      key: 'rzp_test_SJz7OB6G3BvEpz', // your test key
+      amount: orderData.amount,
+      order_id: orderData.id,
+      name: 'Turf Booking',
+      prefill: {
+        email: 'user@email.com',
+        contact: '9999999999',
+        name: 'User'
+      },
+      theme: { color: '#BFFF00' }
+    };
+
+    RazorpayCheckout.open(options)
+      .then(async (paymentData) => {
+
+        // 4️⃣ Verify payment
+        await fetch(`${API_URL}/booking/verify-payment`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            razorpay_order_id: paymentData.razorpay_order_id,
+            razorpay_payment_id: paymentData.razorpay_payment_id,
+            razorpay_signature: paymentData.razorpay_signature,
+            bookingId: bookingData._id
+          }),
+        });
+
+        navigation.navigate("PaymentSuccess");
+
+      })
+      .catch((error) => {
+        alert("Payment Failed");
+      });
+
+  } catch (error) {
+    alert("Something went wrong");
+  }
+};
   const renderPaymentOption = (method) => (
     <TouchableOpacity
       key={method.id}

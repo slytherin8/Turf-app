@@ -13,7 +13,8 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Star, Info, ChevronDown, X } from 'lucide-react-native';
-
+import RazorpayCheckout from 'react-native-razorpay';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export const ReviewPaymentScreen = ({ navigation }) => {
   const [checkToPay, setCheckToPay] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -29,7 +30,113 @@ export const ReviewPaymentScreen = ({ navigation }) => {
     email: '',
     state: '',
   });
+ const API_URL = process.env.EXPO_PUBLIC_API_URL;
+const handlePayNow = async () => {
+    try {
 
+      // 🔥 Get token from AsyncStorage
+      const token = await AsyncStorage.getItem("token");
+
+      if (!token) {
+        alert("Please login first");
+        return;
+      }
+
+      // 1️⃣ CREATE BOOKING (pending)
+      const bookingResponse = await fetch(`${API_URL}/booking/create`, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,   // ✅ IMPORTANT
+        },
+        body: JSON.stringify({
+          turfName: "Game Mini Turf",
+          location: "Avadi, Chennai",
+          courtType: "5 vs 5",
+          date: "14 October 2025",
+          time: "5:00 AM - 7:00 AM",
+        }),
+      });
+
+      const bookingData = await bookingResponse.json();
+
+      if (!bookingData.success) {
+        alert(bookingData.message);
+        return;
+      }
+
+      // 2️⃣ CREATE RAZORPAY ORDER
+      const orderResponse = await fetch(`${API_URL}/booking/create-order`, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,   // ✅ IMPORTANT
+        },
+        body: JSON.stringify({
+          bookingId: bookingData.bookingId,
+          amount: 389,
+        }),
+      });
+
+      const orderData = await orderResponse.json();
+
+      // 3️⃣ OPEN RAZORPAY
+      var options = {
+        description: 'Turf Booking Payment',
+        currency: 'INR',
+        key: "rzp_test_SJz7OB6G3BvEpz",
+        amount: orderData.amount,
+        order_id: orderData.id,
+        name: 'Game Mini Turf',
+        prefill: {
+          email: userDetails.email,
+          contact: userDetails.phone.replace('+91-', ''),
+          name: userDetails.name
+        },
+        theme: { color: '#BFFF00' }
+      };
+
+      RazorpayCheckout.open(options)
+  .then(async (paymentData) => {
+
+    console.log("Payment Success:", paymentData);
+
+    const verifyResponse = await fetch(`${API_URL}/booking/verify-payment`, {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        razorpay_order_id: paymentData.razorpay_order_id,
+        razorpay_payment_id: paymentData.razorpay_payment_id,
+        razorpay_signature: paymentData.razorpay_signature,
+        bookingId: bookingData.bookingId
+      }),
+    });
+
+    const verifyData = await verifyResponse.json();
+
+    console.log("Verify Response:", verifyData);
+
+    if (!verifyResponse.ok) {
+      alert(verifyData.message);
+      return;
+    }
+
+    navigation.replace("PaymentSuccess");
+
+  })
+  .catch((error) => {
+    console.log("Razorpay Error:", error);
+    alert("Payment Failed");
+  });
+
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong");
+    }
+  };
   const handleEditDetails = () => {
     setEditFormData({
       name: userDetails.name,
@@ -179,7 +286,7 @@ export const ReviewPaymentScreen = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.payNowButton}
-            onPress={() => navigation.navigate('PaymentMethod')}
+            onPress={handlePayNow}
           >
             <Text style={styles.payNowText}>Pay now</Text>
           </TouchableOpacity>
