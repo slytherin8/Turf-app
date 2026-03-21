@@ -10,6 +10,7 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
   location: String,
   courtType: String,
   date: String,
